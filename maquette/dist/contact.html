@@ -340,6 +340,34 @@ textarea.form_input { min-height: 130px; resize: vertical; }
   .nav_dropdown-list::before { display: none; }
 }
 
+/* ===== Blog / Conseils santé ===== */
+.blog_filters { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 2.5rem; }
+.blog_filter { font: inherit; font-weight: 600; font-size: .92rem; padding: .55rem 1.2rem; border-radius: 999px; border: 1.5px solid #dfe4e7; background: #fff; color: var(--color-dark); cursor: pointer; transition: all .2s; }
+.blog_filter:hover { border-color: var(--color-accent); }
+.blog_filter.is-active { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.blog_featured { display: grid; grid-template-columns: 1.1fr 1fr; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 2rem; }
+.blog_featured .photo-placeholder { min-height: 340px; border-radius: 0; }
+.blog_featured-body { padding: 2.5rem; display: grid; gap: 1rem; align-content: center; }
+.blog_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+.blog_card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: grid; grid-template-rows: auto 1fr; transition: transform .25s; }
+.blog_card:hover { transform: translateY(-6px); }
+.blog_card .photo-placeholder { aspect-ratio: 16/10; border-radius: 0; }
+.blog_card-body { padding: 1.5rem; display: grid; gap: .7rem; align-content: start; }
+.blog_card[hidden] { display: none; }
+.blog_meta { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; font-size: .85rem; color: var(--color-grey); }
+.article_grid { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
+.article_cover { aspect-ratio: 16/9; border-radius: var(--radius); margin-bottom: 2.5rem; }
+.article_body { font-size: 1.1rem; line-height: 1.75; }
+.article_body h2 { font-size: 1.6rem; margin: 2.5rem 0 .8rem; font-weight: 600; }
+.article_body p { margin-bottom: 1.1rem; color: #3d434b; }
+.article_body ul { margin: 0 0 1.3rem; display: grid; gap: .5rem; }
+.article_body ul li { padding-left: 1.6rem; position: relative; }
+.article_body ul li::before { content: ''; position: absolute; left: 0; top: .75em; width: 9px; height: 9px; border-radius: 50%; background: var(--color-accent); }
+.callout { background: var(--color-accent-tint); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin: 2rem 0; }
+.callout strong { color: var(--color-accent-dark); }
+@media (max-width: 991px) { .blog_grid { grid-template-columns: 1fr 1fr; } .blog_featured { grid-template-columns: 1fr; } .article_grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+@media (max-width: 767px) { .blog_grid { grid-template-columns: 1fr; } .blog_featured-body { padding: 1.5rem; } .article_body { font-size: 1.02rem; } }
+
 </style>
 </head>
 <body>
@@ -379,6 +407,7 @@ textarea.form_input { min-height: 130px; resize: vertical; }
             </div>
           </div>
           <a href="nos-medecins.html" class="nav_link">Nos médecins</a>
+          <a href="blog.html" class="nav_link">Conseils santé</a>
           <a href="contact.html" class="nav_link w--current">Contact</a>
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
         </nav>
@@ -440,7 +469,7 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           </div>
           <div>
             <h4 class="footer_title">Navigation</h4>
-            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="imagerie.html">Imagerie</a></li><li><a href="nos-medecins.html">Nos médecins</a></li></ul>
+            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="imagerie.html">Imagerie</a></li><li><a href="nos-medecins.html">Nos médecins</a></li><li><a href="blog.html">Conseils santé</a></li></ul>
           </div>
           <div>
             <h4 class="footer_title">Contact</h4>
@@ -506,6 +535,15 @@ document.querySelectorAll('[data-dropdown-toggle]').forEach((btn) => {
     btn.setAttribute('aria-expanded', open);
   });
   document.addEventListener('click', (e) => { if (!box.contains(e.target)) box.classList.remove('is-open'); });
+});
+
+// Filtre des articles par catégorie
+document.querySelectorAll('[data-filter]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-filter]').forEach((b) => b.classList.toggle('is-active', b === btn));
+    const cat = btn.dataset.filter;
+    document.querySelectorAll('[data-cat]').forEach((card) => { card.hidden = cat !== 'all' && card.dataset.cat !== cat; });
+  });
 });
 
 </script>

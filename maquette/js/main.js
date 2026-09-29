@@ -34,3 +34,12 @@ document.querySelectorAll('[data-dropdown-toggle]').forEach((btn) => {
   });
   document.addEventListener('click', (e) => { if (!box.contains(e.target)) box.classList.remove('is-open'); });
 });
+
+// Filtre des articles par catégorie
+document.querySelectorAll('[data-filter]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-filter]').forEach((b) => b.classList.toggle('is-active', b === btn));
+    const cat = btn.dataset.filter;
+    document.querySelectorAll('[data-cat]').forEach((card) => { card.hidden = cat !== 'all' && card.dataset.cat !== cat; });
+  });
+});
