@@ -78,7 +78,7 @@ for s in SPECS:
         <div class="fiche_block reveal"><h2>Examens éventuellement associés</h2><ul class="list-check">{li(s['examens'])}</ul></div>
       </div>
       <aside class="fiche_aside">
-        <div class="aside_card"><h3 class="heading-style-h4">Consulter en {s['nom'].lower()}</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="index.html#rendez-vous" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
+        <div class="aside_card"><h3 class="heading-style-h4">Consulter en {s['nom'].lower()}</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
         <div class="aside_links"><strong>Autres spécialités</strong>{nav}</div>
       </aside>
     </div></div>

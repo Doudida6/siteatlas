@@ -276,6 +276,42 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* Bouton désactivé (service à venir) */
 .button.is-disabled { background: #e3e7e9; color: #8a949b; cursor: not-allowed; pointer-events: none; }
 
+/* ===== Médecins ===== */
+.doc_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+.doc_card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.doc_photo { aspect-ratio: 4/4.2; border-radius: 0; }
+.doc_body { padding: 1.5rem; display: grid; gap: .8rem; align-content: start; }
+.doc_body small { color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.doc_meta { font-size: .92rem; color: var(--color-grey); display: grid; gap: .35rem; }
+.doc_meta strong { color: var(--color-dark); }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chip { padding: .2rem .7rem; border-radius: 999px; background: var(--color-accent-tint); color: var(--color-accent-dark); font-size: .8rem; font-weight: 600; }
+
+/* ===== Formulaires ===== */
+.form_card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 2.5rem; }
+.form_grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.form_field { display: grid; gap: .4rem; }
+.form_field.is-full { grid-column: 1 / -1; }
+.form_field label { font-weight: 600; font-size: .92rem; }
+.form_field label span { color: var(--color-grey); font-weight: 400; }
+.form_input { font: inherit; width: 100%; padding: .85rem 1rem; border: 1.5px solid #dfe4e7; border-radius: 12px; background: #fff; color: var(--color-dark); transition: border-color .2s, box-shadow .2s; }
+.form_input:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(0,176,204,.18); }
+textarea.form_input { min-height: 130px; resize: vertical; }
+.form_success { display: none; text-align: center; padding: 2rem 1rem; gap: 1rem; justify-items: center; }
+.form_success.is-visible { display: grid; }
+.form_success .value_icon { width: 64px; height: 64px; }
+.form_disclaimer { font-size: .85rem; color: var(--color-grey); margin-top: 1rem; }
+
+/* ===== Contact ===== */
+.contact_grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: start; }
+.contact_cards { display: grid; gap: 1rem; margin: 1.5rem 0; }
+.contact_card { display: flex; gap: 1rem; align-items: center; padding: 1.1rem 1.25rem; background: var(--color-light); border-radius: 12px; }
+.contact_card .value_icon { flex: none; }
+.contact_card small { color: var(--color-grey); display: block; }
+.map_frame { width: 100%; height: 420px; border: 0; border-radius: var(--radius); }
+@media (max-width: 991px) { .doc_grid { grid-template-columns: 1fr 1fr; } .contact_grid { grid-template-columns: 1fr; } }
+@media (max-width: 767px) { .doc_grid, .form_grid { grid-template-columns: 1fr; } .form_card { padding: 1.5rem; } .map_frame { height: 320px; } }
+
 </style>
 </head>
 <body>
@@ -308,11 +344,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link w--current">Spécialités</a>
           <a href="imagerie.html" class="nav_link">Imagerie</a>
-          <a href="index.html#plateau" class="nav_link">Endoscopie</a>
-          <a href="index.html#plateau" class="nav_link">Biopsie</a>
-          <a href="index.html#medecins" class="nav_link">Nos médecins</a>
-          <a href="index.html#contact" class="nav_link">Contact</a>
-          <a href="index.html#rendez-vous" class="button is-primary">Prendre rendez-vous</a>
+          <a href="endoscopie.html" class="nav_link">Endoscopie</a>
+          <a href="biopsie.html" class="nav_link">Biopsie</a>
+          <a href="nos-medecins.html" class="nav_link">Nos médecins</a>
+          <a href="contact.html" class="nav_link">Contact</a>
+          <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
         </nav>
       </div>
     </div>
@@ -336,7 +372,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
         <div class="fiche_block reveal"><h2>Examens éventuellement associés</h2><ul class="list-check"><li>Imagerie cérébrale, selon disponibilité</li><li>Bilan biologique sur prescription</li><li>Avis complémentaire d'un autre spécialiste</li></ul></div>
       </div>
       <aside class="fiche_aside">
-        <div class="aside_card"><h3 class="heading-style-h4">Consulter en neurologie</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="index.html#rendez-vous" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
+        <div class="aside_card"><h3 class="heading-style-h4">Consulter en neurologie</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
         <div class="aside_links"><strong>Autres spécialités</strong><a href="specialites-medecine-generale.html">Médecine générale</a><a href="specialites-cardiologie.html">Cardiologie</a><a href="specialites-gynecologie.html">Gynécologie</a><a href="specialites-gastro-enterologie.html">Gastro-entérologie</a><a href="specialites-neurologie.html" class="w--current">Neurologie</a><a href="specialites-rhumatologie.html">Rhumatologie</a></div>
       </aside>
     </div></div>
@@ -346,7 +382,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
       <div class="cta_component reveal">
         <h2 class="heading-style-h2">Besoin d'un rendez-vous ?</h2>
         <p class="text-size-medium">Consultation ou examen : notre équipe vous accompagne.</p>
-        <div class="button-group" style="justify-content:center"><a href="index.html#rendez-vous" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-secondary-light">Nous écrire sur WhatsApp</a></div>
+        <div class="button-group" style="justify-content:center"><a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-secondary-light">Nous écrire sur WhatsApp</a></div>
       </div>
     </div></div>
   </section>
@@ -362,7 +398,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
           </div>
           <div>
             <h4 class="footer_title">Navigation</h4>
-            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="index.html#plateau">Plateau technique</a></li><li><a href="index.html#medecins">Nos médecins</a></li></ul>
+            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="imagerie.html">Imagerie</a></li><li><a href="nos-medecins.html">Nos médecins</a></li></ul>
           </div>
           <div>
             <h4 class="footer_title">Contact</h4>
@@ -376,7 +412,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
           <div>
             <h4 class="footer_title">Horaires</h4>
             <p class="text-size-small">À compléter</p>
-            <a href="index.html#rendez-vous" class="button is-primary" style="margin-top:1rem">Prendre rendez-vous</a>
+            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Prendre rendez-vous</a>
           </div>
         </div>
         <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span>Maquette de présentation</span></div>
@@ -389,7 +425,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 <nav class="mobile-bar" aria-label="Accès rapide">
   <a href="tel:+221788316060"><svg><use href="index.html#i-phone"/></svg>Appeler</a>
   <a href="https://wa.me/221788316060"><svg><use href="index.html#i-chat"/></svg>WhatsApp</a>
-  <a href="index.html#rendez-vous" class="is-main"><svg><use href="index.html#i-calendar"/></svg>Rendez-vous</a>
+  <a href="rendez-vous.html" class="is-main"><svg><use href="index.html#i-calendar"/></svg>Rendez-vous</a>
 </nav>
 
 <script>
@@ -408,6 +444,15 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: .12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Formulaires (maquette) : affiche le message de confirmation sans envoi réel
+document.querySelectorAll('[data-form]').forEach((form) => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.hidden = true;
+    form.parentElement.querySelector('.form_success')?.classList.add('is-visible');
+  });
+});
 
 </script>
 </body>

@@ -13,3 +13,12 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: .12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Formulaires (maquette) : affiche le message de confirmation sans envoi réel
+document.querySelectorAll('[data-form]').forEach((form) => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.hidden = true;
+    form.parentElement.querySelector('.form_success')?.classList.add('is-visible');
+  });
+});

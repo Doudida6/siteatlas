@@ -11,6 +11,8 @@ def _fix(block, current=None):
     block = re.sub(r'href="#(?!")([a-z-]+)"', r'href="index.html#\1"', block)
     block = block.replace('href="index.html#centre"', 'href="le-centre.html"')
     block = block.replace('href="index.html#specialites"', 'href="specialites.html"')
+    block = block.replace('href="index.html#rendez-vous"', 'href="rendez-vous.html"')
+    block = block.replace('href="index.html#medecins"', 'href="nos-medecins.html"')
     block = block.replace(' w--current', '')
     if current:
         block = block.replace(f'href="{current}" class="nav_link"', f'href="{current}" class="nav_link w--current"')
@@ -37,7 +39,7 @@ CTA = '''  <section class="padding-section-medium">
       <div class="cta_component reveal">
         <h2 class="heading-style-h2">Besoin d'un rendez-vous ?</h2>
         <p class="text-size-medium">Consultation ou examen : notre équipe vous accompagne.</p>
-        <div class="button-group" style="justify-content:center"><a href="index.html#rendez-vous" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-secondary-light">Nous écrire sur WhatsApp</a></div>
+        <div class="button-group" style="justify-content:center"><a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-secondary-light">Nous écrire sur WhatsApp</a></div>
       </div>
     </div></div>
   </section>
