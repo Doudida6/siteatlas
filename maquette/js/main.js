@@ -4,6 +4,8 @@ const menu = document.querySelector('[data-nav-menu]');
 toggle?.addEventListener('click', () => {
   const open = menu.classList.toggle('is-open');
   toggle.setAttribute('aria-expanded', open);
+  toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  toggle.querySelector('[data-nav-label]').textContent = open ? 'Fermer' : 'Menu';
 });
 
 // Apparition douce des blocs au scroll

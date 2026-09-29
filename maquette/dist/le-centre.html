@@ -81,8 +81,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .nav_link { font-weight: 500; font-size: .92rem; white-space: nowrap; position: relative; padding: .3rem 0; }
 .nav_link::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--color-accent); transition: width .25s; }
 .nav_link:hover::after, .nav_link.w--current::after { width: 100%; }
-.nav_toggle { display: none; background: none; border: 0; width: 44px; height: 44px; cursor: pointer; }
-.nav_toggle span { display: block; height: 2px; background: var(--color-dark); margin: 6px 10px; }
+.nav_toggle { display: none; align-items: center; gap: .6rem; height: 44px; padding: 0 1.1rem; background: #fff; border: 1.5px solid var(--color-dark); border-radius: 999px; font: inherit; font-weight: 600; color: var(--color-dark); cursor: pointer; }
+.nav_toggle-bars { display: grid; gap: 4px; }
+.nav_toggle-bars i { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .2s, opacity .2s; }
+.nav_toggle[aria-expanded="true"] .nav_toggle-bars i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav_toggle[aria-expanded="true"] .nav_toggle-bars i:nth-child(2) { opacity: 0; }
+.nav_toggle[aria-expanded="true"] .nav_toggle-bars i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ===== Hero ===== */
 .hero_component { position: relative; background: var(--color-dark); color: #fff; overflow: hidden; }
@@ -173,7 +177,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .team_grid, .quick_grid { grid-template-columns: 1fr 1fr; }
   .about_grid, .split_grid { grid-template-columns: 1fr; gap: 3rem; }
   .footer_grid { grid-template-columns: 1fr 1fr; }
-  .nav_toggle { display: block; }
+  .nav_toggle { display: inline-flex; }
   .nav_menu { position: absolute; top: 76px; left: 0; right: 0; background: #fff; flex-direction: column; align-items: flex-start; gap: 0; padding: .5rem 1.5rem 1.5rem; border-bottom: 1px solid #e8ecee; display: none; }
   .nav_menu.is-open { display: flex; }
   .nav_link { padding: .8rem 0; width: 100%; }
@@ -326,7 +330,8 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 .nav_sub-link:hover, .nav_sub-link.w--current { background: var(--color-accent-tint); color: var(--color-accent-dark); }
 @media (max-width: 991px) {
   .nav_menu { gap: 0; }
-  .nav_menu .button { display: none; }
+  .nav_menu { max-height: calc(100vh - 76px - 68px); overflow-y: auto; }
+  .nav_menu .button { width: 100%; justify-content: center; margin-top: 1rem; }
   .nav_dropdown { width: 100%; }
   .nav_dropdown-toggle { width: 100%; justify-content: space-between; }
   .nav_dropdown-list { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; padding: 0 0 0 1rem; min-width: 0; display: none; border-radius: 0; }
@@ -361,7 +366,7 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNjAgOGMtMTQgMC0yMiA4LTI4IDIwTDIwIDUyYy04IDE0IDAgMzYgMjAgMzYgMTAgMCAxOC02IDI0LTE0bC00LTRjLTYgNi0xMiAxMC0xOCAxMC0xMCAwLTE0LTEwLTEwLTE4bDEyLTIyYzQtOCA4LTEyIDE0LTEyczEwIDQgMTQgMTJsMTIgMjJjNCA4IDAgMTgtMTAgMTgtNiAwLTEyLTQtMTgtMTBsLTQgNGM2IDggMTQgMTQgMjQgMTQgMjAgMCAyOC0yMiAyMC0zNkw4OCAyOEM4MiAxNiA3NCA4IDYwIDh6IiBmaWxsPSIjMDBCMENDIi8+CiAgPHBhdGggZD0iTTggNjJoMzRsNi0xMiA4IDI4IDYtNDAgOCAzMiA2LThoMzYiIHN0cm9rZT0iIzAwQjBDQyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" class="nav_logo-icon">
           <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
         </a>
-        <button class="nav_toggle" data-nav-toggle aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
         <nav class="nav_menu" data-nav-menu>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link">Spécialités</a>
@@ -519,6 +524,8 @@ const menu = document.querySelector('[data-nav-menu]');
 toggle?.addEventListener('click', () => {
   const open = menu.classList.toggle('is-open');
   toggle.setAttribute('aria-expanded', open);
+  toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  toggle.querySelector('[data-nav-label]').textContent = open ? 'Fermer' : 'Menu';
 });
 
 // Apparition douce des blocs au scroll
