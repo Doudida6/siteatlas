@@ -18,7 +18,7 @@ body { margin: 0; font-family: var(--font); color: var(--color-dark); line-heigh
 img, svg { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, p { margin: 0; }
-ul { margin: 0; padding: 0; list-style: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ===== Client-First : utilitaires ===== */
 .page-wrapper { overflow-x: clip; }
@@ -220,3 +220,25 @@ ul { margin: 0; padding: 0; list-style: none; }
   .gallery_item.is-full { grid-column: span 2; }
   .banner_container { padding-top: 3.5rem; padding-bottom: 3.5rem; }
 }
+
+/* ===== Spécialités : cartes + fiches ===== */
+.spec_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.spec_card { background: #fff; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); display: grid; gap: .8rem; align-content: start; transition: transform .25s, box-shadow .25s; }
+.spec_card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,176,204,.18); }
+.spec_card .value_icon { width: 56px; height: 56px; }
+.fiche_grid { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
+.fiche_block { padding: 2rem 0; border-bottom: 1px solid #e8ecee; }
+.fiche_block:first-child { padding-top: 0; }
+.fiche_block h2 { font-size: 1.5rem; margin-bottom: .9rem; font-weight: 600; }
+.fiche_block .list-check li { padding: .6rem 0; border: 0; }
+.fiche_steps { counter-reset: step; display: grid; gap: 1rem; }
+.fiche_steps li { counter-increment: step; display: flex; gap: 1rem; align-items: flex-start; }
+.fiche_steps li::before { content: counter(step); flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--color-accent); color: #fff; font-weight: 700; display: grid; place-items: center; }
+.fiche_aside { position: sticky; top: 100px; display: grid; gap: 1rem; }
+.aside_card { background: var(--color-dark); color: #fff; border-radius: var(--radius); padding: 2rem; display: grid; gap: 1rem; }
+.aside_card p { color: #cfd5da; }
+.aside_links { background: var(--color-light); border-radius: var(--radius); padding: 1.5rem; display: grid; gap: .6rem; }
+.aside_links a { padding: .3rem 0; font-weight: 500; }
+.aside_links a:hover, .aside_links a.w--current { color: var(--color-accent); }
+@media (max-width: 991px) { .spec_grid { grid-template-columns: 1fr 1fr; } .fiche_grid { grid-template-columns: 1fr; gap: 2.5rem; } .fiche_aside { position: static; } }
+@media (max-width: 767px) { .spec_grid { grid-template-columns: 1fr; } }
