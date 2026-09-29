@@ -312,6 +312,29 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 @media (max-width: 991px) { .doc_grid { grid-template-columns: 1fr 1fr; } .contact_grid { grid-template-columns: 1fr; } }
 @media (max-width: 767px) { .doc_grid, .form_grid { grid-template-columns: 1fr; } .form_card { padding: 1.5rem; } .map_frame { height: 320px; } }
 
+/* ===== Menu épuré : sous-menu « Examens » ===== */
+.nav_menu { gap: 2rem; }
+.nav_link { font-size: .98rem; }
+.nav_dropdown { position: relative; }
+.nav_dropdown-toggle { background: none; border: 0; font-family: inherit; color: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+.nav_dropdown-toggle svg { transition: transform .2s; }
+.nav_dropdown-list { position: absolute; top: calc(100% + .6rem); left: -1rem; min-width: 210px; background: #fff; border-radius: 12px; box-shadow: 0 14px 40px rgba(43,47,54,.16); padding: .5rem; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .2s, visibility .2s; }
+.nav_dropdown-list::before { content: ''; position: absolute; top: -.7rem; left: 0; right: 0; height: .7rem; }
+.nav_dropdown:hover .nav_dropdown-list, .nav_dropdown.is-open .nav_dropdown-list { opacity: 1; visibility: visible; transform: none; }
+.nav_dropdown:hover .nav_dropdown-toggle svg, .nav_dropdown.is-open .nav_dropdown-toggle svg { transform: rotate(180deg); }
+.nav_sub-link { display: block; padding: .7rem 1rem; border-radius: 8px; font-weight: 500; }
+.nav_sub-link:hover, .nav_sub-link.w--current { background: var(--color-accent-tint); color: var(--color-accent-dark); }
+@media (max-width: 991px) {
+  .nav_menu { gap: 0; }
+  .nav_menu .button { display: none; }
+  .nav_dropdown { width: 100%; }
+  .nav_dropdown-toggle { width: 100%; justify-content: space-between; }
+  .nav_dropdown-list { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; padding: 0 0 0 1rem; min-width: 0; display: none; border-radius: 0; }
+  .nav_dropdown:hover .nav_dropdown-list { display: none; }
+  .nav_dropdown.is-open .nav_dropdown-list { display: block; }
+  .nav_dropdown-list::before { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -340,12 +363,16 @@ textarea.form_input { min-height: 130px; resize: vertical; }
         </a>
         <button class="nav_toggle" data-nav-toggle aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav class="nav_menu" data-nav-menu>
-          <a href="index.html" class="nav_link">Accueil</a>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link w--current">Spécialités</a>
-          <a href="imagerie.html" class="nav_link">Imagerie</a>
-          <a href="endoscopie.html" class="nav_link">Endoscopie</a>
-          <a href="biopsie.html" class="nav_link">Biopsie</a>
+          <div class="nav_dropdown">
+            <button type="button" class="nav_link nav_dropdown-toggle" aria-expanded="false" data-dropdown-toggle>Examens <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4l4 4 4-4"/></svg></button>
+            <div class="nav_dropdown-list">
+              <a href="imagerie.html" class="nav_sub-link">Imagerie</a>
+              <a href="endoscopie.html" class="nav_sub-link">Endoscopie</a>
+              <a href="biopsie.html" class="nav_sub-link">Biopsie</a>
+            </div>
+          </div>
           <a href="nos-medecins.html" class="nav_link">Nos médecins</a>
           <a href="contact.html" class="nav_link">Contact</a>
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
@@ -452,6 +479,16 @@ document.querySelectorAll('[data-form]').forEach((form) => {
     form.hidden = true;
     form.parentElement.querySelector('.form_success')?.classList.add('is-visible');
   });
+});
+
+// Sous-menu « Examens » (clic sur mobile, survol sur ordinateur)
+document.querySelectorAll('[data-dropdown-toggle]').forEach((btn) => {
+  const box = btn.closest('.nav_dropdown');
+  btn.addEventListener('click', () => {
+    const open = box.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', (e) => { if (!box.contains(e.target)) box.classList.remove('is-open'); });
 });
 
 </script>

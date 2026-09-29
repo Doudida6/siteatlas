@@ -22,3 +22,13 @@ document.querySelectorAll('[data-form]').forEach((form) => {
     form.parentElement.querySelector('.form_success')?.classList.add('is-visible');
   });
 });
+
+// Sous-menu « Examens » (clic sur mobile, survol sur ordinateur)
+document.querySelectorAll('[data-dropdown-toggle]').forEach((btn) => {
+  const box = btn.closest('.nav_dropdown');
+  btn.addEventListener('click', () => {
+    const open = box.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', (e) => { if (!box.contains(e.target)) box.classList.remove('is-open'); });
+});

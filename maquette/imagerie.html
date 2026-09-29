@@ -37,12 +37,16 @@
         </a>
         <button class="nav_toggle" data-nav-toggle aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav class="nav_menu" data-nav-menu>
-          <a href="index.html" class="nav_link">Accueil</a>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link">Spécialités</a>
-          <a href="imagerie.html" class="nav_link w--current">Imagerie</a>
-          <a href="endoscopie.html" class="nav_link">Endoscopie</a>
-          <a href="biopsie.html" class="nav_link">Biopsie</a>
+          <div class="nav_dropdown">
+            <button type="button" class="nav_link nav_dropdown-toggle w--current" aria-expanded="false" data-dropdown-toggle>Examens <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4l4 4 4-4"/></svg></button>
+            <div class="nav_dropdown-list">
+              <a href="imagerie.html" class="nav_sub-link w--current">Imagerie</a>
+              <a href="endoscopie.html" class="nav_sub-link">Endoscopie</a>
+              <a href="biopsie.html" class="nav_sub-link">Biopsie</a>
+            </div>
+          </div>
           <a href="nos-medecins.html" class="nav_link">Nos médecins</a>
           <a href="contact.html" class="nav_link">Contact</a>
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>

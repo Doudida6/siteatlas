@@ -16,6 +16,9 @@ def _fix(block, current=None):
     block = block.replace(' w--current', '')
     if current:
         block = block.replace(f'href="{current}" class="nav_link"', f'href="{current}" class="nav_link w--current"')
+        block = block.replace(f'href="{current}" class="nav_sub-link"', f'href="{current}" class="nav_sub-link w--current"')
+        if current in ('imagerie.html', 'endoscopie.html', 'biopsie.html'):
+            block = block.replace('class="nav_link nav_dropdown-toggle"', 'class="nav_link nav_dropdown-toggle w--current"')
     return block
 
 def page(title, desc, current, body):
