@@ -273,6 +273,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 991px) { .exam_section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; } .exam_visual { position: static; } }
 @media (max-width: 767px) { .exam_facts { grid-template-columns: 1fr; } }
 
+/* Bouton désactivé (service à venir) */
+.button.is-disabled { background: #e3e7e9; color: #8a949b; cursor: not-allowed; pointer-events: none; }
+
 </style>
 </head>
 <body>
@@ -380,7 +383,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
           <div class="exam_detail"><h3>Préparation</h3><p class="text-style-muted">Les consignes de préparation seront communiquées à l'ouverture du service.</p></div>
           <div class="exam_detail"><h3>Déroulement</h3><p class="text-style-muted">Les modalités de l'examen seront détaillées à l'ouverture du service.</p></div>
           <div class="exam_detail"><h3>Résultats</h3><p class="text-style-muted">À préciser</p></div>
-          
+          <div style="margin-top:1.5rem"><span class="button is-disabled" aria-disabled="true">Rendez-vous : bientôt disponible</span></div>
         </div>
       </article>
       <p class="note-info">Les informations présentées sont générales. Votre médecin ou notre équipe vous donnent les consignes adaptées à votre situation lors de la prise de rendez-vous.</p>

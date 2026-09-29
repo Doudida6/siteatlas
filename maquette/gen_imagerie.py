@@ -35,7 +35,7 @@ EXAMS = [
 
 def exam(e):
     badge = ' <span class="badge" style="margin-left:.6rem">Prochainement disponible</span>' if e.get('soon') else ''
-    btn = '' if e.get('soon') else '<div style="margin-top:1.5rem"><a href="index.html#rendez-vous" class="button is-primary">Prendre rendez-vous pour cet examen</a></div>'
+    btn = '<div style="margin-top:1.5rem"><span class="button is-disabled" aria-disabled="true">Rendez-vous : bientôt disponible</span></div>' if e.get('soon') else '<div style="margin-top:1.5rem"><a href="index.html#rendez-vous" class="button is-primary">Prendre rendez-vous pour cet examen</a></div>'
     return f'''      <article id="{e['id']}" class="exam_section reveal">
         <div class="exam_visual"><div class="photo-placeholder">{e['photo']}</div></div>
         <div>
