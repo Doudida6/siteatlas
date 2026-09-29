@@ -23,6 +23,18 @@
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.5 2 4.5 4.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".6"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-5A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7H5v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7zm10 0h-4v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7z"/></symbol>
 </svg>
 
 <div class="page-wrapper">
@@ -30,12 +42,20 @@
   <!-- ===== Header ===== -->
   <header class="nav_component">
     <div class="padding-global">
-      <div class="container-large nav_container">
-        <a href="index.html" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
-          <img src="assets/logo-icon.svg" alt="" class="nav_logo-icon">
-          <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
-        </a>
-        <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
+      <div class="container-large">
+        <div class="nav_top">
+          <a href="index.html" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
+            <img src="assets/logo-icon.svg" alt="" class="nav_logo-icon">
+            <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
+          </a>
+          <div class="nav_contacts">
+            <a href="mailto:centreatlasmedical@gmail.com" class="nav_contact"><svg><use href="index.html#i-mail"/></svg><span><b>Écrivez-nous</b><small>centreatlasmedical@gmail.com</small></span></a>
+            <a href="tel:+221338678646" class="nav_contact"><svg><use href="index.html#i-phone"/></svg><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <a href="rendez-vous.html" class="button is-dark">Prendre rendez-vous</a>
+          </div>
+          <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
+        </div>
+        <div class="nav_bar">
         <nav class="nav_menu" data-nav-menu>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link">Spécialités</a>
@@ -52,6 +72,12 @@
           <a href="contact.html" class="nav_link">Contact</a>
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
         </nav>
+        <div class="nav_social">
+          <a href="#" aria-label="Facebook"><svg><use href="index.html#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg><use href="index.html#i-ig"/></svg></a>
+          <a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="index.html#i-wa"/></svg></a>
+        </div>
+        </div>
       </div>
     </div>
   </header>
@@ -89,31 +115,41 @@
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer id="contact" class="footer_component">
+  <footer class="footer_component">
     <div class="padding-global">
       <div class="container-large">
-        <div class="footer_grid">
+        <div class="footer2_grid">
           <div>
-            <a href="index.html" class="nav_logo" style="margin-bottom:1rem"><img src="assets/logo-icon.svg" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
+            <a href="index.html" class="nav_logo" style="margin-bottom:1.2rem"><img src="assets/logo-icon.svg" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
             <p class="text-size-small">Votre santé. Notre engagement.<br>Médecine • Imagerie • Endoscopie • Biopsie</p>
+            <div class="footer2_social"><a href="#" aria-label="Facebook"><svg><use href="index.html#i-fb"/></svg></a><a href="#" aria-label="Instagram"><svg><use href="index.html#i-ig"/></svg></a><a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="index.html#i-wa"/></svg></a></div>
           </div>
           <div>
-            <h4 class="footer_title">Navigation</h4>
-            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="imagerie.html">Imagerie</a></li><li><a href="nos-medecins.html">Nos médecins</a></li><li><a href="blog.html">Conseils santé</a></li></ul>
-          </div>
-          <div>
-            <h4 class="footer_title">Contact</h4>
-            <ul class="footer_links">
-              <li>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></li>
-              <li><a href="tel:+221338678646">Fixe : 33 867 86 46</a></li>
-              <li><a href="tel:+221788316060">Mobile : 78 831 60 60</a></li>
-              <li><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+            <h4 class="footer_title">Coordonnées</h4>
+            <ul class="footer2_list">
+              <li><svg><use href="index.html#i-pin"/></svg><span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span></li>
+              <li><svg><use href="index.html#i-mail"/></svg><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+              <li><svg><use href="index.html#i-clock"/></svg>Horaires à compléter</li>
+              <li><svg><use href="index.html#i-phone"/></svg><span><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></span></li>
             </ul>
           </div>
           <div>
-            <h4 class="footer_title">Horaires</h4>
-            <p class="text-size-small">À compléter</p>
-            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Prendre rendez-vous</a>
+            <h4 class="footer_title">Pages</h4>
+            <ul class="footer2_pages">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="le-centre.html">Le Centre</a></li>
+              <li><a href="specialites.html">Spécialités</a></li>
+              <li><a href="imagerie.html">Imagerie</a></li>
+              <li><a href="nos-medecins.html">Nos médecins</a></li>
+              <li><a href="blog.html">Conseils santé</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer_title">Prendre rendez-vous</h4>
+            <a href="tel:+221338678646" class="footer2_call"><span class="footer2_call-icon"><svg><use href="index.html#i-phone"/></svg></span><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <p class="text-size-small" style="margin-top:1rem">Ou envoyez-nous une demande en ligne : nous vous rappelons pour confirmer.</p>
+            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Faire une demande</a>
           </div>
         </div>
         <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span>Maquette de présentation</span></div>

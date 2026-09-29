@@ -41,6 +41,27 @@ SPECS = [
   examens=["Radiographie numérique","Échographie articulaire","Bilan biologique sur prescription"]),
 ]
 
+
+FAQ = '''  <section class="padding-section-large">
+    <div class="padding-global"><div class="container-large about_grid">
+      <div class="reveal">
+        <span class="eyebrow2">Questions fréquentes</span>
+        <h2 class="heading-style-h2 margin-bottom-medium">Avant votre consultation</h2>
+        <div class="faq">
+          <details open><summary>Comment prendre rendez-vous ?</summary><p>Par le formulaire du site, par téléphone au 33 867 86 46 ou sur WhatsApp au 78 831 60 60. Notre équipe vous rappelle pour confirmer le créneau.</p></details>
+          <details><summary>Que dois-je apporter ?</summary><p>Votre pièce d'identité, votre ordonnance si vous en avez une, et vos anciens examens ou comptes rendus.</p></details>
+          <details><summary>Comment sont remis les résultats ?</summary><p>Le médecin vous explique les résultats et un compte rendu vous est remis, selon les délais propres à chaque examen.</p></details>
+          <details><summary>Le scanner est-il disponible ?</summary><p>Pas encore : il sera proposé dès son installation. Nous l'indiquerons sur le site.</p></details>
+        </div>
+      </div>
+      <div class="collage is-right reveal">
+        <div class="collage_main photo-placeholder">Photo : équipe du Centre Atlas</div>
+        <div class="collage_small photo-placeholder">Photo : accueil</div>
+      </div>
+    </div></div>
+  </section>
+'''
+
 def li(items): return ''.join(f'<li>{i}</li>' for i in items)
 
 # --- Page générale ---
@@ -57,7 +78,7 @@ body = banner('Spécialités', [('Accueil', 'index.html')]) + f'''
 {cards}      </div>
     </div></div>
   </section>
-''' + CTA
+''' + FAQ + CTA
 open('specialites.html', 'w').write(page('Spécialités médicales à Dakar | Centre Médical Atlas', 'Médecine générale, cardiologie, gynécologie, gastro-entérologie, neurologie et rhumatologie au Centre Médical Atlas, Dakar.', 'specialites.html', body))
 
 # --- Fiches ---

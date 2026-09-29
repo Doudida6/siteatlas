@@ -368,6 +368,219 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 @media (max-width: 991px) { .blog_grid { grid-template-columns: 1fr 1fr; } .blog_featured { grid-template-columns: 1fr; } .article_grid { grid-template-columns: 1fr; gap: 2.5rem; } }
 @media (max-width: 767px) { .blog_grid { grid-template-columns: 1fr; } .blog_featured-body { padding: 1.5rem; } .article_body { font-size: 1.02rem; } }
 
+/* =====================================================================
+   V2 : reprise des détails du modèle (en-tête, hero, cartes, services…)
+   ===================================================================== */
+:root { --radius: 8px; --color-dark: #2B2F36; }
+.button.is-dark { background: var(--color-dark); color: #fff; }
+.button.is-dark:hover { background: #12151a; }
+.eyebrow2 { display: block; color: var(--color-accent); font-weight: 500; font-size: .95rem; margin-bottom: .5rem; }
+.heading-style-h2 { font-weight: 600; letter-spacing: -.005em; }
+
+/* --- En-tête à deux niveaux --- */
+.nav_component { position: sticky; top: -84px; z-index: 50; background: #fff; border-bottom: 1px solid #e8ecee; backdrop-filter: none; }
+.nav_top { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+.nav_contacts { display: flex; align-items: center; gap: 2rem; }
+.nav_contact { display: flex; align-items: center; gap: .7rem; padding-right: 2rem; border-right: 1px solid #e3e7e9; }
+.nav_contact svg { width: 30px; height: 30px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+.nav_contact b { display: block; font-size: .95rem; line-height: 1.2; }
+.nav_contact small { color: var(--color-grey); font-size: .85rem; }
+.nav_bar { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #eef1f2; height: 56px; }
+.nav_menu { position: static; gap: 2.2rem; }
+.nav_menu > .button { display: none; }
+.nav_link { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.nav_link.w--current { color: var(--color-accent); }
+.nav_link.w--current::after { width: 100%; }
+.nav_dropdown-list { top: calc(100% + .9rem); }
+.nav_sub-link { text-transform: none; }
+.nav_social, .footer2_social { display: flex; gap: .5rem; }
+.nav_social a, .footer2_social a { width: 30px; height: 30px; border-radius: 50%; background: var(--color-accent); color: #fff; display: grid; place-items: center; transition: transform .2s; }
+.nav_social a:hover, .footer2_social a:hover { transform: translateY(-2px); }
+.nav_social svg, .footer2_social svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+
+/* --- Hero avec diagonale et carte blanche --- */
+.hero2 { position: relative; background: var(--color-dark); min-height: 600px; display: flex; align-items: center; overflow: hidden; }
+.hero2_photo { position: absolute; top: 0; right: 0; bottom: 0; width: 70%; border-radius: 0; }
+.hero2_shape { position: absolute; inset: 0; background: var(--color-dark); clip-path: polygon(0 0, 52% 0, 34% 100%, 0 100%); }
+.hero2_inner { position: relative; z-index: 2; width: 100%; }
+.hero2_card { background: #fff; max-width: 540px; padding: 3rem; border-radius: var(--radius); display: grid; gap: 1.25rem; box-shadow: 0 20px 60px rgba(0,0,0,.25); margin: 5rem 0 7rem; }
+.hero2_card .heading-style-h1 { font-size: clamp(2.2rem, 3.6vw, 3.2rem); }
+.hero2_play { position: absolute; z-index: 2; left: 62%; top: 50%; width: 76px; height: 76px; margin-top: -38px; border-radius: 50%; background: var(--color-accent); color: #fff; display: grid; place-items: center; box-shadow: 0 0 0 10px rgba(0,176,204,.25); transition: transform .2s; }
+.hero2_play:hover { transform: scale(1.06); }
+.hero2_play svg { width: 28px; height: 28px; margin-left: 4px; }
+
+/* --- Cartes d'accès rapide qui chevauchent --- */
+.quick2 { position: relative; z-index: 3; margin-top: -4.5rem; }
+.quick2_grid { display: grid; grid-template-columns: repeat(3, 1fr); box-shadow: 0 16px 50px rgba(43,47,54,.14); border-radius: var(--radius); overflow: hidden; }
+.quick2_card { background: #fff; padding: 2.4rem 2.2rem; display: grid; gap: .8rem; align-content: start; transition: transform .25s; }
+.quick2_card.is-dark { background: var(--color-dark); color: #fff; }
+.quick2_card.is-accent { background: var(--color-accent); color: #fff; }
+.quick2_card:hover { transform: translateY(-4px); }
+.quick2_icon { width: 42px; height: 42px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+.quick2_card.is-dark .quick2_icon, .quick2_card.is-accent .quick2_icon { stroke: #fff; }
+.quick2_card p { opacity: .85; }
+.quick2_link { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; font-size: .92rem; color: var(--color-accent); }
+.quick2_link svg { fill: none; stroke: currentColor; stroke-width: 2; }
+.quick2_card.is-accent .quick2_link { color: #fff; }
+.quick2_pill { justify-self: start; background: var(--color-accent); color: #fff; padding: .55rem 1.2rem; border-radius: 999px; font-weight: 600; font-size: .92rem; }
+
+/* --- À propos : collage + valeurs --- */
+.collage { position: relative; padding: 0 3rem 4rem 0; }
+.collage::before { content: ''; position: absolute; right: 0; top: 2.5rem; bottom: 1rem; width: 62%; background: var(--color-accent-tint); border-radius: var(--radius); }
+.collage_main { position: relative; width: 82%; aspect-ratio: 4/5; border-radius: var(--radius); }
+.collage_small { position: absolute; left: 2rem; bottom: 0; width: 46%; aspect-ratio: 1; border-radius: var(--radius); border: 6px solid #fff; box-shadow: var(--shadow); }
+.collage.is-right { padding: 0 0 4rem 3rem; }
+.collage.is-right::before { right: auto; left: 0; }
+.collage.is-right .collage_main { margin-left: auto; }
+.collage.is-right .collage_small { left: auto; right: 2rem; }
+.feat_grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 1.5rem; }
+.feat { display: flex; gap: .8rem; align-items: flex-start; }
+.feat_icon { flex: none; width: 34px; height: 34px; stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+.check2 { display: grid; gap: .6rem; }
+.check2 li { display: flex; gap: .7rem; align-items: center; font-size: .98rem; }
+.check2 li::before { content: ''; flex: none; width: 18px; height: 18px; background: var(--color-accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3.2L15 7' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); border-radius: 50%; }
+
+/* --- Services : grille décalée --- */
+.svc_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding-bottom: 2rem; }
+.svc_card { background: #fff; padding: 2.2rem 2rem; border-radius: var(--radius); display: grid; gap: .8rem; align-content: start; box-shadow: 0 8px 30px rgba(43,47,54,.06); transition: box-shadow .25s; }
+.svc_card:nth-child(3n+2) { transform: translateY(-2.2rem); }
+.svc_card:hover { box-shadow: 0 16px 44px rgba(0,176,204,.2); }
+.svc_card.is-dark { background: var(--color-dark); color: #fff; }
+.svc_icon { width: 46px; height: 46px; stroke: var(--color-accent); fill: none; stroke-width: 1.4; }
+.svc_card p { color: var(--color-grey); }
+.svc_card.is-dark p { color: #cfd5da; }
+.svc_link { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; font-weight: 600; color: var(--color-accent); }
+.svc_link svg { fill: none; stroke: currentColor; stroke-width: 2; }
+.chips_row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: center; margin: 1.5rem 0 2.5rem; }
+.chips_row strong { margin-right: .6rem; }
+.chip2 { padding: .45rem 1.1rem; border-radius: 999px; background: #fff; font-size: .9rem; font-weight: 500; border: 1px solid #d8eef2; transition: all .2s; }
+.chip2:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+.strip { display: flex; align-items: center; gap: 1.5rem; border-top: 1px solid #cfe6ea; padding-top: 2rem; flex-wrap: wrap; }
+.strip_icon { width: 48px; height: 48px; stroke: var(--color-accent); fill: none; stroke-width: 1.4; }
+.strip > div { flex: 1; min-width: 220px; }
+.strip_link { font-weight: 600; color: var(--color-accent); font-size: .92rem; }
+
+/* --- Parcours en étapes --- */
+.steps2 { display: grid; gap: 0; }
+.steps2 li { display: flex; gap: 1.1rem; padding-bottom: 1.6rem; position: relative; }
+.steps2 li:not(:last-child)::after { content: ''; position: absolute; left: 22px; top: 48px; bottom: 4px; width: 1px; background: #cfe6ea; }
+.step_icon { flex: none; width: 46px; height: 46px; border-radius: 6px; background: var(--color-accent); display: grid; place-items: center; }
+.step_icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.7; }
+
+/* --- Pourquoi Atlas (fond sombre) --- */
+.trust2 { background: var(--color-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='120' viewBox='0 0 600 120'%3E%3Cpath d='M0 60h230l14-24 18 50 16-62 20 68 14-32h288' fill='none' stroke='white' stroke-opacity='.05' stroke-width='2'/%3E%3C/svg%3E") repeat; color: #fff; padding: 6rem 0 11rem; }
+.trust2_grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+.trust2_cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.trust2_card { padding: 1.75rem; border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius); display: grid; gap: .5rem; align-content: start; }
+.trust2_card svg { width: 34px; height: 34px; stroke: var(--color-accent); fill: none; stroke-width: 1.4; }
+.trust2_card span { font-size: .9rem; opacity: .75; }
+.trust2_card.is-light { background: #fff; color: var(--color-dark); border-color: #fff; }
+.trust2_card.is-accent { background: var(--color-accent); border-color: var(--color-accent); }
+.trust2_card.is-accent svg { stroke: #fff; }
+
+/* --- Formulaire flottant --- */
+.apt { margin-top: -7rem; position: relative; z-index: 2; padding-bottom: 0; }
+.apt_card { display: grid; grid-template-columns: 1fr 1.25fr; background: #fff; border-radius: var(--radius); box-shadow: 0 20px 60px rgba(43,47,54,.18); overflow: hidden; }
+.apt_side { border-radius: 0; position: relative; align-items: flex-end; min-height: 420px; }
+.apt_side::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,176,204,.55), rgba(0,150,175,.92)); }
+.apt_side-text { position: relative; color: #fff; padding: 1rem; display: grid; gap: .8rem; }
+.apt_side-text h2 { color: #fff; font-size: 1.8rem; }
+.apt_side-text p { font-size: .95rem; }
+.apt_side-icon { width: 54px; height: 54px; border-radius: 6px; background: rgba(255,255,255,.2); display: grid; place-items: center; }
+.apt_side-icon svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 1.6; }
+.apt_form { padding: 2.5rem; }
+
+/* --- Témoignage --- */
+.quote2 { background: var(--color-accent-tint); padding: 6rem 0; margin-top: 6rem; }
+.quote2_inner { text-align: center; max-width: 820px; margin: 0 auto; display: grid; gap: .6rem; justify-items: center; }
+.quote2_mark { width: 46px; height: 46px; color: var(--color-accent); }
+.quote2_text { font-size: 1.3rem; font-style: italic; color: #4a5058; margin-top: 1rem; }
+.quote2_author { display: flex; align-items: center; gap: .8rem; margin-top: 1rem; }
+.quote2_avatar { width: 52px; height: 52px; border-radius: 50%; padding: 0; }
+
+/* --- Appel à l'action avec diagonale --- */
+.call2 { position: relative; background: var(--color-dark); overflow: hidden; margin-top: 5rem; }
+.call2_photo { position: absolute; top: 0; bottom: 0; left: 0; width: 62%; border-radius: 0; }
+.call2_shape { position: absolute; top: 0; bottom: 0; right: 0; width: 60%; background: var(--color-dark); clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%); }
+.call2_inner { position: relative; z-index: 2; padding-top: 5rem; padding-bottom: 5rem; }
+.call2_card { background: #fff; padding: 2.8rem; border-radius: var(--radius); max-width: 520px; margin-left: auto; display: grid; gap: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+.call2_icon { width: 54px; height: 54px; border-radius: 6px; background: var(--color-accent); display: grid; place-items: center; }
+.call2_icon svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 1.6; }
+.call2_phone { display: inline-flex; align-items: center; gap: .6rem; font-size: 1.7rem; font-weight: 700; }
+.call2_phone svg { width: 28px; height: 28px; stroke: var(--color-accent); fill: none; stroke-width: 1.6; }
+
+/* --- Footer 4 colonnes --- */
+.footer2_grid { display: grid; grid-template-columns: 1.3fr 1.2fr .8fr 1.1fr; gap: 3rem; padding: 4.5rem 0 3rem; }
+.footer2_social { margin-top: 1.4rem; }
+.footer2_list { display: grid; gap: .9rem; font-size: .95rem; }
+.footer2_list li { display: flex; gap: .7rem; align-items: flex-start; }
+.footer2_list svg { flex: none; width: 18px; height: 18px; margin-top: .2rem; stroke: var(--color-accent); fill: none; stroke-width: 1.8; }
+.footer2_pages { display: grid; gap: .7rem; }
+.footer2_pages a { display: inline-flex; align-items: center; gap: .5rem; }
+.footer2_pages a::before { content: '›'; color: var(--color-accent); font-weight: 700; }
+.footer2_pages a:hover { color: var(--color-accent); }
+.footer2_call { display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,.06); border-radius: var(--radius); padding: 1.1rem 1.25rem; }
+.footer2_call-icon { width: 48px; height: 48px; border-radius: 6px; background: var(--color-accent); display: grid; place-items: center; }
+.footer2_call-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.8; }
+.footer2_call b { display: block; color: #fff; }
+.footer2_call small { font-size: 1.05rem; }
+
+/* --- Fiches médecins façon modèle --- */
+.doc_card { background: transparent; box-shadow: none; overflow: visible; position: relative; }
+.doc_photo { border-radius: var(--radius); aspect-ratio: 4/4.4; }
+.doc_body { background: var(--color-dark); color: #fff; margin: -3.2rem 1rem 0; position: relative; border-radius: var(--radius); box-shadow: 0 12px 30px rgba(43,47,54,.25); padding: 1.4rem; }
+.doc_body h3 { color: #fff; }
+.doc_meta { color: #b9c0c6; }
+.doc_meta strong { color: #fff; }
+.chip { background: rgba(0,176,204,.16); }
+.doc_body .chip { color: #7fe3f2; }
+
+/* --- Fil d'Ariane et FAQ --- */
+.breadcrumb span:not(:last-child) { color: var(--color-accent); }
+.faq { display: grid; gap: 0; }
+.faq details { border-bottom: 1px solid #e3e7e9; padding: 1.1rem 0; }
+.faq summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--color-accent); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: '–'; }
+.faq details p { margin-top: .7rem; color: var(--color-grey); }
+
+/* --- Responsive V2 --- */
+@media (max-width: 991px) {
+  .nav_component { top: 0; }
+  .nav_top { height: 76px; }
+  .nav_contacts, .nav_social { display: none; }
+  .nav_bar { height: auto; border: 0; }
+  .nav_menu { position: absolute; top: 76px; }
+  .nav_menu > .button { display: inline-flex; }
+  .nav_link { font-size: .95rem; text-transform: none; letter-spacing: 0; }
+  .hero2_photo { width: 100%; }
+  .hero2_shape { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: .55; }
+  .hero2_play { left: auto; right: 2rem; top: auto; bottom: 3rem; margin: 0; }
+  .hero2_card { margin: 3rem 0 6rem; padding: 2rem; }
+  .quick2_grid { grid-template-columns: 1fr; }
+  .svc_grid { grid-template-columns: 1fr 1fr; }
+  .svc_card:nth-child(3n+2) { transform: none; }
+  .trust2_grid, .apt_card { grid-template-columns: 1fr; }
+  .apt_side { min-height: 300px; }
+  .call2_photo { width: 100%; }
+  .call2_shape { width: 100%; clip-path: none; opacity: .6; }
+  .call2_card { margin: 0 auto; }
+  .footer2_grid { grid-template-columns: 1fr 1fr; }
+  .feat_grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .svc_grid { grid-template-columns: 1fr; }
+  .trust2_cards { grid-template-columns: 1fr; }
+  .trust2 { padding: 4rem 0 9rem; }
+  .apt_form { padding: 1.5rem; }
+  .collage, .collage.is-right { padding: 0 0 3rem 0; }
+  .collage_main { width: 88%; }
+  .footer2_grid { grid-template-columns: 1fr; gap: 2rem; }
+  .doc_body { margin: -2.5rem .6rem 0; }
+}
+.nav_dropdown-toggle { line-height: inherit; padding: .3rem 0; }
+
 </style>
 </head>
 <body>
@@ -382,6 +595,18 @@ textarea.form_input { min-height: 130px; resize: vertical; }
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.5 2 4.5 4.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".6"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-5A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7H5v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7zm10 0h-4v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7z"/></symbol>
 </svg>
 
 <div class="page-wrapper">
@@ -389,12 +614,20 @@ textarea.form_input { min-height: 130px; resize: vertical; }
   <!-- ===== Header ===== -->
   <header class="nav_component">
     <div class="padding-global">
-      <div class="container-large nav_container">
-        <a href="index.html" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNjAgOGMtMTQgMC0yMiA4LTI4IDIwTDIwIDUyYy04IDE0IDAgMzYgMjAgMzYgMTAgMCAxOC02IDI0LTE0bC00LTRjLTYgNi0xMiAxMC0xOCAxMC0xMCAwLTE0LTEwLTEwLTE4bDEyLTIyYzQtOCA4LTEyIDE0LTEyczEwIDQgMTQgMTJsMTIgMjJjNCA4IDAgMTgtMTAgMTgtNiAwLTEyLTQtMTgtMTBsLTQgNGM2IDggMTQgMTQgMjQgMTQgMjAgMCAyOC0yMiAyMC0zNkw4OCAyOEM4MiAxNiA3NCA4IDYwIDh6IiBmaWxsPSIjMDBCMENDIi8+CiAgPHBhdGggZD0iTTggNjJoMzRsNi0xMiA4IDI4IDYtNDAgOCAzMiA2LThoMzYiIHN0cm9rZT0iIzAwQjBDQyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" class="nav_logo-icon">
-          <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
-        </a>
-        <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
+      <div class="container-large">
+        <div class="nav_top">
+          <a href="index.html" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNjAgOGMtMTQgMC0yMiA4LTI4IDIwTDIwIDUyYy04IDE0IDAgMzYgMjAgMzYgMTAgMCAxOC02IDI0LTE0bC00LTRjLTYgNi0xMiAxMC0xOCAxMC0xMCAwLTE0LTEwLTEwLTE4bDEyLTIyYzQtOCA4LTEyIDE0LTEyczEwIDQgMTQgMTJsMTIgMjJjNCA4IDAgMTgtMTAgMTgtNiAwLTEyLTQtMTgtMTBsLTQgNGM2IDggMTQgMTQgMjQgMTQgMjAgMCAyOC0yMiAyMC0zNkw4OCAyOEM4MiAxNiA3NCA4IDYwIDh6IiBmaWxsPSIjMDBCMENDIi8+CiAgPHBhdGggZD0iTTggNjJoMzRsNi0xMiA4IDI4IDYtNDAgOCAzMiA2LThoMzYiIHN0cm9rZT0iIzAwQjBDQyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" class="nav_logo-icon">
+            <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
+          </a>
+          <div class="nav_contacts">
+            <a href="mailto:centreatlasmedical@gmail.com" class="nav_contact"><svg><use href="index.html#i-mail"/></svg><span><b>Écrivez-nous</b><small>centreatlasmedical@gmail.com</small></span></a>
+            <a href="tel:+221338678646" class="nav_contact"><svg><use href="index.html#i-phone"/></svg><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <a href="rendez-vous.html" class="button is-dark">Prendre rendez-vous</a>
+          </div>
+          <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
+        </div>
+        <div class="nav_bar">
         <nav class="nav_menu" data-nav-menu>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link">Spécialités</a>
@@ -411,6 +644,12 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           <a href="contact.html" class="nav_link">Contact</a>
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
         </nav>
+        <div class="nav_social">
+          <a href="#" aria-label="Facebook"><svg><use href="index.html#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg><use href="index.html#i-ig"/></svg></a>
+          <a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="index.html#i-wa"/></svg></a>
+        </div>
+        </div>
       </div>
     </div>
   </header>
@@ -444,42 +683,58 @@ textarea.form_input { min-height: 130px; resize: vertical; }
       </div>
     </div></div>
   </section>
-  <section class="padding-section-medium">
-    <div class="padding-global"><div class="container-large">
-      <div class="cta_component reveal">
-        <h2 class="heading-style-h2">Besoin d'un rendez-vous ?</h2>
-        <p class="text-size-medium">Consultation ou examen : notre équipe vous accompagne.</p>
-        <div class="button-group" style="justify-content:center"><a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-secondary-light">Nous écrire sur WhatsApp</a></div>
+  <section class="call2">
+    <div class="call2_photo photo-placeholder">Photo : accueil du Centre Atlas</div>
+    <div class="call2_shape"></div>
+    <div class="padding-global call2_inner">
+      <div class="container-large">
+        <div class="call2_card">
+          <span class="call2_icon"><svg><use href="#i-calendar"/></svg></span>
+          <h2 class="heading-style-h2">Besoin d'un rendez-vous ?</h2>
+          <p class="text-style-muted">Consultation ou examen : notre équipe vous accompagne.</p>
+          <a href="tel:+221338678646" class="call2_phone"><svg><use href="#i-phone"/></svg>33 867 86 46</a>
+          <div class="button-group"><a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-whatsapp">Nous écrire sur WhatsApp</a></div>
+        </div>
       </div>
-    </div></div>
+    </div>
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer id="contact" class="footer_component">
+  <footer class="footer_component">
     <div class="padding-global">
       <div class="container-large">
-        <div class="footer_grid">
+        <div class="footer2_grid">
           <div>
-            <a href="index.html" class="nav_logo" style="margin-bottom:1rem"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNjAgOGMtMTQgMC0yMiA4LTI4IDIwTDIwIDUyYy04IDE0IDAgMzYgMjAgMzYgMTAgMCAxOC02IDI0LTE0bC00LTRjLTYgNi0xMiAxMC0xOCAxMC0xMCAwLTE0LTEwLTEwLTE4bDEyLTIyYzQtOCA4LTEyIDE0LTEyczEwIDQgMTQgMTJsMTIgMjJjNCA4IDAgMTgtMTAgMTgtNiAwLTEyLTQtMTgtMTBsLTQgNGM2IDggMTQgMTQgMjQgMTQgMjAgMCAyOC0yMiAyMC0zNkw4OCAyOEM4MiAxNiA3NCA4IDYwIDh6IiBmaWxsPSIjMDBCMENDIi8+CiAgPHBhdGggZD0iTTggNjJoMzRsNi0xMiA4IDI4IDYtNDAgOCAzMiA2LThoMzYiIHN0cm9rZT0iIzAwQjBDQyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
+            <a href="index.html" class="nav_logo" style="margin-bottom:1.2rem"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNjAgOGMtMTQgMC0yMiA4LTI4IDIwTDIwIDUyYy04IDE0IDAgMzYgMjAgMzYgMTAgMCAxOC02IDI0LTE0bC00LTRjLTYgNi0xMiAxMC0xOCAxMC0xMCAwLTE0LTEwLTEwLTE4bDEyLTIyYzQtOCA4LTEyIDE0LTEyczEwIDQgMTQgMTJsMTIgMjJjNCA4IDAgMTgtMTAgMTgtNiAwLTEyLTQtMTgtMTBsLTQgNGM2IDggMTQgMTQgMjQgMTQgMjAgMCAyOC0yMiAyMC0zNkw4OCAyOEM4MiAxNiA3NCA4IDYwIDh6IiBmaWxsPSIjMDBCMENDIi8+CiAgPHBhdGggZD0iTTggNjJoMzRsNi0xMiA4IDI4IDYtNDAgOCAzMiA2LThoMzYiIHN0cm9rZT0iIzAwQjBDQyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
             <p class="text-size-small">Votre santé. Notre engagement.<br>Médecine • Imagerie • Endoscopie • Biopsie</p>
+            <div class="footer2_social"><a href="#" aria-label="Facebook"><svg><use href="index.html#i-fb"/></svg></a><a href="#" aria-label="Instagram"><svg><use href="index.html#i-ig"/></svg></a><a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="index.html#i-wa"/></svg></a></div>
           </div>
           <div>
-            <h4 class="footer_title">Navigation</h4>
-            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="imagerie.html">Imagerie</a></li><li><a href="nos-medecins.html">Nos médecins</a></li><li><a href="blog.html">Conseils santé</a></li></ul>
-          </div>
-          <div>
-            <h4 class="footer_title">Contact</h4>
-            <ul class="footer_links">
-              <li>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></li>
-              <li><a href="tel:+221338678646">Fixe : 33 867 86 46</a></li>
-              <li><a href="tel:+221788316060">Mobile : 78 831 60 60</a></li>
-              <li><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+            <h4 class="footer_title">Coordonnées</h4>
+            <ul class="footer2_list">
+              <li><svg><use href="index.html#i-pin"/></svg><span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span></li>
+              <li><svg><use href="index.html#i-mail"/></svg><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+              <li><svg><use href="index.html#i-clock"/></svg>Horaires à compléter</li>
+              <li><svg><use href="index.html#i-phone"/></svg><span><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></span></li>
             </ul>
           </div>
           <div>
-            <h4 class="footer_title">Horaires</h4>
-            <p class="text-size-small">À compléter</p>
-            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Prendre rendez-vous</a>
+            <h4 class="footer_title">Pages</h4>
+            <ul class="footer2_pages">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="le-centre.html">Le Centre</a></li>
+              <li><a href="specialites.html">Spécialités</a></li>
+              <li><a href="imagerie.html">Imagerie</a></li>
+              <li><a href="nos-medecins.html">Nos médecins</a></li>
+              <li><a href="blog.html">Conseils santé</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer_title">Prendre rendez-vous</h4>
+            <a href="tel:+221338678646" class="footer2_call"><span class="footer2_call-icon"><svg><use href="index.html#i-phone"/></svg></span><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <p class="text-size-small" style="margin-top:1rem">Ou envoyez-nous une demande en ligne : nous vous rappelons pour confirmer.</p>
+            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Faire une demande</a>
           </div>
         </div>
         <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span>Maquette de présentation</span></div>

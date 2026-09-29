@@ -23,6 +23,18 @@
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.5 2 4.5 4.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".6"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-5A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7H5v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7zm10 0h-4v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7z"/></symbol>
 </svg>
 
 <div class="page-wrapper">
@@ -30,12 +42,20 @@
   <!-- ===== Header ===== -->
   <header class="nav_component">
     <div class="padding-global">
-      <div class="container-large nav_container">
-        <a href="index.html" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
-          <img src="assets/logo-icon.svg" alt="" class="nav_logo-icon">
-          <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
-        </a>
-        <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
+      <div class="container-large">
+        <div class="nav_top">
+          <a href="index.html" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
+            <img src="assets/logo-icon.svg" alt="" class="nav_logo-icon">
+            <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
+          </a>
+          <div class="nav_contacts">
+            <a href="mailto:centreatlasmedical@gmail.com" class="nav_contact"><svg><use href="#i-mail"/></svg><span><b>Écrivez-nous</b><small>centreatlasmedical@gmail.com</small></span></a>
+            <a href="tel:+221338678646" class="nav_contact"><svg><use href="#i-phone"/></svg><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <a href="rendez-vous.html" class="button is-dark">Prendre rendez-vous</a>
+          </div>
+          <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
+        </div>
+        <div class="nav_bar">
         <nav class="nav_menu" data-nav-menu>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link">Spécialités</a>
@@ -52,22 +72,29 @@
           <a href="contact.html" class="nav_link">Contact</a>
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
         </nav>
+        <div class="nav_social">
+          <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+          <a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+        </div>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero_component">
-    <div class="hero_image photo-placeholder is-dark">Photo : accueil / espace architectural du Centre Atlas</div>
-    <div class="padding-global">
-      <div class="container-large hero_container">
-        <div class="hero_content">
-          <span class="text-style-eyebrow">Dakar, Sénégal</span>
+  <section class="hero2">
+    <div class="hero2_photo photo-placeholder is-dark">Photo : accueil / espace architectural du Centre Atlas</div>
+    <div class="hero2_shape"></div>
+    <a href="le-centre.html" class="hero2_play" aria-label="Découvrir le centre"><svg fill="currentColor" stroke="none"><use href="#i-play"/></svg></a>
+    <div class="padding-global hero2_inner">
+      <div class="container-large">
+        <div class="hero2_card">
           <h1 class="heading-style-h1">Centre Médical Atlas</h1>
-          <p class="text-size-medium"><strong>Médecine, imagerie et explorations médicales au même endroit.</strong><br>Une prise en charge moderne, humaine et coordonnée à Dakar.</p>
+          <p class="text-size-medium"><strong>Médecine, imagerie et explorations médicales au même endroit.</strong> Une prise en charge moderne, humaine et coordonnée à Dakar.</p>
           <div class="button-group">
             <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
-            <a href="le-centre.html" class="button is-secondary-light">Découvrir le centre</a>
+            <a href="le-centre.html" class="button is-dark">Découvrir le centre</a>
           </div>
         </div>
       </div>
@@ -75,48 +102,54 @@
   </section>
 
   <!-- ===== Accès rapide ===== -->
-  <section class="quick_component">
+  <section class="quick2">
     <div class="padding-global">
-      <div class="container-large quick_grid">
-        <a href="#medecins" class="quick_card reveal">
-          <svg class="quick_icon"><use href="#i-calendar"/></svg>
+      <div class="container-large quick2_grid">
+        <a href="nos-medecins.html" class="quick2_card reveal">
+          <svg class="quick2_icon"><use href="#i-calendar"/></svg>
           <h3 class="heading-style-h4">Jours de consultation</h3>
-          <p class="text-size-small text-style-muted">Retrouvez les jours de présence de chaque médecin.</p>
-          <span class="quick_link text-color-accent">Voir l'équipe <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span>
+          <p class="text-size-small">Retrouvez les jours de présence de chaque médecin de l'équipe.</p>
+          <span class="quick2_link">Voir l'équipe <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
         </a>
-        <a href="tel:+221338678646" class="quick_card is-dark reveal">
-          <svg class="quick_icon"><use href="#i-phone"/></svg>
+        <a href="tel:+221338678646" class="quick2_card is-dark reveal">
+          <svg class="quick2_icon"><use href="#i-phone"/></svg>
           <h3 class="heading-style-h4">Nous appeler</h3>
-          <p class="text-size-small" style="color:#cfd5da">Secrétariat : 33 867 86 46<br>Mobile : 78 831 60 60</p>
-          <span class="quick_link">Appeler maintenant</span>
+          <p class="text-size-small">Secrétariat : 33 867 86 46<br>Mobile / WhatsApp : 78 831 60 60</p>
+          <span class="quick2_pill">33 867 86 46</span>
         </a>
-        <a href="rendez-vous.html" class="quick_card is-accent reveal">
-          <svg class="quick_icon"><use href="#i-chat"/></svg>
+        <a href="rendez-vous.html" class="quick2_card is-accent reveal">
+          <svg class="quick2_icon"><use href="#i-chat"/></svg>
           <h3 class="heading-style-h4">Demander un rendez-vous</h3>
           <p class="text-size-small">Un formulaire simple. Notre équipe vous rappelle pour confirmer le créneau.</p>
-          <span class="quick_link">Faire une demande</span>
+          <span class="quick2_link">Faire une demande <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ===== À propos ===== -->
-  <section id="centre" class="padding-section-large">
+  <section class="padding-section-large">
     <div class="padding-global">
       <div class="container-large about_grid">
-        <div class="about_visual reveal">
-          <div class="about_image-main photo-placeholder">Photo : réception / salle d'attente Atlas</div>
+        <div class="collage reveal">
+          <div class="collage_main photo-placeholder">Photo : réception / salle d'attente Atlas</div>
+          <div class="collage_small photo-placeholder">Photo : équipe</div>
         </div>
         <div class="about_content reveal">
-          <span class="text-style-eyebrow">À propos d'Atlas</span>
+          <span class="eyebrow2">À propos d'Atlas</span>
           <h2 class="heading-style-h2">Un centre pensé autour du patient</h2>
-          <p class="text-style-muted text-size-medium">Le Centre Médical Atlas réunit plusieurs compétences médicales et explorations diagnostiques au sein d'un même environnement. Notre objectif est de proposer une prise en charge accessible, professionnelle et personnalisée, en accordant une attention particulière à l'écoute et au confort du patient.</p>
-          <div class="about_values">
-            <div class="about_value"><span class="about_value-dot"></span><div><strong>Écoute</strong><p class="text-size-small text-style-muted">Chaque patient est entendu.</p></div></div>
-            <div class="about_value"><span class="about_value-dot"></span><div><strong>Expertise</strong><p class="text-size-small text-style-muted">Une équipe pluridisciplinaire.</p></div></div>
-            <div class="about_value"><span class="about_value-dot"></span><div><strong>Confidentialité</strong><p class="text-size-small text-style-muted">Vos données sont protégées.</p></div></div>
-            <div class="about_value"><span class="about_value-dot"></span><div><strong>Innovation</strong><p class="text-size-small text-style-muted">Un plateau technique moderne.</p></div></div>
+          <p class="text-style-muted">Le Centre Médical Atlas réunit plusieurs compétences médicales et explorations diagnostiques au sein d'un même environnement. Notre objectif est de proposer une prise en charge accessible, professionnelle et personnalisée, en accordant une attention particulière à l'écoute et au confort du patient.</p>
+          <div class="feat_grid">
+            <div class="feat"><svg class="feat_icon"><use href="#i-heart"/></svg><div><strong>Écoute</strong><p class="text-size-small text-style-muted">Chaque patient est entendu.</p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-stetho"/></svg><div><strong>Expertise</strong><p class="text-size-small text-style-muted">Une équipe pluridisciplinaire.</p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-shield"/></svg><div><strong>Confidentialité</strong><p class="text-size-small text-style-muted">Vos données sont protégées.</p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-bulb"/></svg><div><strong>Innovation</strong><p class="text-size-small text-style-muted">Un plateau technique moderne.</p></div></div>
           </div>
+          <ul class="check2">
+            <li>Consultations et examens au même endroit</li>
+            <li>Des explications claires à chaque étape</li>
+            <li>Un accompagnement du rendez-vous jusqu'aux résultats</li>
+          </ul>
           <div><a href="le-centre.html" class="button is-primary">Découvrir Atlas</a></div>
         </div>
       </div>
@@ -128,123 +161,206 @@
     <div class="padding-global">
       <div class="container-large">
         <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="text-style-eyebrow">Nos services</span>
-          <h2 class="heading-style-h2">Tout votre parcours de soins, sous un même toit</h2>
+          <span class="eyebrow2">Nos services</span>
+          <h2 class="heading-style-h2">Consultations, imagerie et explorations</h2>
+          <p class="text-style-muted" style="margin-top:.8rem">Tout votre parcours de soins, sous un même toit.</p>
         </div>
-        <div class="services_grid">
-          <a href="specialites.html" class="service_card reveal"><svg class="service_icon"><use href="#i-stetho"/></svg><h3 class="heading-style-h4">Consultations</h3><p class="text-size-small text-style-muted">Médecine générale et spécialités médicales.</p></a>
-          <a href="imagerie.html" class="service_card reveal"><svg class="service_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Imagerie médicale</h3><p class="text-size-small text-style-muted">Échographie, Doppler, radiographie et scanner.</p></a>
-          <a href="#plateau" class="service_card reveal"><svg class="service_icon"><use href="#i-tube"/></svg><h3 class="heading-style-h4">Endoscopie</h3><p class="text-size-small text-style-muted">Explorations digestives dans un environnement adapté.</p></a>
-          <a href="#plateau" class="service_card reveal"><svg class="service_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Biopsie</h3><p class="text-size-small text-style-muted">Prélèvements guidés par l'imagerie.</p></a>
+        <div class="svc_grid">
+          <a href="specialites.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-stetho"/></svg><h3 class="heading-style-h4">Consultations</h3><p class="text-size-small">Médecine générale et spécialités médicales.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="imagerie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Échographie &amp; Doppler</h3><p class="text-size-small">Des images pour explorer organes et vaisseaux.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="imagerie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Radiographie numérique</h3><p class="text-size-small">Os, articulations et thorax, rapidement.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="endoscopie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-tube"/></svg><h3 class="heading-style-h4">Endoscopie digestive</h3><p class="text-size-small">Fibroscopie et coloscopie dans un environnement adapté.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="biopsie.html" class="svc_card is-dark reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Biopsies guidées</h3><p class="text-size-small">Prélèvements guidés par l'imagerie, expliqués pas à pas.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="imagerie.html#scanner" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Scanner</h3><p class="text-size-small">Prochainement disponible au Centre Atlas.</p><span class="svc_link">Bientôt <svg width="14" height="14"><use href="#i-clock"/></svg></span></a>
+        </div>
+        <div class="chips_row">
+          <strong>Nos expertises médicales</strong>
+          <a href="specialites-medecine-generale.html" class="chip2">Médecine générale</a>
+          <a href="specialites-cardiologie.html" class="chip2">Cardiologie</a>
+          <a href="specialites-gynecologie.html" class="chip2">Gynécologie</a>
+          <a href="specialites-gastro-enterologie.html" class="chip2">Gastro-entérologie</a>
+          <a href="specialites-neurologie.html" class="chip2">Neurologie</a>
+          <a href="specialites-rhumatologie.html" class="chip2">Rhumatologie</a>
+        </div>
+        <div class="strip">
+          <svg class="strip_icon"><use href="#i-calendar"/></svg>
+          <div><strong>Ouvert sur rendez-vous</strong><p class="text-size-small text-style-muted">Notre équipe vous contacte pour confirmer votre créneau.</p></div>
+          <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
+          <a href="specialites.html" class="strip_link">Toutes les spécialités →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Expertises + plateau technique ===== -->
-  <section id="specialites" class="padding-section-large">
+  <!-- ===== Comment ça se passe ===== -->
+  <section class="padding-section-large">
     <div class="padding-global">
-      <div class="container-large split_grid">
+      <div class="container-large about_grid">
         <div class="reveal">
-          <span class="text-style-eyebrow">Nos expertises médicales</span>
-          <h2 class="heading-style-h2 margin-bottom-medium">Des spécialistes à votre écoute</h2>
-          <ul class="list-check">
-            <li>Médecine générale</li><li>Cardiologie</li><li>Gynécologie</li>
-            <li>Gastro-entérologie</li><li>Neurologie</li><li>Rhumatologie</li>
-          </ul>
+          <span class="eyebrow2">Votre parcours</span>
+          <h2 class="heading-style-h2 margin-bottom-medium">Un parcours simple, de la demande aux résultats</h2>
+          <p class="text-style-muted margin-bottom-medium">Consultation et examens se font au même endroit. Vous savez toujours où vous en êtes.</p>
+          <ol class="steps2">
+            <li><span class="step_icon"><svg><use href="#i-calendar"/></svg></span><div><strong>Je demande un rendez-vous</strong><p class="text-size-small text-style-muted">Par le site, par téléphone ou sur WhatsApp.</p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-phone"/></svg></span><div><strong>L'équipe me rappelle</strong><p class="text-size-small text-style-muted">Pour confirmer le créneau et me donner les consignes.</p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-stetho"/></svg></span><div><strong>Je suis reçu(e) et examiné(e)</strong><p class="text-size-small text-style-muted">Consultation et examens sur place.</p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-check"/></svg></span><div><strong>Je comprends mes résultats</strong><p class="text-size-small text-style-muted">Le médecin m'explique et m'oriente.</p></div></li>
+          </ol>
         </div>
-        <div id="plateau" class="reveal background-color-dark" style="padding:2.5rem;border-radius:var(--radius)">
-          <span class="text-style-eyebrow">Plateau technique</span>
-          <h2 class="heading-style-h2 margin-bottom-medium">Des équipements modernes</h2>
-          <ul class="list-check">
-            <li>Échographie &amp; Doppler</li>
-            <li>Radiographie numérique</li>
-            <li>Scanner <span class="badge">Prochainement disponible</span></li>
-            <li>Endoscopie digestive</li>
-            <li>Biopsies guidées par l'imagerie</li>
-          </ul>
+        <div class="collage is-right reveal">
+          <div class="collage_main photo-placeholder">Photo : cabinet de consultation</div>
+          <div class="collage_small photo-placeholder">Photo : échographie</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Pourquoi Atlas ===== -->
-  <section class="padding-section-large background-color-light">
+  <section class="trust2">
+    <div class="padding-global">
+      <div class="container-large trust2_grid">
+        <div class="reveal">
+          <span class="eyebrow2">Pourquoi Atlas ?</span>
+          <h2 class="heading-style-h2">Une équipe et un plateau technique à votre service</h2>
+          <p style="color:#cfd5da;margin:1rem 0 1.5rem">La technologie et l'expertise sont visibles, mais toujours au service du patient.</p>
+          <a href="le-centre.html" class="button is-primary">Découvrir le centre</a>
+        </div>
+        <div class="trust2_cards">
+          <div class="trust2_card is-light reveal"><svg><use href="#i-users"/></svg><strong>Expertise médicale</strong><span>Une équipe pluridisciplinaire.</span></div>
+          <div class="trust2_card reveal"><svg><use href="#i-scan"/></svg><strong>Plateau technique moderne</strong><span>Des examens fiables, sur place.</span></div>
+          <div class="trust2_card reveal"><svg><use href="#i-target"/></svg><strong>Parcours simplifié</strong><span>Consultations et explorations au même endroit.</span></div>
+          <div class="trust2_card is-accent reveal"><svg><use href="#i-heart"/></svg><strong>Écoute et bienveillance</strong><span>Attention portée à chaque patient.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Rendez-vous ===== -->
+  <section class="apt">
     <div class="padding-global">
       <div class="container-large">
-        <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="text-style-eyebrow">Pourquoi Atlas ?</span>
-          <h2 class="heading-style-h2">Un parcours simple et rassurant</h2>
-        </div>
-        <div class="why_grid">
-          <div class="why_card reveal"><span class="why_number">01</span><h3 class="heading-style-h4">Expertise médicale</h3><p class="text-size-small text-style-muted">Une équipe pluridisciplinaire.</p></div>
-          <div class="why_card reveal"><span class="why_number">02</span><h3 class="heading-style-h4">Plateau technique moderne</h3><p class="text-size-small text-style-muted">Des examens fiables, sur place.</p></div>
-          <div class="why_card reveal"><span class="why_number">03</span><h3 class="heading-style-h4">Parcours simplifié</h3><p class="text-size-small text-style-muted">Consultations et explorations au même endroit.</p></div>
-          <div class="why_card reveal"><span class="why_number">04</span><h3 class="heading-style-h4">Écoute et bienveillance</h3><p class="text-size-small text-style-muted">Une attention portée à chaque patient.</p></div>
+        <div class="apt_card reveal">
+          <div class="apt_side photo-placeholder is-dark">
+            <div class="apt_side-text"><span class="apt_side-icon"><svg><use href="#i-calendar"/></svg></span><h2 class="heading-style-h2">Prenez rendez-vous et prenez soin de votre santé</h2><p>Notre équipe vous contactera pour confirmer votre rendez-vous.</p></div>
+          </div>
+          <div class="apt_form">
+            <form data-form class="form_grid">
+              <div class="form_field"><label for="h-nom">Nom et prénom</label><input class="form_input" id="h-nom" required autocomplete="name"></div>
+              <div class="form_field"><label for="h-tel">Téléphone</label><input class="form_input" id="h-tel" type="tel" required autocomplete="tel"></div>
+              <div class="form_field"><label for="h-type">Type de rendez-vous</label><select class="form_input" id="h-type" required><option value="">Choisir…</option><option>Consultation</option><option>Échographie</option><option>Radiographie</option><option disabled>Scanner (bientôt disponible)</option><option>Endoscopie</option><option>Biopsie</option><option>Autre</option></select></div>
+              <div class="form_field"><label for="h-date">Date souhaitée</label><input class="form_input" id="h-date" type="date"></div>
+              <div class="form_field is-full"><label for="h-msg">Message <span>(facultatif)</span></label><textarea class="form_input" id="h-msg" style="min-height:90px"></textarea></div>
+              <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-self:start">Envoyer ma demande</button></div>
+            </form>
+            <div class="form_success" role="status"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><h3 class="heading-style-h4">Merci !</h3><p class="text-style-muted">Votre demande a bien été reçue. Notre équipe vous contactera pour confirmer votre rendez-vous.</p></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Équipe ===== -->
-  <section id="medecins" class="padding-section-large">
+  <section class="padding-section-large">
     <div class="padding-global">
       <div class="container-large">
         <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="text-style-eyebrow">Équipe médicale</span>
+          <span class="eyebrow2">Équipe médicale</span>
           <h2 class="heading-style-h2">Rencontrez nos médecins</h2>
         </div>
         <div class="team_grid">
-          <a href="#" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Cardiologie</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
-          <a href="#" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Gastro-entérologie</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
-          <a href="#" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Médecine générale</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+          <a href="nos-medecins.html" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Cardiologie</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+          <a href="nos-medecins.html" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Gastro-entérologie</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+          <a href="nos-medecins.html" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Médecine générale</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+        </div>
+        <div class="text-align-center" style="margin-top:2.5rem"><a href="nos-medecins.html" class="button is-dark">Voir toute l'équipe</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Témoignage (emplacement) ===== -->
+  <section class="quote2">
+    <div class="padding-global">
+      <div class="container-large quote2_inner reveal">
+        <svg class="quote2_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg>
+        <span class="eyebrow2">Témoignages</span>
+        <h2 class="heading-style-h2">Ce que disent nos patients</h2>
+        <!-- Emplacement : remplacer par un vrai témoignage, publié avec l'accord du patient -->
+        <p class="quote2_text">« Emplacement réservé au témoignage d'un patient, publié avec son accord. »</p>
+        <div class="quote2_author"><span class="quote2_avatar photo-placeholder"></span><strong>Prénom N.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Conseils santé ===== -->
+  <section class="padding-section-large">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
+          <span class="eyebrow2">Conseils santé</span>
+          <h2 class="heading-style-h2">Derniers articles</h2>
+        </div>
+        <div class="blog_grid">
+          <a href="article-exemple.html" class="blog_card reveal"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Imagerie</span><span>12 octobre 2026</span></div><h3 class="heading-style-h4">Échographie abdominale : comment s'y préparer ?</h3><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+          <a href="article-exemple.html" class="blog_card reveal"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Gastro-entérologie</span><span>5 octobre 2026</span></div><h3 class="heading-style-h4">Brûlures d'estomac : quand faut-il consulter ?</h3><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+          <a href="article-exemple.html" class="blog_card reveal"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Cardiologie</span><span>28 septembre 2026</span></div><h3 class="heading-style-h4">Tension artérielle : les bons réflexes</h3><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Appel à l'action ===== -->
-  <section id="rendez-vous" class="padding-section-medium">
-    <div class="padding-global">
+  <section class="call2">
+    <div class="call2_photo photo-placeholder">Photo : accueil du Centre Atlas</div>
+    <div class="call2_shape"></div>
+    <div class="padding-global call2_inner">
       <div class="container-large">
-        <div class="cta_component reveal">
+        <div class="call2_card">
+          <span class="call2_icon"><svg><use href="#i-calendar"/></svg></span>
           <h2 class="heading-style-h2">Besoin d'un rendez-vous ?</h2>
-          <p class="text-size-medium">Consultation ou examen : notre équipe vous accompagne.</p>
-          <div class="button-group" style="justify-content:center">
-            <a href="#" class="button is-primary">Prendre rendez-vous</a>
-            <a href="https://wa.me/221788316060" class="button is-secondary-light">Nous écrire sur WhatsApp</a>
-          </div>
+          <p class="text-style-muted">Consultation ou examen : notre équipe vous accompagne.</p>
+          <a href="tel:+221338678646" class="call2_phone"><svg><use href="#i-phone"/></svg>33 867 86 46</a>
+          <div class="button-group"><a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-whatsapp">Nous écrire sur WhatsApp</a></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer id="contact" class="footer_component">
+  <footer class="footer_component">
     <div class="padding-global">
       <div class="container-large">
-        <div class="footer_grid">
+        <div class="footer2_grid">
           <div>
-            <a href="index.html" class="nav_logo" style="margin-bottom:1rem"><img src="assets/logo-icon.svg" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
+            <a href="index.html" class="nav_logo" style="margin-bottom:1.2rem"><img src="assets/logo-icon.svg" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
             <p class="text-size-small">Votre santé. Notre engagement.<br>Médecine • Imagerie • Endoscopie • Biopsie</p>
+            <div class="footer2_social"><a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a><a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a><a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a></div>
           </div>
           <div>
-            <h4 class="footer_title">Navigation</h4>
-            <ul class="footer_links"><li><a href="le-centre.html">Le Centre</a></li><li><a href="specialites.html">Spécialités</a></li><li><a href="imagerie.html">Imagerie</a></li><li><a href="nos-medecins.html">Nos médecins</a></li><li><a href="blog.html">Conseils santé</a></li></ul>
-          </div>
-          <div>
-            <h4 class="footer_title">Contact</h4>
-            <ul class="footer_links">
-              <li>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></li>
-              <li><a href="tel:+221338678646">Fixe : 33 867 86 46</a></li>
-              <li><a href="tel:+221788316060">Mobile : 78 831 60 60</a></li>
-              <li><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+            <h4 class="footer_title">Coordonnées</h4>
+            <ul class="footer2_list">
+              <li><svg><use href="#i-pin"/></svg><span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span></li>
+              <li><svg><use href="#i-mail"/></svg><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+              <li><svg><use href="#i-clock"/></svg>Horaires à compléter</li>
+              <li><svg><use href="#i-phone"/></svg><span><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></span></li>
             </ul>
           </div>
           <div>
-            <h4 class="footer_title">Horaires</h4>
-            <p class="text-size-small">À compléter</p>
-            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Prendre rendez-vous</a>
+            <h4 class="footer_title">Pages</h4>
+            <ul class="footer2_pages">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="le-centre.html">Le Centre</a></li>
+              <li><a href="specialites.html">Spécialités</a></li>
+              <li><a href="imagerie.html">Imagerie</a></li>
+              <li><a href="nos-medecins.html">Nos médecins</a></li>
+              <li><a href="blog.html">Conseils santé</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer_title">Prendre rendez-vous</h4>
+            <a href="tel:+221338678646" class="footer2_call"><span class="footer2_call-icon"><svg><use href="#i-phone"/></svg></span><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <p class="text-size-small" style="margin-top:1rem">Ou envoyez-nous une demande en ligne : nous vous rappelons pour confirmer.</p>
+            <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Faire une demande</a>
           </div>
         </div>
         <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span>Maquette de présentation</span></div>
