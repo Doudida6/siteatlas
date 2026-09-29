@@ -255,6 +255,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 991px) { .spec_grid { grid-template-columns: 1fr 1fr; } .fiche_grid { grid-template-columns: 1fr; gap: 2.5rem; } .fiche_aside { position: static; } }
 @media (max-width: 767px) { .spec_grid { grid-template-columns: 1fr; } }
 
+/* ===== Imagerie : sections d'examen ===== */
+.exam_nav { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.exam_nav a { padding: .6rem 1.3rem; border-radius: 999px; background: #fff; box-shadow: var(--shadow); font-weight: 600; transition: background .2s, color .2s; }
+.exam_nav a:hover { background: var(--color-accent); color: #fff; }
+.exam_section { display: grid; grid-template-columns: 5fr 7fr; gap: 3.5rem; align-items: start; padding: 4rem 0; border-bottom: 1px solid #e8ecee; scroll-margin-top: 90px; }
+.exam_section:last-of-type { border-bottom: 0; }
+.exam_visual { position: sticky; top: 100px; display: grid; gap: 1rem; }
+.exam_visual .photo-placeholder { aspect-ratio: 4/3; border-radius: var(--radius); }
+.exam_facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0 .5rem; }
+.exam_fact { background: var(--color-accent-tint); border-radius: 12px; padding: 1rem 1.25rem; }
+.exam_fact small { color: var(--color-accent-dark); font-weight: 600; display: block; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; }
+.exam_detail { padding: 1.1rem 0; border-bottom: 1px solid #eef1f2; }
+.exam_detail:last-of-type { border-bottom: 0; }
+.exam_detail h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .35rem; }
+.note-info { background: var(--color-light); border-left: 4px solid var(--color-accent); padding: 1rem 1.25rem; border-radius: 0 12px 12px 0; font-size: .92rem; color: var(--color-grey); }
+@media (max-width: 991px) { .exam_section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; } .exam_visual { position: static; } }
+@media (max-width: 767px) { .exam_facts { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
@@ -286,7 +304,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
           <a href="index.html" class="nav_link">Accueil</a>
           <a href="le-centre.html" class="nav_link">Le Centre</a>
           <a href="specialites.html" class="nav_link w--current">Spécialités</a>
-          <a href="index.html#plateau" class="nav_link">Imagerie</a>
+          <a href="imagerie.html" class="nav_link">Imagerie</a>
           <a href="index.html#plateau" class="nav_link">Endoscopie</a>
           <a href="index.html#plateau" class="nav_link">Biopsie</a>
           <a href="index.html#medecins" class="nav_link">Nos médecins</a>
