@@ -2,8 +2,8 @@
 
   <section class="banner_component">
     <div class="padding-global"><div class="container-large banner_container">
-      <h1 class="heading-style-h1" style="font-size:clamp(2rem,4vw,3.2rem)">Gastro-entérologie</h1>
-      <div class="breadcrumb"><a href="<?php echo esc_url(home_url('/')); ?>">Accueil</a><span>›</span><a href="<?php echo esc_url(home_url('/specialites/')); ?>">Spécialités</a><span>›</span><span>Gastro-entérologie</span></div>
+      <h1 class="heading-style-h1" style="font-size:clamp(2rem,4vw,3.2rem)"><?php atlas_t('tc62a5df5'); ?></h1>
+      <div class="breadcrumb"><a href="<?php echo esc_url(home_url('/')); ?>"><?php atlas_t('t74fe31b5'); ?></a><span>›</span><a href="<?php echo esc_url(home_url('/specialites/')); ?>"><?php atlas_t('t4b581032'); ?></a><span>›</span><span><?php atlas_t('tc62a5df5'); ?></span></div>
     </div></div>
   </section>
 
@@ -11,15 +11,15 @@
   <section class="padding-section-large">
     <div class="padding-global"><div class="container-large fiche_grid">
       <div>
-        <div class="fiche_block"><span class="text-style-eyebrow">Gastro-entérologie</span><p class="text-size-medium text-style-muted" style="margin-top:.6rem">La prise en charge des maladies de l'estomac, de l'intestin et du foie, avec accès aux explorations digestives sur place.</p></div>
-        <div class="fiche_block reveal"><h2>Quand consulter ?</h2><ul class="list-check"><li>Brûlures d'estomac, douleurs abdominales, ballonnements</li><li>Troubles du transit persistants</li><li>Amaigrissement ou saignement digestif</li><li>Suivi d'une maladie digestive ou hépatique</li></ul></div>
-        <div class="fiche_block reveal"><h2>Motifs pris en charge</h2><ul class="list-check"><li>Reflux et maux d'estomac</li><li>Troubles du transit</li><li>Maladies du foie</li><li>Dépistage et surveillance digestive</li></ul></div>
-        <div class="fiche_block reveal"><h2>Déroulement de la consultation</h2><ol class="fiche_steps"><li>Consultation pour comprendre vos symptômes</li><li>Examen clinique de l'abdomen</li><li>Décision d'examen éventuel (échographie, endoscopie)</li><li>Explication des résultats et du traitement</li></ol></div>
-        <div class="fiche_block reveal"><h2>Examens éventuellement associés</h2><ul class="list-check"><li>Fibroscopie digestive</li><li>Coloscopie</li><li>Échographie abdominale</li><li>Biopsies si nécessaire</li></ul></div>
+        <div class="fiche_block"><span class="text-style-eyebrow"><?php atlas_t('tc62a5df5'); ?></span><p class="text-size-medium text-style-muted" style="margin-top:.6rem"><?php atlas_t('t55fe3baa'); ?></p></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('tfa6579be'); ?></h2><ul class="list-check"><li><?php atlas_t('taa8a35b8'); ?></li><li><?php atlas_t('td5e76db3'); ?></li><li><?php atlas_t('t3caaeba7'); ?></li><li><?php atlas_t('t4efe30ee'); ?></li></ul></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('tf50194d5'); ?></h2><ul class="list-check"><li><?php atlas_t('t285a762d'); ?></li><li><?php atlas_t('te5a1dcdf'); ?></li><li><?php atlas_t('t1e38f925'); ?></li><li><?php atlas_t('ta0f8b7c5'); ?></li></ul></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('t6f01f37a'); ?></h2><ol class="fiche_steps"><li><?php atlas_t('t369d08c0'); ?></li><li><?php atlas_t('t458aa3ae'); ?></li><li><?php atlas_t('t77282b5d'); ?></li><li><?php atlas_t('ta17895b4'); ?></li></ol></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('t6dc30dbd'); ?></h2><ul class="list-check"><li><?php atlas_t('tdd8cd5fd'); ?></li><li><?php atlas_t('t9c079165'); ?></li><li><?php atlas_t('t864c9aa9'); ?></li><li><?php atlas_t('t323d0282'); ?></li></ul></div>
       </div>
       <aside class="fiche_aside">
-        <div class="aside_card"><h3 class="heading-style-h4">Consulter en gastro-entérologie</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
-        <div class="aside_links"><strong>Autres spécialités</strong><a href="<?php echo esc_url(home_url('/specialites-medecine-generale/')); ?>">Médecine générale</a><a href="<?php echo esc_url(home_url('/specialites-cardiologie/')); ?>">Cardiologie</a><a href="<?php echo esc_url(home_url('/specialites-gynecologie/')); ?>">Gynécologie</a><a href="<?php echo esc_url(home_url('/specialites-gastro-enterologie/')); ?>" class="w--current">Gastro-entérologie</a><a href="<?php echo esc_url(home_url('/specialites-neurologie/')); ?>">Neurologie</a><a href="<?php echo esc_url(home_url('/specialites-rhumatologie/')); ?>">Rhumatologie</a></div>
+        <div class="aside_card"><h3 class="heading-style-h4"><?php atlas_t('ta3a437fa'); ?></h3><p class="text-size-small"><?php atlas_t('t72d60e5a'); ?></p><a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary" style="justify-content:center"><?php atlas_t('tda31472f'); ?></a><a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="text-size-small" style="color:#fff"><?php atlas_t('t8508db82'); ?></a></div>
+        <div class="aside_links"><strong><?php atlas_t('t865b6b1a'); ?></strong><a href="<?php echo esc_url(home_url('/specialites-medecine-generale/')); ?>"><?php atlas_t('t49b96814'); ?></a><a href="<?php echo esc_url(home_url('/specialites-cardiologie/')); ?>"><?php atlas_t('t0641fc0a'); ?></a><a href="<?php echo esc_url(home_url('/specialites-gynecologie/')); ?>"><?php atlas_t('tfa4c9926'); ?></a><a href="<?php echo esc_url(home_url('/specialites-gastro-enterologie/')); ?>" class="w--current"><?php atlas_t('tc62a5df5'); ?></a><a href="<?php echo esc_url(home_url('/specialites-neurologie/')); ?>"><?php atlas_t('tb223f958'); ?></a><a href="<?php echo esc_url(home_url('/specialites-rhumatologie/')); ?>"><?php atlas_t('td6bc365e'); ?></a></div>
       </aside>
     </div></div>
   </section>

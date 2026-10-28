@@ -8,6 +8,10 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
+foreach (['helpers', 'medecins', 'menu', 'admin', 'setup2'] as $atlas_inc) {
+    require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
+}
+
 /* ---------- Réglages de base ---------- */
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
@@ -130,29 +134,14 @@ function atlas_handle_form() {
 
     wp_insert_post(['post_type' => 'atlas_demande', 'post_status' => 'private', 'post_title' => $type . ' — ' . $name, 'post_content' => $body]);
 
-    $to = get_option('atlas_secretariat_email', ATLAS_SECRETARIAT_EMAIL);
+    $to = atlas_opt('rdv_email');
+    if (!is_email($to)) $to = get_option('atlas_secretariat_email', ATLAS_SECRETARIAT_EMAIL);
     $headers = $reply ? ['Reply-To: ' . $reply] : [];
     wp_mail($to, '[Centre Atlas] ' . $type . ' : ' . $name, $type . "\n\n" . $body, $headers);
 
     wp_safe_redirect(add_query_arg('atlas_sent', '1', $back));
     exit;
 }
-
-/* ---------- Réglage : adresse email du secrétariat ---------- */
-add_action('admin_menu', function () {
-    add_options_page('Centre Atlas', 'Centre Atlas', 'manage_options', 'centre-atlas', function () {
-        if (isset($_POST['atlas_secretariat_email']) && check_admin_referer('atlas_settings')) {
-            update_option('atlas_secretariat_email', sanitize_email(wp_unslash($_POST['atlas_secretariat_email'])));
-            echo '<div class="updated"><p>Enregistré.</p></div>';
-        }
-        $v = get_option('atlas_secretariat_email', ATLAS_SECRETARIAT_EMAIL);
-        echo '<div class="wrap"><h1>Centre Atlas</h1><form method="post">';
-        wp_nonce_field('atlas_settings');
-        echo '<table class="form-table"><tr><th><label for="e">Email qui reçoit les demandes de rendez-vous</label></th><td><input id="e" type="email" name="atlas_secretariat_email" class="regular-text" value="' . esc_attr($v) . '"></td></tr></table>';
-        submit_button();
-        echo '</form></div>';
-    });
-});
 
 /* ---------- Installation à l'activation du thème ---------- */
 add_action('after_switch_theme', 'atlas_setup');

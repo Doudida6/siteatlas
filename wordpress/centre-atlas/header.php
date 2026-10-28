@@ -41,36 +41,24 @@
         <div class="nav_top">
           <a href="<?php echo esc_url(home_url('/')); ?>" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
             <img src="<?php echo esc_url(get_theme_file_uri('assets/logo-icon.svg')); ?>" alt="" class="nav_logo-icon">
-            <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
+            <span class="nav_logo-text"><small><?php atlas_t('t9e6fc50a'); ?></small><strong><?php atlas_t('t96fd73b0'); ?></strong></span>
           </a>
           <div class="nav_contacts">
-            <a href="mailto:centreatlasmedical@gmail.com" class="nav_contact"><svg><use href="#i-mail"/></svg><span><b>Écrivez-nous</b><small>centreatlasmedical@gmail.com</small></span></a>
-            <a href="tel:+221338678646" class="nav_contact"><svg><use href="#i-phone"/></svg><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
-            <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-dark">Prendre rendez-vous</a>
+            <a href="mailto:<?php echo esc_attr(atlas_opt('email')); ?>" class="nav_contact"><svg><use href="#i-mail"/></svg><span><b><?php atlas_t('t5ded1a4d'); ?></b><small><?php atlas_t('t12a6d4d0'); ?></small></span></a>
+            <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="nav_contact"><svg><use href="#i-phone"/></svg><span><b><?php atlas_t('t6f4dbb3f'); ?></b><small><?php atlas_t('t83ca4101'); ?></small></span></a>
+            <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-dark"><?php atlas_t('tda31472f'); ?></a>
           </div>
           <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
         </div>
         <div class="nav_bar">
         <nav class="nav_menu" data-nav-menu>
-          <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="nav_link<?php echo atlas_current('le-centre'); ?>">Le Centre</a>
-          <a href="<?php echo esc_url(home_url('/specialites/')); ?>" class="nav_link<?php echo atlas_current('specialites'); ?>">Spécialités</a>
-          <div class="nav_dropdown">
-            <button type="button" class="nav_link nav_dropdown-toggle<?php echo atlas_current_group(['imagerie','endoscopie','biopsie']); ?>" aria-expanded="false" data-dropdown-toggle>Examens <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4l4 4 4-4"/></svg></button>
-            <div class="nav_dropdown-list">
-              <a href="<?php echo esc_url(home_url('/imagerie/')); ?>" class="nav_sub-link<?php echo atlas_current('imagerie'); ?>">Imagerie</a>
-              <a href="<?php echo esc_url(home_url('/endoscopie/')); ?>" class="nav_sub-link<?php echo atlas_current('endoscopie'); ?>">Endoscopie</a>
-              <a href="<?php echo esc_url(home_url('/biopsie/')); ?>" class="nav_sub-link<?php echo atlas_current('biopsie'); ?>">Biopsie</a>
-            </div>
-          </div>
-          <a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="nav_link<?php echo atlas_current('nos-medecins'); ?>">Nos médecins</a>
-          <a href="<?php echo esc_url(home_url('/conseils-sante/')); ?>" class="nav_link<?php echo atlas_current('conseils-sante'); ?>">Conseils santé</a>
-          <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="nav_link<?php echo atlas_current('contact'); ?>">Contact</a>
-          <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary">Prendre rendez-vous</a>
+          <?php atlas_menu(); ?>
+          <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary"><?php atlas_t('tda31472f'); ?></a>
         </nav>
         <div class="nav_social">
-          <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
-          <a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+          <?php if (atlas_opt('facebook')) : ?><a href="<?php echo esc_url(atlas_opt('facebook')); ?>" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a><?php endif; ?>
+          <?php if (atlas_opt('instagram')) : ?><a href="<?php echo esc_url(atlas_opt('instagram')); ?>" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><?php endif; ?>
+          <a href="https://wa.me/<?php echo esc_attr(atlas_wa()); ?>" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
         </div>
         </div>
       </div>

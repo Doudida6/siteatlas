@@ -2,17 +2,17 @@
 
   <!-- ===== Hero ===== -->
   <section class="hero2">
-    <div class="hero2_photo photo-placeholder is-dark">Photo : accueil / espace architectural du Centre Atlas</div>
+    <div class="hero2_photo photo-placeholder is-dark<?php echo atlas_photo_class('accueil-photo-accueil-espace-architectural-du-ce'); ?>"<?php echo atlas_photo_attr('accueil-photo-accueil-espace-architectural-du-ce', 'Photo : accueil / espace architectural du Centre Atlas'); ?>><?php atlas_photo_label('accueil-photo-accueil-espace-architectural-du-ce', 'Photo : accueil / espace architectural du Centre Atlas'); ?></div>
     <div class="hero2_shape"></div>
     <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="hero2_play" aria-label="Découvrir le centre"><svg fill="currentColor" stroke="none"><use href="#i-play"/></svg></a>
     <div class="padding-global hero2_inner">
       <div class="container-large">
         <div class="hero2_card">
-          <h1 class="heading-style-h1">Centre Médical Atlas</h1>
-          <p class="text-size-medium"><strong>Médecine, imagerie et explorations médicales au même endroit.</strong> Une prise en charge moderne, humaine et coordonnée à Dakar.</p>
+          <h1 class="heading-style-h1"><?php atlas_t('t96e86b77'); ?></h1>
+          <p class="text-size-medium"><strong><?php atlas_t('t11418554'); ?></strong> <?php atlas_t('t0d86eeca'); ?></p>
           <div class="button-group">
-            <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary">Prendre rendez-vous</a>
-            <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="button is-dark">Découvrir le centre</a>
+            <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary"><?php atlas_t('tda31472f'); ?></a>
+            <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="button is-dark"><?php atlas_t('t982f9591'); ?></a>
           </div>
         </div>
       </div>
@@ -25,21 +25,21 @@
       <div class="container-large quick2_grid">
         <a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="quick2_card reveal">
           <svg class="quick2_icon"><use href="#i-calendar"/></svg>
-          <h3 class="heading-style-h4">Jours de consultation</h3>
-          <p class="text-size-small">Retrouvez les jours de présence de chaque médecin de l'équipe.</p>
-          <span class="quick2_link">Voir l'équipe <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
+          <h3 class="heading-style-h4"><?php atlas_t('ta1fa080d'); ?></h3>
+          <p class="text-size-small"><?php atlas_t('t27ea0fb7'); ?></p>
+          <span class="quick2_link"><?php atlas_t('t87da0b59'); ?> <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
         </a>
-        <a href="tel:+221338678646" class="quick2_card is-dark reveal">
+        <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="quick2_card is-dark reveal">
           <svg class="quick2_icon"><use href="#i-phone"/></svg>
-          <h3 class="heading-style-h4">Nous appeler</h3>
-          <p class="text-size-small">Secrétariat : 33 867 86 46<br>Mobile / WhatsApp : 78 831 60 60</p>
-          <span class="quick2_pill">33 867 86 46</span>
+          <h3 class="heading-style-h4"><?php atlas_t('t41955e6f'); ?></h3>
+          <p class="text-size-small"><?php atlas_t('t50304356'); ?><br><?php atlas_t('t84b4140d'); ?></p>
+          <span class="quick2_pill"><?php atlas_t('t83ca4101'); ?></span>
         </a>
         <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="quick2_card is-accent reveal">
           <svg class="quick2_icon"><use href="#i-chat"/></svg>
-          <h3 class="heading-style-h4">Demander un rendez-vous</h3>
-          <p class="text-size-small">Un formulaire simple. Notre équipe vous rappelle pour confirmer le créneau.</p>
-          <span class="quick2_link">Faire une demande <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
+          <h3 class="heading-style-h4"><?php atlas_t('t7eda0bd5'); ?></h3>
+          <p class="text-size-small"><?php atlas_t('t88912c31'); ?></p>
+          <span class="quick2_link"><?php atlas_t('t7c7fd123'); ?> <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
     </div>
@@ -50,25 +50,25 @@
     <div class="padding-global">
       <div class="container-large about_grid">
         <div class="collage reveal">
-          <div class="collage_main photo-placeholder">Photo : réception / salle d'attente Atlas</div>
-          <div class="collage_small photo-placeholder">Photo : équipe</div>
+          <div class="collage_main photo-placeholder<?php echo atlas_photo_class('accueil-photo-reception-salle-d-attente-atlas'); ?>"<?php echo atlas_photo_attr('accueil-photo-reception-salle-d-attente-atlas', 'Photo : réception / salle d\'attente Atlas'); ?>><?php atlas_photo_label('accueil-photo-reception-salle-d-attente-atlas', 'Photo : réception / salle d\'attente Atlas'); ?></div>
+          <div class="collage_small photo-placeholder<?php echo atlas_photo_class('accueil-photo-equipe'); ?>"<?php echo atlas_photo_attr('accueil-photo-equipe', 'Photo : équipe'); ?>><?php atlas_photo_label('accueil-photo-equipe', 'Photo : équipe'); ?></div>
         </div>
         <div class="about_content reveal">
-          <span class="eyebrow2">À propos d'Atlas</span>
-          <h2 class="heading-style-h2">Un centre pensé autour du patient</h2>
-          <p class="text-style-muted">Le Centre Médical Atlas réunit plusieurs compétences médicales et explorations diagnostiques au sein d'un même environnement. Notre objectif est de proposer une prise en charge accessible, professionnelle et personnalisée, en accordant une attention particulière à l'écoute et au confort du patient.</p>
+          <span class="eyebrow2"><?php atlas_t('t28fe14a2'); ?></span>
+          <h2 class="heading-style-h2"><?php atlas_t('tda65f0d1'); ?></h2>
+          <p class="text-style-muted"><?php atlas_t('tfb53ebbf'); ?></p>
           <div class="feat_grid">
-            <div class="feat"><svg class="feat_icon"><use href="#i-heart"/></svg><div><strong>Écoute</strong><p class="text-size-small text-style-muted">Chaque patient est entendu.</p></div></div>
-            <div class="feat"><svg class="feat_icon"><use href="#i-stetho"/></svg><div><strong>Expertise</strong><p class="text-size-small text-style-muted">Une équipe pluridisciplinaire.</p></div></div>
-            <div class="feat"><svg class="feat_icon"><use href="#i-shield"/></svg><div><strong>Confidentialité</strong><p class="text-size-small text-style-muted">Vos données sont protégées.</p></div></div>
-            <div class="feat"><svg class="feat_icon"><use href="#i-bulb"/></svg><div><strong>Innovation</strong><p class="text-size-small text-style-muted">Un plateau technique moderne.</p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-heart"/></svg><div><strong><?php atlas_t('t3ba2ef8c'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('tc4d7dff9'); ?></p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-stetho"/></svg><div><strong><?php atlas_t('t57b0eaaf'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('t69c825dc'); ?></p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-shield"/></svg><div><strong><?php atlas_t('t3db25c95'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('t5d4e59d9'); ?></p></div></div>
+            <div class="feat"><svg class="feat_icon"><use href="#i-bulb"/></svg><div><strong><?php atlas_t('t32f28a2c'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('tdcb52705'); ?></p></div></div>
           </div>
           <ul class="check2">
-            <li>Consultations et examens au même endroit</li>
-            <li>Des explications claires à chaque étape</li>
-            <li>Un accompagnement du rendez-vous jusqu'aux résultats</li>
+            <li><?php atlas_t('t188bdb39'); ?></li>
+            <li><?php atlas_t('t62c6fd0b'); ?></li>
+            <li><?php atlas_t('ta54c9cda'); ?></li>
           </ul>
-          <div><a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="button is-primary">Découvrir Atlas</a></div>
+          <div><a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="button is-primary"><?php atlas_t('t8a50c4f5'); ?></a></div>
         </div>
       </div>
     </div>
@@ -79,32 +79,32 @@
     <div class="padding-global">
       <div class="container-large">
         <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="eyebrow2">Nos services</span>
-          <h2 class="heading-style-h2">Consultations, imagerie et explorations</h2>
-          <p class="text-style-muted" style="margin-top:.8rem">Tout votre parcours de soins, sous un même toit.</p>
+          <span class="eyebrow2"><?php atlas_t('t4e66ec9a'); ?></span>
+          <h2 class="heading-style-h2"><?php atlas_t('t2abaea39'); ?></h2>
+          <p class="text-style-muted" style="margin-top:.8rem"><?php atlas_t('tc69ca3b3'); ?></p>
         </div>
         <div class="svc_grid">
-          <a href="<?php echo esc_url(home_url('/specialites/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-stetho"/></svg><h3 class="heading-style-h4">Consultations</h3><p class="text-size-small">Médecine générale et spécialités médicales.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="<?php echo esc_url(home_url('/imagerie/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Échographie &amp; Doppler</h3><p class="text-size-small">Des images pour explorer organes et vaisseaux.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="<?php echo esc_url(home_url('/imagerie/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Radiographie numérique</h3><p class="text-size-small">Os, articulations et thorax, rapidement.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="<?php echo esc_url(home_url('/endoscopie/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-tube"/></svg><h3 class="heading-style-h4">Endoscopie digestive</h3><p class="text-size-small">Fibroscopie et coloscopie dans un environnement adapté.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="<?php echo esc_url(home_url('/biopsie/')); ?>" class="svc_card is-dark reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Biopsies guidées</h3><p class="text-size-small">Prélèvements guidés par l'imagerie, expliqués pas à pas.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="<?php echo esc_url(home_url('/imagerie/')); ?>#scanner" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Scanner</h3><p class="text-size-small">Prochainement disponible au Centre Atlas.</p><span class="svc_link">Bientôt <svg width="14" height="14"><use href="#i-clock"/></svg></span></a>
+          <a href="<?php echo esc_url(home_url('/specialites/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-stetho"/></svg><h3 class="heading-style-h4"><?php atlas_t('te64629de'); ?></h3><p class="text-size-small"><?php atlas_t('te7807a1a'); ?></p><span class="svc_link"><?php atlas_t('tcec0cd69'); ?> <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="<?php echo esc_url(home_url('/imagerie/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4"><?php atlas_t('tf7b5d48a'); ?></h3><p class="text-size-small"><?php atlas_t('t05117256'); ?></p><span class="svc_link"><?php atlas_t('tcec0cd69'); ?> <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="<?php echo esc_url(home_url('/imagerie/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4"><?php atlas_t('td45c5a60'); ?></h3><p class="text-size-small"><?php atlas_t('t0154821d'); ?></p><span class="svc_link"><?php atlas_t('tcec0cd69'); ?> <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="<?php echo esc_url(home_url('/endoscopie/')); ?>" class="svc_card reveal"><svg class="svc_icon"><use href="#i-tube"/></svg><h3 class="heading-style-h4"><?php atlas_t('te8e111ee'); ?></h3><p class="text-size-small"><?php atlas_t('t649e3a7b'); ?></p><span class="svc_link"><?php atlas_t('tcec0cd69'); ?> <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="<?php echo esc_url(home_url('/biopsie/')); ?>" class="svc_card is-dark reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4"><?php atlas_t('tc09a8fd2'); ?></h3><p class="text-size-small"><?php atlas_t('t5347da47'); ?></p><span class="svc_link"><?php atlas_t('tcec0cd69'); ?> <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="<?php echo esc_url(home_url('/imagerie/')); ?>#scanner" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4"><?php atlas_t('t948505fb'); ?></h3><p class="text-size-small"><?php atlas_t('t8f4a2087'); ?></p><span class="svc_link"><?php atlas_t('te78645cc'); ?> <svg width="14" height="14"><use href="#i-clock"/></svg></span></a>
         </div>
         <div class="chips_row">
-          <strong>Nos expertises médicales</strong>
-          <a href="<?php echo esc_url(home_url('/specialites-medecine-generale/')); ?>" class="chip2">Médecine générale</a>
-          <a href="<?php echo esc_url(home_url('/specialites-cardiologie/')); ?>" class="chip2">Cardiologie</a>
-          <a href="<?php echo esc_url(home_url('/specialites-gynecologie/')); ?>" class="chip2">Gynécologie</a>
-          <a href="<?php echo esc_url(home_url('/specialites-gastro-enterologie/')); ?>" class="chip2">Gastro-entérologie</a>
-          <a href="<?php echo esc_url(home_url('/specialites-neurologie/')); ?>" class="chip2">Neurologie</a>
-          <a href="<?php echo esc_url(home_url('/specialites-rhumatologie/')); ?>" class="chip2">Rhumatologie</a>
+          <strong><?php atlas_t('tc401b0ca'); ?></strong>
+          <a href="<?php echo esc_url(home_url('/specialites-medecine-generale/')); ?>" class="chip2"><?php atlas_t('t49b96814'); ?></a>
+          <a href="<?php echo esc_url(home_url('/specialites-cardiologie/')); ?>" class="chip2"><?php atlas_t('t0641fc0a'); ?></a>
+          <a href="<?php echo esc_url(home_url('/specialites-gynecologie/')); ?>" class="chip2"><?php atlas_t('tfa4c9926'); ?></a>
+          <a href="<?php echo esc_url(home_url('/specialites-gastro-enterologie/')); ?>" class="chip2"><?php atlas_t('tc62a5df5'); ?></a>
+          <a href="<?php echo esc_url(home_url('/specialites-neurologie/')); ?>" class="chip2"><?php atlas_t('tb223f958'); ?></a>
+          <a href="<?php echo esc_url(home_url('/specialites-rhumatologie/')); ?>" class="chip2"><?php atlas_t('td6bc365e'); ?></a>
         </div>
         <div class="strip">
           <svg class="strip_icon"><use href="#i-calendar"/></svg>
-          <div><strong>Ouvert sur rendez-vous</strong><p class="text-size-small text-style-muted">Notre équipe vous contacte pour confirmer votre créneau.</p></div>
-          <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary">Prendre rendez-vous</a>
-          <a href="<?php echo esc_url(home_url('/specialites/')); ?>" class="strip_link">Toutes les spécialités →</a>
+          <div><strong><?php atlas_t('t26ddc36b'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('t0bdc8802'); ?></p></div>
+          <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary"><?php atlas_t('tda31472f'); ?></a>
+          <a href="<?php echo esc_url(home_url('/specialites/')); ?>" class="strip_link"><?php atlas_t('t61170408'); ?></a>
         </div>
       </div>
     </div>
@@ -115,19 +115,19 @@
     <div class="padding-global">
       <div class="container-large about_grid">
         <div class="reveal">
-          <span class="eyebrow2">Votre parcours</span>
-          <h2 class="heading-style-h2 margin-bottom-medium">Un parcours simple, de la demande aux résultats</h2>
-          <p class="text-style-muted margin-bottom-medium">Consultation et examens se font au même endroit. Vous savez toujours où vous en êtes.</p>
+          <span class="eyebrow2"><?php atlas_t('t72703758'); ?></span>
+          <h2 class="heading-style-h2 margin-bottom-medium"><?php atlas_t('tde6d9b19'); ?></h2>
+          <p class="text-style-muted margin-bottom-medium"><?php atlas_t('tef55a034'); ?></p>
           <ol class="steps2">
-            <li><span class="step_icon"><svg><use href="#i-calendar"/></svg></span><div><strong>Je demande un rendez-vous</strong><p class="text-size-small text-style-muted">Par le site, par téléphone ou sur WhatsApp.</p></div></li>
-            <li><span class="step_icon"><svg><use href="#i-phone"/></svg></span><div><strong>L'équipe me rappelle</strong><p class="text-size-small text-style-muted">Pour confirmer le créneau et me donner les consignes.</p></div></li>
-            <li><span class="step_icon"><svg><use href="#i-stetho"/></svg></span><div><strong>Je suis reçu(e) et examiné(e)</strong><p class="text-size-small text-style-muted">Consultation et examens sur place.</p></div></li>
-            <li><span class="step_icon"><svg><use href="#i-check"/></svg></span><div><strong>Je comprends mes résultats</strong><p class="text-size-small text-style-muted">Le médecin m'explique et m'oriente.</p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-calendar"/></svg></span><div><strong><?php atlas_t('td5b4dc2b'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('t649b4159'); ?></p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-phone"/></svg></span><div><strong><?php atlas_t('t29d1f91e'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('tfe84ae5d'); ?></p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-stetho"/></svg></span><div><strong><?php atlas_t('t5d59c22e'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('t4744294e'); ?></p></div></li>
+            <li><span class="step_icon"><svg><use href="#i-check"/></svg></span><div><strong><?php atlas_t('t3d0480e4'); ?></strong><p class="text-size-small text-style-muted"><?php atlas_t('t168dfcf4'); ?></p></div></li>
           </ol>
         </div>
         <div class="collage is-right reveal">
-          <div class="collage_main photo-placeholder">Photo : cabinet de consultation</div>
-          <div class="collage_small photo-placeholder">Photo : échographie</div>
+          <div class="collage_main photo-placeholder<?php echo atlas_photo_class('accueil-photo-cabinet-de-consultation'); ?>"<?php echo atlas_photo_attr('accueil-photo-cabinet-de-consultation', 'Photo : cabinet de consultation'); ?>><?php atlas_photo_label('accueil-photo-cabinet-de-consultation', 'Photo : cabinet de consultation'); ?></div>
+          <div class="collage_small photo-placeholder<?php echo atlas_photo_class('accueil-photo-echographie'); ?>"<?php echo atlas_photo_attr('accueil-photo-echographie', 'Photo : échographie'); ?>><?php atlas_photo_label('accueil-photo-echographie', 'Photo : échographie'); ?></div>
         </div>
       </div>
     </div>
@@ -138,16 +138,16 @@
     <div class="padding-global">
       <div class="container-large trust2_grid">
         <div class="reveal">
-          <span class="eyebrow2">Pourquoi Atlas ?</span>
-          <h2 class="heading-style-h2">Une équipe et un plateau technique à votre service</h2>
-          <p style="color:#cfd5da;margin:1rem 0 1.5rem">La technologie et l'expertise sont visibles, mais toujours au service du patient.</p>
-          <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="button is-primary">Découvrir le centre</a>
+          <span class="eyebrow2"><?php atlas_t('te740fe3a'); ?></span>
+          <h2 class="heading-style-h2"><?php atlas_t('t718562c0'); ?></h2>
+          <p style="color:#cfd5da;margin:1rem 0 1.5rem"><?php atlas_t('teaeffb24'); ?></p>
+          <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="button is-primary"><?php atlas_t('t982f9591'); ?></a>
         </div>
         <div class="trust2_cards">
-          <div class="trust2_card is-light reveal"><svg><use href="#i-users"/></svg><strong>Expertise médicale</strong><span>Une équipe pluridisciplinaire.</span></div>
-          <div class="trust2_card reveal"><svg><use href="#i-scan"/></svg><strong>Plateau technique moderne</strong><span>Des examens fiables, sur place.</span></div>
-          <div class="trust2_card reveal"><svg><use href="#i-target"/></svg><strong>Parcours simplifié</strong><span>Consultations et explorations au même endroit.</span></div>
-          <div class="trust2_card is-accent reveal"><svg><use href="#i-heart"/></svg><strong>Écoute et bienveillance</strong><span>Attention portée à chaque patient.</span></div>
+          <div class="trust2_card is-light reveal"><svg><use href="#i-users"/></svg><strong><?php atlas_t('t26dded54'); ?></strong><span><?php atlas_t('t69c825dc'); ?></span></div>
+          <div class="trust2_card reveal"><svg><use href="#i-scan"/></svg><strong><?php atlas_t('tbff775e6'); ?></strong><span><?php atlas_t('td888a5ca'); ?></span></div>
+          <div class="trust2_card reveal"><svg><use href="#i-target"/></svg><strong><?php atlas_t('tb215e10a'); ?></strong><span><?php atlas_t('t4c898ae9'); ?></span></div>
+          <div class="trust2_card is-accent reveal"><svg><use href="#i-heart"/></svg><strong><?php atlas_t('t33548224'); ?></strong><span><?php atlas_t('ta8078ca5'); ?></span></div>
         </div>
       </div>
     </div>
@@ -158,19 +158,19 @@
     <div class="padding-global">
       <div class="container-large">
         <div class="apt_card reveal">
-          <div class="apt_side photo-placeholder is-dark">
-            <div class="apt_side-text"><span class="apt_side-icon"><svg><use href="#i-calendar"/></svg></span><h2 class="heading-style-h2">Prenez rendez-vous et prenez soin de votre santé</h2><p>Notre équipe vous contactera pour confirmer votre rendez-vous.</p></div>
+          <div class="apt_side photo-placeholder is-dark<?php echo atlas_photo_class('accueil-apt-side'); ?>"<?php echo atlas_photo_attr('accueil-apt-side', ""); ?>>
+            <div class="apt_side-text"><span class="apt_side-icon"><svg><use href="#i-calendar"/></svg></span><h2 class="heading-style-h2"><?php atlas_t('t221f7a31'); ?></h2><p><?php atlas_t('t3d835516'); ?></p></div>
           </div>
           <div class="apt_form">
             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="form_grid"<?php echo atlas_sent_hidden(); ?>><input type="hidden" name="action" value="atlas_form"><input type="hidden" name="form_type" value="Demande de rendez-vous (accueil)"><?php wp_nonce_field('atlas_form', 'atlas_nonce'); ?><input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <div class="form_field"><label for="h-nom">Nom et prénom</label><input class="form_input" id="h-nom" name="h-nom" required autocomplete="name"></div>
-              <div class="form_field"><label for="h-tel">Téléphone</label><input class="form_input" id="h-tel" name="h-tel" type="tel" required autocomplete="tel"></div>
-              <div class="form_field"><label for="h-type">Type de rendez-vous</label><select class="form_input" id="h-type" name="h-type" required><option value="">Choisir…</option><option>Consultation</option><option>Échographie</option><option>Radiographie</option><option disabled>Scanner (bientôt disponible)</option><option>Endoscopie</option><option>Biopsie</option><option>Autre</option></select></div>
-              <div class="form_field"><label for="h-date">Date souhaitée</label><input class="form_input" id="h-date" name="h-date" type="date"></div>
-              <div class="form_field is-full"><label for="h-msg">Message <span>(facultatif)</span></label><textarea class="form_input" id="h-msg" name="h-msg" style="min-height:90px"></textarea></div>
-              <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-self:start">Envoyer ma demande</button></div>
+              <div class="form_field"><label for="h-nom"><?php atlas_t('t46eb4bf5'); ?></label><input class="form_input" id="h-nom" name="h-nom" required autocomplete="name"></div>
+              <div class="form_field"><label for="h-tel"><?php atlas_t('t301dc874'); ?></label><input class="form_input" id="h-tel" name="h-tel" type="tel" required autocomplete="tel"></div>
+              <div class="form_field"><label for="h-type"><?php atlas_t('t70e2d9aa'); ?></label><select class="form_input" id="h-type" name="h-type" required><option value="">Choisir…</option><option>Consultation</option><option>Échographie</option><option>Radiographie</option><option disabled>Scanner (bientôt disponible)</option><option>Endoscopie</option><option>Biopsie</option><option>Autre</option></select></div>
+              <div class="form_field"><label for="h-date"><?php atlas_t('t446ff7f0'); ?></label><input class="form_input" id="h-date" name="h-date" type="date"></div>
+              <div class="form_field is-full"><label for="h-msg"><?php atlas_t('t4c2a8fe7'); ?> <span><?php atlas_t('t092fbd67'); ?></span></label><textarea class="form_input" id="h-msg" name="h-msg" style="min-height:90px"></textarea></div>
+              <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-self:start"><?php atlas_t('ta5ed6ce0'); ?></button></div>
             </form>
-            <div class="form_success<?php echo atlas_sent_class(); ?>" role="status"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><h3 class="heading-style-h4">Merci !</h3><p class="text-style-muted">Votre demande a bien été reçue. Notre équipe vous contactera pour confirmer votre rendez-vous.</p></div>
+            <div class="form_success<?php echo atlas_sent_class(); ?>" role="status"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><h3 class="heading-style-h4"><?php atlas_t('tef6bc2b7'); ?></h3><p class="text-style-muted"><?php atlas_t('t7023ff4a'); ?></p></div>
           </div>
         </div>
       </div>
@@ -182,15 +182,13 @@
     <div class="padding-global">
       <div class="container-large">
         <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="eyebrow2">Équipe médicale</span>
-          <h2 class="heading-style-h2">Rencontrez nos médecins</h2>
+          <span class="eyebrow2"><?php atlas_t('t75ccefd9'); ?></span>
+          <h2 class="heading-style-h2"><?php atlas_t('tddf1a701'); ?></h2>
         </div>
         <div class="team_grid">
-          <a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Cardiologie</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
-          <a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Gastro-entérologie</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
-          <a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="team_card reveal"><div class="team_photo photo-placeholder">Portrait du médecin</div><div class="team_info"><div><small>Médecine générale</small>Dr. Prénom Nom</div><span class="team_arrow"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
-        </div>
-        <div class="text-align-center" style="margin-top:2.5rem"><a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="button is-dark">Voir toute l'équipe</a></div>
+<?php atlas_team_cards(3); ?>
+</div>
+        <div class="text-align-center" style="margin-top:2.5rem"><a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="button is-dark"><?php atlas_t('t673f4a26'); ?></a></div>
       </div>
     </div>
   </section>
@@ -200,11 +198,11 @@
     <div class="padding-global">
       <div class="container-large quote2_inner reveal">
         <svg class="quote2_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg>
-        <span class="eyebrow2">Témoignages</span>
-        <h2 class="heading-style-h2">Ce que disent nos patients</h2>
+        <span class="eyebrow2"><?php atlas_t('t8cc8053a'); ?></span>
+        <h2 class="heading-style-h2"><?php atlas_t('t4be0e41c'); ?></h2>
         <!-- Emplacement : remplacer par un vrai témoignage, publié avec l'accord du patient -->
-        <p class="quote2_text">« Emplacement réservé au témoignage d'un patient, publié avec son accord. »</p>
-        <div class="quote2_author"><span class="quote2_avatar photo-placeholder"></span><strong>Prénom N.</strong></div>
+        <p class="quote2_text"><?php atlas_t('t9945f676'); ?></p>
+        <div class="quote2_author"><span class="quote2_avatar photo-placeholder<?php echo atlas_photo_class('accueil-quote2-avatar'); ?>"<?php echo atlas_photo_attr('accueil-quote2-avatar', ''); ?>></span><strong><?php atlas_t('tfb94663a'); ?></strong></div>
       </div>
     </div>
   </section>
@@ -214,12 +212,12 @@
     <div class="padding-global">
       <div class="container-large">
         <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="eyebrow2">Conseils santé</span>
-          <h2 class="heading-style-h2">Derniers articles</h2>
+          <span class="eyebrow2"><?php atlas_t('t59fcfbf5'); ?></span>
+          <h2 class="heading-style-h2"><?php atlas_t('t523e81a5'); ?></h2>
         </div>
         <div class="blog_grid">
 <?php $q = new WP_Query(['posts_per_page' => 3, 'ignore_sticky_posts' => true]); while ($q->have_posts()) : $q->the_post(); ?>
-<a href="<?php the_permalink(); ?>" class="blog_card reveal"><?php atlas_thumb(); ?><div class="blog_card-body"><div class="blog_meta"><span class="chip"><?php echo esc_html(atlas_cat_name()); ?></span><span><?php echo esc_html(get_the_date('j F Y')); ?></span></div><h3 class="heading-style-h4"><?php the_title(); ?></h3><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+<a href="<?php the_permalink(); ?>" class="blog_card reveal"><?php atlas_thumb(); ?><div class="blog_card-body"><div class="blog_meta"><span class="chip"><?php echo esc_html(atlas_cat_name()); ?></span><span><?php echo esc_html(get_the_date('j F Y')); ?></span></div><h3 class="heading-style-h4"><?php the_title(); ?></h3><span class="quick_link text-color-accent"><?php atlas_t('t42ada6a3'); ?> <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
 <?php endwhile; wp_reset_postdata(); ?>
 </div>
       </div>

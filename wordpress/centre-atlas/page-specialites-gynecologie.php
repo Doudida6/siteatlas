@@ -2,8 +2,8 @@
 
   <section class="banner_component">
     <div class="padding-global"><div class="container-large banner_container">
-      <h1 class="heading-style-h1" style="font-size:clamp(2rem,4vw,3.2rem)">Gynécologie</h1>
-      <div class="breadcrumb"><a href="<?php echo esc_url(home_url('/')); ?>">Accueil</a><span>›</span><a href="<?php echo esc_url(home_url('/specialites/')); ?>">Spécialités</a><span>›</span><span>Gynécologie</span></div>
+      <h1 class="heading-style-h1" style="font-size:clamp(2rem,4vw,3.2rem)"><?php atlas_t('tfa4c9926'); ?></h1>
+      <div class="breadcrumb"><a href="<?php echo esc_url(home_url('/')); ?>"><?php atlas_t('t74fe31b5'); ?></a><span>›</span><a href="<?php echo esc_url(home_url('/specialites/')); ?>"><?php atlas_t('t4b581032'); ?></a><span>›</span><span><?php atlas_t('tfa4c9926'); ?></span></div>
     </div></div>
   </section>
 
@@ -11,15 +11,15 @@
   <section class="padding-section-large">
     <div class="padding-global"><div class="container-large fiche_grid">
       <div>
-        <div class="fiche_block"><span class="text-style-eyebrow">Gynécologie</span><p class="text-size-medium text-style-muted" style="margin-top:.6rem">Un suivi attentif et confidentiel de la santé des femmes, à chaque étape de la vie.</p></div>
-        <div class="fiche_block reveal"><h2>Quand consulter ?</h2><ul class="list-check"><li>Suivi gynécologique régulier</li><li>Douleurs pelviennes ou troubles du cycle</li><li>Souhait de contraception ou de grossesse</li><li>Suivi de grossesse et échographies</li></ul></div>
-        <div class="fiche_block reveal"><h2>Motifs pris en charge</h2><ul class="list-check"><li>Consultation de suivi et prévention</li><li>Troubles du cycle et douleurs</li><li>Contraception</li><li>Suivi de grossesse</li></ul></div>
-        <div class="fiche_block reveal"><h2>Déroulement de la consultation</h2><ol class="fiche_steps"><li>Échange confidentiel sur le motif de consultation</li><li>Examen adapté, toujours expliqué au préalable</li><li>Échographie si nécessaire</li><li>Conseils, prescription et prochain rendez-vous</li></ol></div>
-        <div class="fiche_block reveal"><h2>Examens éventuellement associés</h2><ul class="list-check"><li>Échographie pelvienne ou obstétricale</li><li>Bilan biologique sur prescription</li><li>Imagerie mammaire, selon l'offre du centre</li></ul></div>
+        <div class="fiche_block"><span class="text-style-eyebrow"><?php atlas_t('tfa4c9926'); ?></span><p class="text-size-medium text-style-muted" style="margin-top:.6rem"><?php atlas_t('t9f8c7203'); ?></p></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('tfa6579be'); ?></h2><ul class="list-check"><li><?php atlas_t('t5d145880'); ?></li><li><?php atlas_t('ta3867a60'); ?></li><li><?php atlas_t('t744330c0'); ?></li><li><?php atlas_t('tee52b624'); ?></li></ul></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('tf50194d5'); ?></h2><ul class="list-check"><li><?php atlas_t('t77534b16'); ?></li><li><?php atlas_t('t44902c36'); ?></li><li><?php atlas_t('t5ed3369a'); ?></li><li><?php atlas_t('t99a5e38b'); ?></li></ul></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('t6f01f37a'); ?></h2><ol class="fiche_steps"><li><?php atlas_t('t7983e691'); ?></li><li><?php atlas_t('t27b81dc7'); ?></li><li><?php atlas_t('tfbe033d2'); ?></li><li><?php atlas_t('t77d04643'); ?></li></ol></div>
+        <div class="fiche_block reveal"><h2><?php atlas_t('t6dc30dbd'); ?></h2><ul class="list-check"><li><?php atlas_t('t26f221c4'); ?></li><li><?php atlas_t('t61a472cc'); ?></li><li><?php atlas_t('tc5f10fe8'); ?></li></ul></div>
       </div>
       <aside class="fiche_aside">
-        <div class="aside_card"><h3 class="heading-style-h4">Consulter en gynécologie</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
-        <div class="aside_links"><strong>Autres spécialités</strong><a href="<?php echo esc_url(home_url('/specialites-medecine-generale/')); ?>">Médecine générale</a><a href="<?php echo esc_url(home_url('/specialites-cardiologie/')); ?>">Cardiologie</a><a href="<?php echo esc_url(home_url('/specialites-gynecologie/')); ?>" class="w--current">Gynécologie</a><a href="<?php echo esc_url(home_url('/specialites-gastro-enterologie/')); ?>">Gastro-entérologie</a><a href="<?php echo esc_url(home_url('/specialites-neurologie/')); ?>">Neurologie</a><a href="<?php echo esc_url(home_url('/specialites-rhumatologie/')); ?>">Rhumatologie</a></div>
+        <div class="aside_card"><h3 class="heading-style-h4"><?php atlas_t('te9e56394'); ?></h3><p class="text-size-small"><?php atlas_t('t72d60e5a'); ?></p><a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary" style="justify-content:center"><?php atlas_t('tda31472f'); ?></a><a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="text-size-small" style="color:#fff"><?php atlas_t('t8508db82'); ?></a></div>
+        <div class="aside_links"><strong><?php atlas_t('t865b6b1a'); ?></strong><a href="<?php echo esc_url(home_url('/specialites-medecine-generale/')); ?>"><?php atlas_t('t49b96814'); ?></a><a href="<?php echo esc_url(home_url('/specialites-cardiologie/')); ?>"><?php atlas_t('t0641fc0a'); ?></a><a href="<?php echo esc_url(home_url('/specialites-gynecologie/')); ?>" class="w--current"><?php atlas_t('tfa4c9926'); ?></a><a href="<?php echo esc_url(home_url('/specialites-gastro-enterologie/')); ?>"><?php atlas_t('tc62a5df5'); ?></a><a href="<?php echo esc_url(home_url('/specialites-neurologie/')); ?>"><?php atlas_t('tb223f958'); ?></a><a href="<?php echo esc_url(home_url('/specialites-rhumatologie/')); ?>"><?php atlas_t('td6bc365e'); ?></a></div>
       </aside>
     </div></div>
   </section>

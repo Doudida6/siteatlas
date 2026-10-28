@@ -630,3 +630,6 @@ button.button.is-primary:hover { background: var(--color-accent-dark); color: #f
 .pagination, .nav-links { display: flex; gap: .5rem; justify-content: center; margin-top: 2.5rem; }
 .page-numbers { padding: .5rem 1rem; border-radius: 999px; background: #fff; box-shadow: var(--shadow); font-weight: 600; }
 .page-numbers.current { background: var(--color-accent); color: #fff; }
+
+/* Emplacements photo remplis depuis l'administration */
+.photo-placeholder.has-photo { background-size: cover; background-position: center; background-repeat: no-repeat; }
