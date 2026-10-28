@@ -20,10 +20,10 @@ class Atlas_Walker extends Walker_Nav_Menu {
     public function end_lvl(&$output, $depth = 0, $args = null) {}
 
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
-        $args = (object) $args;
-        $has_children = !empty($args->has_children);
-        $this->has_children_at[$depth] = $has_children;
         $classes = is_array($item->classes) ? $item->classes : [];
+        // WordPress renseigne $this->has_children avant chaque appel ; la classe « menu-item-has-children » sert de seconde sécurité
+        $has_children = !empty($this->has_children) || in_array('menu-item-has-children', $classes, true);
+        $this->has_children_at[$depth] = $has_children;
         $current = in_array('current-menu-item', $classes, true) || in_array('current-menu-ancestor', $classes, true) || in_array('current-menu-parent', $classes, true);
         $on = $current ? ' w--current' : '';
         $title = esc_html($item->title);

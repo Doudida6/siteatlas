@@ -9,7 +9,7 @@ add_action('init', 'atlas_setup5', 50);
 function atlas_setup5() {
     if (get_option('atlas_setup5_done')) return;
     foreach (atlas_fill_articles() as $title => $slug) {
-        $post = get_page_by_title($title, OBJECT, 'post');
+        $post = atlas_post_by_title($title);
         if (!$post) continue;
         // texte provisoire d'origine : il contient cette phrase
         if (strpos((string) $post->post_content, 'contenu à rédiger avec les médecins du centre') === false) continue;

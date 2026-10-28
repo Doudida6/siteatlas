@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 /** Ajoute les articles d'exemple manquants (fibroscopie, examens d'imagerie, scanner). */
 function atlas_add_new_articles() {
     foreach (atlas_new_articles() as $a) {
-        if (get_page_by_title($a['title'], OBJECT, 'post')) continue;
+        if (atlas_post_by_title($a['title'])) continue;
         $term = term_exists($a['cat'], 'category');
         $cat_id = $term ? (int) (is_array($term) ? $term['term_id'] : $term) : (int) wp_insert_term($a['cat'], 'category')['term_id'];
         $when = gmdate('Y-m-d H:i:s', time() - $a['days'] * DAY_IN_SECONDS);

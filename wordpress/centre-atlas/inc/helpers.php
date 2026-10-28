@@ -108,3 +108,12 @@ function atlas_t($key) { echo esc_html(atlas_text($key)); }
 function atlas_credit() {
     echo '<span class="footer_credit">Créé avec <span class="footer_heart" aria-label="amour">&#9829;</span> par <a href="https://digifab.agency/" target="_blank" rel="noopener">digifab agency</a></span>';
 }
+
+/** Cherche un contenu par son titre exact (remplace get_page_by_title, obsolète depuis WordPress 6.2). */
+function atlas_post_by_title($title, $type = 'post') {
+    $found = get_posts([
+        'title' => $title, 'post_type' => $type, 'post_status' => ['publish', 'draft', 'pending', 'private'],
+        'numberposts' => 1, 'orderby' => 'ID', 'order' => 'ASC',
+    ]);
+    return $found ? $found[0] : null;
+}
