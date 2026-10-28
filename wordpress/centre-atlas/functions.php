@@ -63,6 +63,19 @@ function atlas_thumb($label = "Photo de l'article", $extra_class = '') {
     }
 }
 
+/* ---------- Priorité du thème sur les modèles imposés par Elementor ----------
+ * Si une page est réglée sur « Elementor Canvas » (modèle vide), WordPress n'affiche pas nos modèles.
+ * On force ici front-page.php et page-{slug}.php quand ils existent. */
+add_filter('template_include', function ($template) {
+    if (!is_front_page() && !is_page()) return $template;
+    $candidates = [];
+    if (is_front_page()) $candidates[] = 'front-page.php';
+    $slug = get_post_field('post_name', get_queried_object_id());
+    if ($slug) $candidates[] = 'page-' . $slug . '.php';
+    $found = locate_template($candidates);
+    return $found ? $found : $template;
+}, 99999);
+
 /* ---------- Demandes de rendez-vous (visibles dans l'admin) ---------- */
 add_action('init', function () {
     register_post_type('atlas_demande', [
