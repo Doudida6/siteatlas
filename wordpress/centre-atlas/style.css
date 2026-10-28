@@ -10,6 +10,11 @@ License: Propriétaire
 Text Domain: centre-atlas
 */
 
+
+/* ===== Protection contre les styles globaux de WordPress et des plugins ===== */
+.page-wrapper :is(h1, h2, h3, h4, h5, h6) { color: inherit; font-family: inherit; text-transform: none; letter-spacing: inherit; }
+.page-wrapper :is(p, ul, ol, li) { font-family: inherit; }
+.page-wrapper button { font-family: inherit; }
 /* ===== Variables ===== */
 :root {
   --color-accent: #00B0CC;
@@ -580,6 +585,23 @@ textarea.form_input { min-height: 130px; resize: vertical; }
   .doc_body { margin: -2.5rem .6rem 0; }
 }
 .nav_dropdown-toggle { line-height: inherit; padding: .3rem 0; }
+
+/* Boutons : états survol/focus protégés (les plugins stylent souvent button:hover) */
+.nav_component .nav_dropdown-toggle, .nav_component .nav_dropdown-toggle:hover, .nav_component .nav_dropdown-toggle:focus, .nav_component .nav_dropdown-toggle:active {
+  background: none !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important;
+  padding: .3rem 0 !important; font-size: .8rem !important; font-weight: 600 !important; text-transform: uppercase !important;
+  letter-spacing: .06em !important; line-height: 1.6 !important; transform: none !important; height: auto !important; min-height: 0 !important;
+}
+.nav_component .nav_dropdown-toggle:not(.w--current) { color: inherit !important; }
+.nav_component .nav_dropdown-toggle.w--current { color: var(--color-accent) !important; }
+@media (max-width: 991px) { .nav_component .nav_dropdown-toggle { font-size: .95rem !important; text-transform: none !important; letter-spacing: 0 !important; } }
+.nav_toggle, .nav_toggle:hover, .nav_toggle:focus, .nav_toggle:active { background: #fff !important; color: var(--color-dark) !important; border: 1.5px solid var(--color-dark) !important; box-shadow: none !important; border-radius: 999px !important; height: 44px; padding: 0 1.1rem !important; font-size: 1rem !important; text-transform: none !important; letter-spacing: 0 !important; }
+.blog_filter, .blog_filter:focus { background: #fff; color: var(--color-dark); border: 1.5px solid #dfe4e7; box-shadow: none; text-transform: none; letter-spacing: 0; }
+.blog_filter:hover { background: #fff; color: var(--color-dark); border-color: var(--color-accent); }
+.blog_filter.is-active, .blog_filter.is-active:hover, .blog_filter.is-active:focus { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+button.button { text-transform: none; letter-spacing: 0; box-shadow: none; }
+button.button.is-primary, button.button.is-primary:focus { background: var(--color-accent); color: #fff; border-color: transparent; }
+button.button.is-primary:hover { background: var(--color-accent-dark); color: #fff; }
 
 /* ===== Ajouts propres à WordPress ===== */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
