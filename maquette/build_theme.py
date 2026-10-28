@@ -154,6 +154,7 @@ w('header.php', '''<!DOCTYPE html>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('js-late')},3000)</script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

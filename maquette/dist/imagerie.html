@@ -166,9 +166,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .mobile-bar { display: none; }
 
 /* ===== Animations discrètes ===== */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.is-visible { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.is-visible, .js-late:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 
 /* ===== Responsive ===== */
 @media (max-width: 991px) {
@@ -582,6 +582,7 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 .nav_dropdown-toggle { line-height: inherit; padding: .3rem 0; }
 
 </style>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('js-late')},3000)</script>
 </head>
 <body>
 <!-- Sprite d'icônes -->
@@ -793,6 +794,9 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 </nav>
 
 <script>
+// Signale que le script est bien chargé (sinon le CSS réaffiche tout au bout de 3 s)
+document.documentElement.classList.add('js-ready');
+
 // Menu mobile
 const toggle = document.querySelector('[data-nav-toggle]');
 const menu = document.querySelector('[data-nav-menu]');
@@ -838,6 +842,7 @@ document.querySelectorAll('[data-filter]').forEach((btn) => {
     document.querySelectorAll('[data-cat]').forEach((card) => { card.hidden = cat !== 'all' && card.dataset.cat !== cat; });
   });
 });
+
 
 </script>
 </body>

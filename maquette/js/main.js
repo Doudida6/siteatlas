@@ -1,3 +1,6 @@
+// Signale que le script est bien chargé (sinon le CSS réaffiche tout au bout de 3 s)
+document.documentElement.classList.add('js-ready');
+
 // Menu mobile
 const toggle = document.querySelector('[data-nav-toggle]');
 const menu = document.querySelector('[data-nav-menu]');
@@ -43,3 +46,4 @@ document.querySelectorAll('[data-filter]').forEach((btn) => {
     document.querySelectorAll('[data-cat]').forEach((card) => { card.hidden = cat !== 'all' && card.dataset.cat !== cat; });
   });
 });
+
