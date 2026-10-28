@@ -89,6 +89,21 @@ shutil.copy('assets/screenshot.png', f'{OUT}/screenshot.png')
 
 PRE_CSS = '\n/* ===== Protection contre les styles globaux de WordPress et des plugins ===== */\n.page-wrapper :is(h1, h2, h3, h4, h5, h6) { color: inherit; font-family: inherit; text-transform: none; letter-spacing: inherit; }\n.page-wrapper :is(p, ul, ol, li) { font-family: inherit; }\n.page-wrapper button { font-family: inherit; }\n'
 THEME_CSS = '''
+
+/* Liens : la couleur ne change pas au survol, sauf quand c'est voulu (protège contre a:hover des plugins) */
+.page-wrapper a, .page-wrapper a:hover, .page-wrapper a:focus, .page-wrapper a:active, .page-wrapper a:visited { color: var(--c, inherit); }
+.button.is-primary, .button.is-dark, .button.is-whatsapp, .button.is-secondary-light, .quick2_card.is-dark, .quick2_card.is-accent, .svc_card.is-dark,
+.nav_social a, .footer2_social a, .hero2_play, .mobile-bar a.is-main { --c: #fff; }
+.button.is-secondary { --c: var(--color-dark); }
+.button.is-disabled { --c: #8a949b; }
+.svc_link, .quick2_link, .strip_link, .quick_link, .text-color-accent, .nav_link.w--current, .nav_dropdown-toggle.w--current { --c: var(--color-accent); }
+.quick2_card.is-accent .quick2_link { --c: #fff; }
+.page-wrapper .button.is-secondary:hover, .page-wrapper .button.is-secondary:focus { color: #fff; }
+.page-wrapper .button.is-secondary-light:hover, .page-wrapper .button.is-secondary-light:focus { color: var(--color-dark); }
+.page-wrapper .chip2:hover, .page-wrapper .exam_nav a:hover, .page-wrapper .page-numbers.current:hover { color: #fff; }
+.page-wrapper .footer2_pages a:hover, .page-wrapper .footer_links a:hover, .page-wrapper .aside_links a:hover, .page-wrapper .breadcrumb a:hover { color: var(--color-accent); }
+.page-wrapper .nav_sub-link:hover { color: var(--color-accent-dark); }
+
 /* Boutons : états survol/focus protégés (les plugins stylent souvent button:hover) */
 .nav_component .nav_dropdown-toggle, .nav_component .nav_dropdown-toggle:hover, .nav_component .nav_dropdown-toggle:focus, .nav_component .nav_dropdown-toggle:active {
   background: none !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important;
