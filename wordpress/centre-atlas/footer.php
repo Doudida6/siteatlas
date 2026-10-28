@@ -11,10 +11,10 @@
           <div>
             <h4 class="footer_title"><?php atlas_t('t70e7a23c'); ?></h4>
             <ul class="footer2_list">
-              <li><svg><use href="#i-pin"/></svg><span><?php echo esc_html(atlas_addr()); ?></span></li>
+              <li><svg><use href="#i-pin"/></svg><span class="addr"><?php echo esc_html(atlas_addr()); ?></span></li>
               <li><svg><use href="#i-mail"/></svg><a href="mailto:<?php echo esc_attr(atlas_opt('email')); ?>"><?php atlas_t('t12a6d4d0'); ?></a></li>
               <li><svg><use href="#i-clock"/></svg><span class="hours"><?php echo atlas_hours(); ?></span></li>
-              <li><svg><use href="#i-phone"/></svg><span><a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>"><?php atlas_t('t83ca4101'); ?></a> · <a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>"><?php atlas_t('t3046a572'); ?></a></span></li>
+              <li><svg><use href="#i-phone"/></svg><span><a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>"><?php atlas_t('t3046a572'); ?></a> / <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>"><?php atlas_t('t83ca4101'); ?></a></span></li>
             </ul>
           </div>
           <div>
@@ -32,7 +32,7 @@
           </div>
           <div>
             <h4 class="footer_title"><?php atlas_t('tda31472f'); ?></h4>
-            <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="footer2_call"><span class="footer2_call-icon"><svg><use href="#i-phone"/></svg></span><span><b><?php atlas_t('t6f4dbb3f'); ?></b><small><?php atlas_t('t83ca4101'); ?></small></span></a>
+            <a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>" class="footer2_call"><span class="footer2_call-icon"><svg><use href="#i-phone"/></svg></span><span><b><?php atlas_t('t6f4dbb3f'); ?></b><small><?php atlas_t('t39af97aa'); ?></small></span></a>
             <p class="text-size-small" style="margin-top:1rem"><?php atlas_t('t3007fc35'); ?></p>
             <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary" style="margin-top:1rem"><?php atlas_t('t7c7fd123'); ?></a>
           </div>

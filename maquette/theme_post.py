@@ -42,15 +42,12 @@ def contact_vars(s):
     s = s.replace('tel:+221788316060', "tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>")
     s = s.replace('https://wa.me/221788316060', "https://wa.me/<?php echo esc_attr(atlas_wa()); ?>")
     s = s.replace('mailto:centreatlasmedical@gmail.com', "mailto:<?php echo esc_attr(atlas_opt('email')); ?>")
-    s = s.replace('<span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span>',
-                  "<span><?php echo esc_html(atlas_addr()); ?></span>")
-    s = re.sub(r'Centre Médical Atlas, Dakar, Sénégal <span class="text-style-muted">\(adresse complète à compléter\)</span>',
-               "Centre Médical Atlas, <?php echo esc_html(atlas_addr()); ?>", s)
+    s = re.sub(r'<span class="addr">.*?</span>', '<span class="addr"><?php echo esc_html(atlas_addr()); ?></span>', s, flags=re.S)
     s = re.sub(r'<span class="hours">.*?</span>', '<span class="hours"><?php echo atlas_hours(); ?></span>', s, flags=re.S)
     s = re.sub(r'<span class="footer_credit">.*?</a></span>', '<?php atlas_credit(); ?>', s, flags=re.S)
-    s = s.replace('src="https://www.google.com/maps?q=Dakar,Senegal&output=embed"',
+    s = s.replace('src="https://www.google.com/maps?q=Libert%C3%A9+6,+Dakar,+Senegal&output=embed"',
                   "src=\"<?php echo esc_url('https://www.google.com/maps?q=' . rawurlencode(atlas_map_query()) . '&output=embed'); ?>\"")
-    s = s.replace('href="https://www.google.com/maps/dir/?api=1&destination=Dakar,Senegal"',
+    s = s.replace('href="https://www.google.com/maps/dir/?api=1&destination=Libert%C3%A9+6,+Dakar,+Senegal"',
                   "href=\"<?php echo esc_url('https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode(atlas_map_query())); ?>\"")
     for name, icon in (('facebook', 'i-fb'), ('instagram', 'i-ig')):
         label = name.capitalize()

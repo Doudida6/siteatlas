@@ -45,7 +45,7 @@
           </a>
           <div class="nav_contacts">
             <a href="mailto:<?php echo esc_attr(atlas_opt('email')); ?>" class="nav_contact"><svg><use href="#i-mail"/></svg><span><b><?php atlas_t('t5ded1a4d'); ?></b><small><?php atlas_t('t12a6d4d0'); ?></small></span></a>
-            <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="nav_contact"><svg><use href="#i-phone"/></svg><span><b><?php atlas_t('t6f4dbb3f'); ?></b><small><?php atlas_t('t83ca4101'); ?></small></span></a>
+            <a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>" class="nav_contact"><svg><use href="#i-phone"/></svg><span><b><?php atlas_t('t6f4dbb3f'); ?></b><small><?php atlas_t('t39af97aa'); ?></small></span></a>
             <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-dark"><?php atlas_t('tda31472f'); ?></a>
           </div>
           <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>

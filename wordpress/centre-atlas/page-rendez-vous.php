@@ -28,7 +28,7 @@
         </form>
         <div class="form_success<?php echo atlas_sent_class(); ?>" role="status"><span class="value_icon"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3 class="heading-style-h4"><?php atlas_t('tef6bc2b7'); ?></h3><p class="text-style-muted"><?php atlas_t('t7023ff4a'); ?></p></div>
       </div>
-      <p class="text-align-center text-style-muted" style="margin-top:2rem"><?php atlas_t('t6b01b773'); ?> <a class="text-color-accent" href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>"><strong><?php atlas_t('t83ca4101'); ?></strong></a> <?php atlas_t('t221f3f5f'); ?> <a class="text-color-accent" href="https://wa.me/<?php echo esc_attr(atlas_wa()); ?>"><strong><?php atlas_t('t8b777ebc'); ?></strong></a>.</p>
+      <p class="text-align-center text-style-muted" style="margin-top:2rem"><?php atlas_t('t6b01b773'); ?> <a class="text-color-accent" href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>"><strong><?php atlas_t('t3046a572'); ?></strong></a> <?php atlas_t('t221f3f5f'); ?> <a class="text-color-accent" href="https://wa.me/<?php echo esc_attr(atlas_wa()); ?>"><strong><?php atlas_t('t8b777ebc'); ?></strong></a>.</p>
     </div></div>
   </section>
 

@@ -47,7 +47,7 @@ CTA = '''  <section class="call2">
           <span class="call2_icon"><svg><use href="#i-calendar"/></svg></span>
           <h2 class="heading-style-h2">Besoin d'un rendez-vous ?</h2>
           <p class="text-style-muted">Consultation ou examen : notre équipe vous accompagne.</p>
-          <a href="tel:+221338678646" class="call2_phone"><svg><use href="#i-phone"/></svg>33 867 86 46</a>
+          <a href="tel:+221788316060" class="call2_phone"><svg><use href="#i-phone"/></svg>78 831 60 60</a>
           <div class="button-group"><a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a><a href="https://wa.me/221788316060" class="button is-whatsapp">Nous écrire sur WhatsApp</a></div>
         </div>
       </div>

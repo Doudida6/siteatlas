@@ -136,7 +136,7 @@ button.button.is-primary:hover { background: var(--color-accent-dark); color: #f
 '''
 w('style.css', '''/*
 Theme Name: Centre Médical Atlas
-Theme URI: https://centremedicalatlas.sn
+Theme URI: https://cabinetmedicalatlas.sn
 Author: Centre Médical Atlas
 Description: Thème sur mesure du Centre Médical Atlas (Dakar) : consultations, imagerie, endoscopie, biopsie. Direction artistique contemporaine, premium et chaleureuse.
 Version: 1.0.0

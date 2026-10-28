@@ -30,7 +30,7 @@
         <span class="eyebrow2"><?php atlas_t('t5b6a9abe'); ?></span>
         <h2 class="heading-style-h2 margin-bottom-medium"><?php atlas_t('t2b3655b6'); ?></h2>
         <div class="faq">
-          <details open><summary><?php atlas_t('t855d0ba3'); ?></summary><p><?php atlas_t('tb2a51969'); ?></p></details>
+          <details open><summary><?php atlas_t('t855d0ba3'); ?></summary><p><?php atlas_t('td7bf778f'); ?></p></details>
           <details><summary><?php atlas_t('t47f88e27'); ?></summary><p><?php atlas_t('t542ecff1'); ?></p></details>
           <details><summary><?php atlas_t('t958f8821'); ?></summary><p><?php atlas_t('t188b1b14'); ?></p></details>
           <details><summary><?php atlas_t('t7d2e62c0'); ?></summary><p><?php atlas_t('t91f21236'); ?></p></details>

@@ -13,8 +13,8 @@
         <span class="text-style-eyebrow"><?php atlas_t('tc552303a'); ?></span>
         <h2 class="heading-style-h2"><?php atlas_t('tffc10c57'); ?></h2>
         <div class="contact_cards">
-          <div class="contact_card"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><div><small><?php atlas_t('t50d46c2f'); ?></small>Centre Médical Atlas, <?php echo esc_html(atlas_addr()); ?></div></div>
-          <div class="contact_card"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></span><div><small><?php atlas_t('t301dc874'); ?></small><a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>"><?php atlas_t('t83ca4101'); ?></a> · <a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>"><?php atlas_t('t3046a572'); ?></a></div></div>
+          <div class="contact_card"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><div><small><?php atlas_t('t50d46c2f'); ?></small><span class="addr"><?php echo esc_html(atlas_addr()); ?></span></div></div>
+          <div class="contact_card"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></span><div><small><?php atlas_t('t301dc874'); ?></small><a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>"><?php atlas_t('t3046a572'); ?></a> / <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>"><?php atlas_t('t83ca4101'); ?></a></div></div>
           <div class="contact_card"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-chat"/></svg></span><div><small><?php atlas_t('ta57fd34d'); ?></small><a href="mailto:<?php echo esc_attr(atlas_opt('email')); ?>"><?php atlas_t('t12a6d4d0'); ?></a></div></div>
           <div class="contact_card"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#i-calendar"/></svg></span><div><small><?php atlas_t('t990e1f56'); ?></small><span class="hours"><?php echo atlas_hours(); ?></span></div></div>
         </div>

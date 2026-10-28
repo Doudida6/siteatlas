@@ -18,7 +18,7 @@ function atlas_contact_defaults() {
         'tel_mobile' => '78 831 60 60',
         'email'      => 'centreatlasmedical@gmail.com',
         'rdv_email'  => 'centreatlasmedical@gmail.com',
-        'adresse'    => 'Dakar, Sénégal (adresse à compléter)',
+        'adresse'    => 'Liberté 6, Dakar',
         'horaires'   => "{{HOURS}}",
         'facebook'   => '',
         'instagram'  => '',
@@ -47,7 +47,8 @@ function atlas_addr() { return atlas_opt('adresse'); }
 /** Adresse utilisable pour Google Maps (sans la mention « à compléter »). */
 function atlas_map_query() {
     $a = trim(preg_replace('/\s*\([^)]*compléter[^)]*\)/u', '', atlas_opt('adresse')));
-    return $a !== '' ? $a : 'Dakar, Sénégal';
+    if ($a === '') return 'Dakar, Sénégal';
+    return (stripos($a, 'sénégal') === false && stripos($a, 'senegal') === false) ? $a . ', Sénégal' : $a;
 }
 function atlas_hours() { return nl2br(esc_html(atlas_opt('horaires'))); }
 

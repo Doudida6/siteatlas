@@ -29,7 +29,7 @@ body = banner('Prendre rendez-vous', [('Accueil', 'index.html')]) + f'''
         </form>
         {OK.format(titre='Merci !', msg='Votre demande a bien été reçue. Notre équipe vous contactera pour confirmer votre rendez-vous.')}
       </div>
-      <p class="text-align-center text-style-muted" style="margin-top:2rem">Plus rapide ? Appelez le <a class="text-color-accent" href="tel:+221338678646"><strong>33 867 86 46</strong></a> ou écrivez-nous sur <a class="text-color-accent" href="https://wa.me/221788316060"><strong>WhatsApp</strong></a>.</p>
+      <p class="text-align-center text-style-muted" style="margin-top:2rem">Plus rapide ? Appelez le <a class="text-color-accent" href="tel:+221788316060"><strong>78 831 60 60</strong></a> ou écrivez-nous sur <a class="text-color-accent" href="https://wa.me/221788316060"><strong>WhatsApp</strong></a>.</p>
     </div></div>
   </section>
 '''
@@ -44,15 +44,15 @@ body = banner('Contact', [('Accueil', 'index.html')]) + f'''
         <span class="text-style-eyebrow">Nous contacter</span>
         <h2 class="heading-style-h2">Une question ? Écrivez-nous</h2>
         <div class="contact_cards">
-          <div class="contact_card">{ic('i-pin')}<div><small>Adresse</small>Centre Médical Atlas, Dakar, Sénégal <span class="text-style-muted">(adresse complète à compléter)</span></div></div>
-          <div class="contact_card">{ic('i-phone')}<div><small>Téléphone</small><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></div></div>
+          <div class="contact_card">{ic('i-pin')}<div><small>Adresse</small><span class="addr">Liberté 6, Dakar</span></div></div>
+          <div class="contact_card">{ic('i-phone')}<div><small>Téléphone</small><a href="tel:+221788316060">78 831 60 60</a> / <a href="tel:+221338678646">33 867 86 46</a></div></div>
           <div class="contact_card">{ic('i-chat')}<div><small>Email du secrétariat</small><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></div></div>
           <div class="contact_card">{ic('i-calendar')}<div><small>Horaires</small>{HOURS_HTML}</div></div>
         </div>
         <div class="button-group">
           <a href="tel:+221788316060" class="button is-primary">Appeler</a>
           <a href="https://wa.me/221788316060" class="button is-whatsapp">WhatsApp</a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=Dakar,Senegal" class="button is-secondary" target="_blank" rel="noopener">Itinéraire</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Libert%C3%A9+6,+Dakar,+Senegal" class="button is-secondary" target="_blank" rel="noopener">Itinéraire</a>
         </div>
       </div>
       <div class="form_card">
@@ -70,7 +70,7 @@ body = banner('Contact', [('Accueil', 'index.html')]) + f'''
   <section class="padding-section-medium" style="padding-top:0">
     <div class="padding-global"><div class="container-large">
       <!-- Carte : remplacer "Dakar" par l'adresse exacte du centre -->
-      <iframe class="map_frame" title="Carte du Centre Médical Atlas" loading="lazy" src="https://www.google.com/maps?q=Dakar,Senegal&output=embed"></iframe>
+      <iframe class="map_frame" title="Carte du Centre Médical Atlas" loading="lazy" src="https://www.google.com/maps?q=Libert%C3%A9+6,+Dakar,+Senegal&output=embed"></iframe>
     </div></div>
   </section>
 '''

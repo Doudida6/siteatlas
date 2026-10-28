@@ -48,7 +48,7 @@ FAQ = '''  <section class="padding-section-large">
         <span class="eyebrow2">Questions fréquentes</span>
         <h2 class="heading-style-h2 margin-bottom-medium">Avant votre consultation</h2>
         <div class="faq">
-          <details open><summary>Comment prendre rendez-vous ?</summary><p>Par le formulaire du site, par téléphone au 33 867 86 46 ou sur WhatsApp au 78 831 60 60. Notre équipe vous rappelle pour confirmer le créneau.</p></details>
+          <details open><summary>Comment prendre rendez-vous ?</summary><p>Par le formulaire du site, par téléphone au 78 831 60 60 ou au 33 867 86 46, ou sur WhatsApp au 78 831 60 60. Notre équipe vous rappelle pour confirmer le créneau.</p></details>
           <details><summary>Que dois-je apporter ?</summary><p>Votre pièce d'identité, votre ordonnance si vous en avez une, et vos anciens examens ou comptes rendus.</p></details>
           <details><summary>Comment sont remis les résultats ?</summary><p>Le médecin vous explique les résultats et un compte rendu vous est remis, selon les délais propres à chaque examen.</p></details>
           <details><summary>Le scanner est-il disponible ?</summary><p>Pas encore : il sera proposé dès son installation. Nous l'indiquerons sur le site.</p></details>
@@ -99,7 +99,7 @@ for s in SPECS:
         <div class="fiche_block reveal"><h2>Examens éventuellement associés</h2><ul class="list-check">{li(s['examens'])}</ul></div>
       </div>
       <aside class="fiche_aside">
-        <div class="aside_card"><h3 class="heading-style-h4">Consulter en {s['nom'].lower()}</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p>{('<p class="text-size-small"><strong>Consultations :</strong><br>' + s['horaires'] + '</p>') if s.get('horaires') else ''}<a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
+        <div class="aside_card"><h3 class="heading-style-h4">Consulter en {s['nom'].lower()}</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p>{('<p class="text-size-small"><strong>Consultations :</strong><br>' + s['horaires'] + '</p>') if s.get('horaires') else ''}<a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221788316060" class="text-size-small" style="color:#fff">Ou appelez le 78 831 60 60</a></div>
         <div class="aside_links"><strong>Autres spécialités</strong>{nav}</div>
       </aside>
     </div></div>

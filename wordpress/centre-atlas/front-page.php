@@ -29,11 +29,11 @@
           <p class="text-size-small"><?php atlas_t('t27ea0fb7'); ?></p>
           <span class="quick2_link"><?php atlas_t('t87da0b59'); ?> <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
         </a>
-        <a href="tel:<?php echo esc_attr(atlas_tel('tel_fixe')); ?>" class="quick2_card is-dark reveal">
+        <a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>" class="quick2_card is-dark reveal">
           <svg class="quick2_icon"><use href="#i-phone"/></svg>
           <h3 class="heading-style-h4"><?php atlas_t('t41955e6f'); ?></h3>
-          <p class="text-size-small"><?php atlas_t('t50304356'); ?><br><?php atlas_t('t84b4140d'); ?></p>
-          <span class="quick2_pill"><?php atlas_t('t83ca4101'); ?></span>
+          <p class="text-size-small"><?php atlas_t('tb78dd5da'); ?></p>
+          <span class="quick2_pill"><?php atlas_t('t3046a572'); ?></span>
         </a>
         <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="quick2_card is-accent reveal">
           <svg class="quick2_icon"><use href="#i-chat"/></svg>
