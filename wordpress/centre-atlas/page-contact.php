@@ -21,7 +21,7 @@
         <div class="button-group">
           <a href="tel:<?php echo esc_attr(atlas_tel('tel_mobile')); ?>" class="button is-primary"><?php atlas_t('t55c40bf7'); ?></a>
           <a href="https://wa.me/<?php echo esc_attr(atlas_wa()); ?>" class="button is-whatsapp"><?php atlas_t('t8b777ebc'); ?></a>
-          <a href="<?php echo esc_url('https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode(atlas_map_query())); ?>" class="button is-secondary" target="_blank" rel="noopener"><?php atlas_t('t11e6a39b'); ?></a>
+          <a href="<?php echo esc_url('https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode(atlas_map_query())); ?>" class="button is-secondary" target="_blank" rel="noopener"><?php atlas_t('t11e6a39b'); ?></a><?php if (atlas_opt('google')) : ?> <a href="<?php echo esc_url(atlas_opt('google')); ?>" class="button is-secondary" target="_blank" rel="noopener"><?php atlas_t('t47cb27c2'); ?></a><?php endif; ?>
         </div>
       </div>
       <div class="form_card">

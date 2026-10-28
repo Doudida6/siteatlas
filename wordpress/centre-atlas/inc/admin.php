@@ -9,6 +9,7 @@ add_action('admin_menu', function () {
     add_submenu_page('centre-atlas', 'Coordonnées', 'Coordonnées', 'manage_options', 'centre-atlas', 'atlas_admin_contact');
     add_submenu_page('centre-atlas', 'Photos du site', 'Photos du site', 'manage_options', 'centre-atlas-photos', 'atlas_admin_photos');
     add_submenu_page('centre-atlas', 'Textes du site', 'Textes du site', 'manage_options', 'centre-atlas-textes', 'atlas_admin_textes');
+    add_submenu_page('centre-atlas', 'SEO (Google)', 'SEO (Google)', 'manage_options', 'centre-atlas-seo', 'atlas_admin_seo');
 });
 
 add_action('admin_enqueue_scripts', function ($hook) {
@@ -19,6 +20,7 @@ add_action('admin_init', function () {
     register_setting('atlas_contact_group', 'atlas_contact', ['sanitize_callback' => 'atlas_sanitize_contact']);
     register_setting('atlas_photos_group', 'atlas_photos', ['sanitize_callback' => 'atlas_sanitize_photos']);
     register_setting('atlas_texts_group', 'atlas_texts', ['sanitize_callback' => 'atlas_sanitize_texts']);
+    register_setting('atlas_seo_group', 'atlas_seo', ['sanitize_callback' => 'atlas_sanitize_seo']);
 });
 
 /* ---------- Nettoyage des valeurs enregistrées ---------- */
@@ -28,7 +30,9 @@ function atlas_sanitize_contact($in) {
     foreach (atlas_contact_defaults() as $k => $def) {
         $v = isset($in[$k]) ? (string) $in[$k] : '';
         if ($k === 'email' || $k === 'rdv_email') $out[$k] = sanitize_email($v);
-        elseif ($k === 'facebook' || $k === 'instagram') $out[$k] = esc_url_raw($v);
+        elseif ($k === 'facebook' || $k === 'instagram' || $k === 'google') $out[$k] = esc_url_raw($v);
+        elseif ($k === 'lat' || $k === 'lng') $out[$k] = preg_match('/^-?\d{1,3}(\.\d+)?$/', trim($v)) ? trim($v) : '';
+        elseif ($k === 'ouv_semaine' || $k === 'ouv_samedi') $out[$k] = preg_match('/^\d{2}:\d{2}-\d{2}:\d{2}$/', trim($v)) ? trim($v) : '';
         elseif ($k === 'horaires') $out[$k] = sanitize_textarea_field($v);
         else $out[$k] = sanitize_text_field($v);
     }
@@ -69,6 +73,11 @@ function atlas_admin_contact() {
         'horaires'   => ['Horaires', 'textarea', "ex. Lundi au vendredi : 8h - 18h\nSamedi : 8h - 13h"],
         'facebook'   => ['Page Facebook (lien)', 'url', 'Laissez vide pour masquer l\'icône'],
         'instagram'  => ['Compte Instagram (lien)', 'url', 'Laissez vide pour masquer l\'icône'],
+        'google'     => ['Fiche Google (lien)', 'url', 'Lien de votre fiche Google Business Profile : un bouton « Notre fiche Google » apparaît sur la page Contact'],
+        'ouv_semaine' => ['Ouverture lundi-vendredi (pour Google)', 'text', 'Format 09:00-18:00'],
+        'ouv_samedi' => ['Ouverture samedi (pour Google)', 'text', 'Format 09:00-14:00 (laissez vide si fermé)'],
+        'lat'        => ['Latitude (facultatif)', 'text', 'ex. 14.7167 : améliore l\'affichage sur Google Maps'],
+        'lng'        => ['Longitude (facultatif)', 'text', 'ex. -17.4677'],
     ];
     echo '<div class="wrap"><h1>Coordonnées du centre</h1>';
     echo '<p>Ces informations s\'affichent automatiquement partout sur le site : en-tête, pied de page, page Contact, boutons Appeler, WhatsApp et Itinéraire.</p>';
@@ -184,6 +193,56 @@ function atlas_admin_textes() {
         var q = this.value.toLowerCase();
         document.querySelectorAll('.atlas-trow').forEach(function (r) {
             r.style.display = (!q || r.getAttribute('data-search').indexOf(q) !== -1) ? '' : 'none';
+        });
+    });
+    </script>
+    <?php
+}
+
+/* ---------- Page « SEO (Google) » ---------- */
+function atlas_sanitize_seo($in) {
+    $reg = atlas_registry();
+    $out = [];
+    foreach ((array) $in as $slug => $f) {
+        if (!isset($reg['seo'][$slug]) || !is_array($f)) continue;
+        $t = trim(sanitize_text_field(isset($f['title']) ? $f['title'] : ''));
+        $d = trim(sanitize_text_field(isset($f['desc']) ? $f['desc'] : ''));
+        if ($t === $reg['seo'][$slug][1]) $t = '';
+        if ($d === $reg['seo'][$slug][2]) $d = '';
+        if ($t !== '' || $d !== '') $out[$slug] = ['title' => $t, 'desc' => $d];
+    }
+    return $out;
+}
+
+function atlas_admin_seo() {
+    $reg = atlas_registry();
+    echo '<div class="wrap"><h1>SEO : apparaître sur Google à Dakar</h1>';
+    if (atlas_seo_plugin_active()) {
+        echo '<div class="notice notice-warning"><p>Un plugin SEO est actif : il gère les titres et descriptions. Les réglages ci-dessous sont ignorés tant qu\'il reste activé.</p></div>';
+    }
+    echo '<p>Pour chaque page, voici le <strong>titre</strong> et la <strong>description</strong> proposés à Google. Ils contiennent déjà les mots que vos patients recherchent (« à Dakar », « échographie », « endoscopie »…). Modifiez-les si besoin ; videz un champ pour revenir à la valeur proposée.</p>';
+    echo '<p>Conseil : titre de 60 caractères maximum, description de 155 caractères maximum. Les articles utilisent leur titre et leur « extrait ».</p>';
+    echo '<style>.atlas-seo-row{background:#fff;border:1px solid #dcdcde;border-radius:6px;padding:12px 16px;margin:0 0 12px}.atlas-seo-row h3{margin:0 0 8px}.atlas-seo-row input,.atlas-seo-row textarea{width:100%}.atlas-count{font-size:12px;color:#646970}.atlas-count.over{color:#b32d2e;font-weight:600}</style>';
+    echo '<form method="post" action="options.php">';
+    settings_fields('atlas_seo_group');
+    $saved = (array) get_option('atlas_seo', []);
+    foreach ($reg['seo'] as $slug => $info) {
+        $t = !empty($saved[$slug]['title']) ? $saved[$slug]['title'] : $info[1];
+        $d = !empty($saved[$slug]['desc']) ? $saved[$slug]['desc'] : $info[2];
+        echo '<div class="atlas-seo-row"><h3>' . esc_html($info[0]) . '</h3>';
+        echo '<p><input type="text" class="atlas-seo-t" name="atlas_seo[' . esc_attr($slug) . '][title]" value="' . esc_attr($t) . '"><span class="atlas-count" data-max="60"></span></p>';
+        echo '<p><textarea rows="2" class="atlas-seo-d" name="atlas_seo[' . esc_attr($slug) . '][desc]">' . esc_textarea($d) . '</textarea><span class="atlas-count" data-max="155"></span></p></div>';
+    }
+    submit_button('Enregistrer');
+    echo '</form></div>';
+    ?>
+    <script>
+    document.querySelectorAll('.atlas-seo-row').forEach(function (row) {
+        row.querySelectorAll('input,textarea').forEach(function (el) {
+            var out = el.parentNode.querySelector('.atlas-count');
+            var max = parseInt(out.getAttribute('data-max'), 10);
+            function upd() { var n = el.value.length; out.textContent = n + ' / ' + max + ' caractères'; out.className = 'atlas-count' + (n > max ? ' over' : ''); }
+            el.addEventListener('input', upd); upd();
         });
     });
     </script>

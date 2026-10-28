@@ -5,7 +5,7 @@
         <div class="footer2_grid">
           <div>
             <a href="<?php echo esc_url(home_url('/')); ?>" class="nav_logo" style="margin-bottom:1.2rem"><img src="<?php echo esc_url(get_theme_file_uri('assets/logo-icon.svg')); ?>" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small><?php atlas_t('t9e6fc50a'); ?></small><strong><?php atlas_t('t96fd73b0'); ?></strong></span></a>
-            <p class="text-size-small"><?php atlas_t('tee47ac09'); ?><br><?php atlas_t('tf9c5c42b'); ?></p>
+            <p class="text-size-small"><?php atlas_t('tee47ac09'); ?><br><?php atlas_t('t3eba0be5'); ?></p>
             <div class="footer2_social"><?php if (atlas_opt('facebook')) : ?><a href="<?php echo esc_url(atlas_opt('facebook')); ?>" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a><?php endif; ?><?php if (atlas_opt('instagram')) : ?><a href="<?php echo esc_url(atlas_opt('instagram')); ?>" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><?php endif; ?><a href="https://wa.me/<?php echo esc_attr(atlas_wa()); ?>" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a></div>
           </div>
           <div>

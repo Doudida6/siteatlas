@@ -22,6 +22,11 @@ function atlas_contact_defaults() {
         'horaires'   => "{{HOURS}}",
         'facebook'   => '',
         'instagram'  => '',
+        'google'     => '',
+        'lat'        => '',
+        'lng'        => '',
+        'ouv_semaine' => '09:00-18:00',
+        'ouv_samedi' => '09:00-14:00',
     ];
 }
 function atlas_opt($key) {

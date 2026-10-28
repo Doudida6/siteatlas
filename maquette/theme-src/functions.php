@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -23,7 +23,7 @@ add_action('after_setup_theme', function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('atlas-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap', [], null);
     wp_enqueue_style('atlas-style', get_stylesheet_uri(), ['atlas-fonts'], ATLAS_VERSION);
-    wp_enqueue_script('atlas-main', get_theme_file_uri('assets/main.js'), [], ATLAS_VERSION, true);
+    wp_enqueue_script('atlas-main', get_theme_file_uri('assets/main.js'), [], ATLAS_VERSION, ['in_footer' => true, 'strategy' => 'defer']);
 });
 
 add_action('wp_head', function () {

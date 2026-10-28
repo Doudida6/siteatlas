@@ -43,6 +43,7 @@ def contact_vars(s):
     s = s.replace('https://wa.me/221788316060', "https://wa.me/<?php echo esc_attr(atlas_wa()); ?>")
     s = s.replace('mailto:centreatlasmedical@gmail.com', "mailto:<?php echo esc_attr(atlas_opt('email')); ?>")
     s = re.sub(r'<span class="addr">.*?</span>', '<span class="addr"><?php echo esc_html(atlas_addr()); ?></span>', s, flags=re.S)
+    s = s.replace('>Itinéraire</a>', ">Itinéraire</a><?php if (atlas_opt('google')) : ?> <a href=\"<?php echo esc_url(atlas_opt('google')); ?>\" class=\"button is-secondary\" target=\"_blank\" rel=\"noopener\">Notre fiche Google</a><?php endif; ?>")
     s = re.sub(r'<span class="hours">.*?</span>', '<span class="hours"><?php echo atlas_hours(); ?></span>', s, flags=re.S)
     s = re.sub(r'<span class="footer_credit">.*?</a></span>', '<?php atlas_credit(); ?>', s, flags=re.S)
     s = s.replace('src="https://www.google.com/maps?q=Libert%C3%A9+6,+Dakar,+Senegal&output=embed"',
@@ -216,6 +217,7 @@ def run(OUT, TITLES):
         s = texts(s, page, reg_texts)
         open(path, 'w', encoding='utf-8').write(s)
 
+    from seo_data import SEO
     labels = {'commun': 'Menu et pied de page', 'cta': 'Bandeau « Besoin d\'un rendez-vous ? »', 'accueil': 'Accueil',
               'blog': 'Conseils santé (blog)', 'autres': 'Autres pages'}
     pages = {}
@@ -231,6 +233,8 @@ def run(OUT, TITLES):
     lines += [f"        {php_str(k)} => [{php_str(p)}, {php_str(t)}]," for k, (p, t) in reg_texts.items()]
     lines += ['    ],', "    'photos' => [", ]
     lines += [f"        {php_str(k)} => [{php_str(p)}, {php_str(l)}]," for k, (p, l) in reg_photos.items()]
+    lines += ['    ],', "    'seo' => ["]
+    lines += [f"        {php_str(k)} => [{php_str(pages.get(k) or TITLES.get(k, k))}, {php_str(v[0])}, {php_str(v[1])}]," for k, v in SEO.items()]
     lines += ['    ],', '];', '']
     open(os.path.join(OUT, 'inc', 'registry.php'), 'w', encoding='utf-8').write('\n'.join(lines))
 

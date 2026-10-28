@@ -22,6 +22,11 @@ function atlas_contact_defaults() {
         'horaires'   => "Ouverture du centre : lundi au vendredi, 9h - 18h ; samedi, 9h - 14h\nGynécologie : lundi, 15h - 18h\nCardiologie : mercredi, 15h - 18h\nDiabétologie : samedi, 9h - 14h",
         'facebook'   => '',
         'instagram'  => '',
+        'google'     => '',
+        'lat'        => '',
+        'lng'        => '',
+        'ouv_semaine' => '09:00-18:00',
+        'ouv_samedi' => '09:00-14:00',
     ];
 }
 function atlas_opt($key) {
