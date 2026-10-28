@@ -19,7 +19,7 @@ function atlas_contact_defaults() {
         'email'      => 'centreatlasmedical@gmail.com',
         'rdv_email'  => 'centreatlasmedical@gmail.com',
         'adresse'    => 'Dakar, Sénégal (adresse à compléter)',
-        'horaires'   => 'À compléter',
+        'horaires'   => "{{HOURS}}",
         'facebook'   => '',
         'instagram'  => '',
     ];
@@ -97,3 +97,8 @@ function atlas_text($key) {
     return atlas_expand($v);
 }
 function atlas_t($key) { echo esc_html(atlas_text($key)); }
+
+/** Crédit du pied de page (non modifiable depuis « Textes du site »). */
+function atlas_credit() {
+    echo '<span class="footer_credit">Créé avec <span class="footer_heart" aria-label="amour">&#9829;</span> par <a href="https://digifab.agency/" target="_blank" rel="noopener">digifab agency</a></span>';
+}

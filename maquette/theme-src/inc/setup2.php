@@ -12,13 +12,17 @@ function atlas_setup2() {
 
     // Médecins d'exemple (à remplacer par les vrais médecins du centre)
     if (!get_posts(['post_type' => 'atlas_medecin', 'post_status' => 'any', 'numberposts' => 1])) {
-        $specs = ['Cardiologie', 'Gastro-entérologie', 'Médecine générale', 'Gynécologie', 'Neurologie', 'Rhumatologie'];
-        foreach ($specs as $i => $spec) {
+        $specs = [
+            'Cardiologie' => 'Mercredi, 15h - 18h', 'Gastro-entérologie' => 'À compléter', 'Médecine générale' => 'Lundi au vendredi, 9h - 18h ; samedi, 9h - 14h',
+            'Gynécologie' => 'Lundi, 15h - 18h', 'Diabétologie' => 'Samedi, 9h - 14h', 'Rhumatologie' => 'À compléter',
+        ];
+        $i = 0;
+        foreach ($specs as $spec => $jours) {
             wp_insert_post([
-                'post_type' => 'atlas_medecin', 'post_status' => 'publish', 'post_title' => 'Dr. Prénom Nom', 'menu_order' => $i,
+                'post_type' => 'atlas_medecin', 'post_status' => 'publish', 'post_title' => 'Dr. Prénom Nom', 'menu_order' => $i++,
                 'meta_input' => [
                     '_atlas_specialite' => $spec, '_atlas_formation' => 'Diplômes à compléter',
-                    '_atlas_expertises' => "Domaine d'expertise, Domaine d'expertise", '_atlas_jours' => 'À compléter',
+                    '_atlas_expertises' => "Domaine d'expertise, Domaine d'expertise", '_atlas_jours' => $jours,
                 ],
             ]);
         }
@@ -42,9 +46,10 @@ function atlas_setup2() {
         $exams = (int) wp_update_nav_menu_item($menu_id, 0, [
             'menu-item-title' => 'Examens', 'menu-item-url' => '#', 'menu-item-type' => 'custom', 'menu-item-status' => 'publish',
         ]);
-        $page_item('Imagerie', 'imagerie', $exams);
+        $page_item('Imagerie médicale', 'imagerie', $exams);
         $page_item('Endoscopie', 'endoscopie', $exams);
         $page_item('Biopsie', 'biopsie', $exams);
+        $page_item('Biologie', 'biologie', $exams);
         $page_item('Nos médecins', 'nos-medecins');
         $page_item('Conseils santé', 'conseils-sante');
         $page_item('Contact', 'contact');

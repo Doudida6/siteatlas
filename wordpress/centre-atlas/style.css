@@ -586,6 +586,12 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 }
 .nav_dropdown-toggle { line-height: inherit; padding: .3rem 0; }
 
+/* Horaires (plusieurs lignes) et crédit du pied de page */
+.hours { display: block; line-height: 1.7; }
+.footer_credit a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.footer_credit a:hover { color: var(--color-accent); }
+.footer_heart { color: #ff5a73; }
+
 
 /* Liens : la couleur ne change pas au survol, sauf quand c'est voulu (protège contre a:hover des plugins) */
 .page-wrapper a, .page-wrapper a:hover, .page-wrapper a:focus, .page-wrapper a:active, .page-wrapper a:visited { color: var(--c, inherit); }

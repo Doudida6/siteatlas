@@ -46,8 +46,8 @@ def contact_vars(s):
                   "<span><?php echo esc_html(atlas_addr()); ?></span>")
     s = re.sub(r'Centre Médical Atlas, Dakar, Sénégal <span class="text-style-muted">\(adresse complète à compléter\)</span>',
                "Centre Médical Atlas, <?php echo esc_html(atlas_addr()); ?>", s)
-    s = s.replace('Horaires à compléter</li>', 'Horaires : <?php echo atlas_hours(); ?></li>')
-    s = s.replace('<small>Horaires</small>À compléter</div>', '<small>Horaires</small><?php echo atlas_hours(); ?></div>')
+    s = re.sub(r'<span class="hours">.*?</span>', '<span class="hours"><?php echo atlas_hours(); ?></span>', s, flags=re.S)
+    s = re.sub(r'<span class="footer_credit">.*?</a></span>', '<?php atlas_credit(); ?>', s, flags=re.S)
     s = s.replace('src="https://www.google.com/maps?q=Dakar,Senegal&output=embed"',
                   "src=\"<?php echo esc_url('https://www.google.com/maps?q=' . rawurlencode(atlas_map_query()) . '&output=embed'); ?>\"")
     s = s.replace('href="https://www.google.com/maps/dir/?api=1&destination=Dakar,Senegal"',
@@ -187,7 +187,7 @@ def run(OUT, TITLES):
     order = ['header.php', 'footer.php', 'parts/cta.php', 'front-page.php', 'home.php', 'single.php']
     pages_files = sorted(f for f in os.listdir(OUT) if f.startswith('page-') and f not in ('page.php',))
     # même ordre que le menu pour les pages
-    pref = ['le-centre', 'specialites', 'imagerie', 'endoscopie', 'biopsie', 'nos-medecins', 'rendez-vous', 'contact']
+    pref = ['le-centre', 'specialites', 'imagerie', 'biologie', 'endoscopie', 'biopsie', 'nos-medecins', 'rendez-vous', 'contact']
     pages_files.sort(key=lambda f: (pref.index(f[5:-4]) if f[5:-4] in pref else 50, f))
     files = order + pages_files + ['page.php', '404.php']
 

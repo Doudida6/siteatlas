@@ -568,3 +568,9 @@ textarea.form_input { min-height: 130px; resize: vertical; }
   .doc_body { margin: -2.5rem .6rem 0; }
 }
 .nav_dropdown-toggle { line-height: inherit; padding: .3rem 0; }
+
+/* Horaires (plusieurs lignes) et crédit du pied de page */
+.hours { display: block; line-height: 1.7; }
+.footer_credit a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.footer_credit a:hover { color: var(--color-accent); }
+.footer_heart { color: #ff5a73; }

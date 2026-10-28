@@ -1,9 +1,10 @@
 """Génère rendez-vous.html et contact.html (formulaires de maquette, sans envoi réel)."""
 from layout import page, banner
+from hours import HTML as HOURS_HTML
 OK = '''<div class="form_success" role="status"><span class="value_icon"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3 class="heading-style-h4">{titre}</h3><p class="text-style-muted">{msg}</p></div>'''
 
 # --- Rendez-vous ---
-types = ['Consultation', 'Échographie', 'Radiographie', 'Scanner (bientôt disponible)', 'Endoscopie', 'Biopsie', 'Autre']
+types = ['Consultation', 'Échographie', 'Radiographie', 'Scanner (bientôt disponible)', 'Endoscopie', 'Biopsie', 'Biologie (analyses)', 'Autre']
 opts = ''.join(f'<option{" disabled" if "bientôt" in t else ""}>{t}</option>' for t in types)
 docs = ''.join(f'<option>{d}</option>' for d in ['Pas de préférence', 'Dr. Prénom Nom (Cardiologie)', 'Dr. Prénom Nom (Gastro-entérologie)', 'Dr. Prénom Nom (Médecine générale)'])
 body = banner('Prendre rendez-vous', [('Accueil', 'index.html')]) + f'''
@@ -46,7 +47,7 @@ body = banner('Contact', [('Accueil', 'index.html')]) + f'''
           <div class="contact_card">{ic('i-pin')}<div><small>Adresse</small>Centre Médical Atlas, Dakar, Sénégal <span class="text-style-muted">(adresse complète à compléter)</span></div></div>
           <div class="contact_card">{ic('i-phone')}<div><small>Téléphone</small><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></div></div>
           <div class="contact_card">{ic('i-chat')}<div><small>Email du secrétariat</small><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></div></div>
-          <div class="contact_card">{ic('i-calendar')}<div><small>Horaires</small>À compléter</div></div>
+          <div class="contact_card">{ic('i-calendar')}<div><small>Horaires</small>{HOURS_HTML}</div></div>
         </div>
         <div class="button-group">
           <a href="tel:+221788316060" class="button is-primary">Appeler</a>

@@ -63,9 +63,10 @@
           <div class="nav_dropdown">
             <button type="button" class="nav_link nav_dropdown-toggle" aria-expanded="false" data-dropdown-toggle>Examens <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4l4 4 4-4"/></svg></button>
             <div class="nav_dropdown-list">
-              <a href="imagerie.html" class="nav_sub-link">Imagerie</a>
+              <a href="imagerie.html" class="nav_sub-link">Imagerie médicale</a>
               <a href="endoscopie.html" class="nav_sub-link">Endoscopie</a>
               <a href="biopsie.html" class="nav_sub-link">Biopsie</a>
+              <a href="biologie.html" class="nav_sub-link">Biologie</a>
             </div>
           </div>
           <a href="nos-medecins.html" class="nav_link">Nos médecins</a>
@@ -168,8 +169,8 @@
         </div>
         <div class="svc_grid">
           <a href="specialites.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-stetho"/></svg><h3 class="heading-style-h4">Consultations</h3><p class="text-size-small">Médecine générale et spécialités médicales.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="imagerie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Échographie &amp; Doppler</h3><p class="text-size-small">Des images pour explorer organes et vaisseaux.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
-          <a href="imagerie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Radiographie numérique</h3><p class="text-size-small">Os, articulations et thorax, rapidement.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="imagerie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Imagerie médicale</h3><p class="text-size-small">Échographie, Doppler et radiographie numérique.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+          <a href="biologie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Biologie</h3><p class="text-size-small">Prise de sang et analyses, sur rendez-vous.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
           <a href="endoscopie.html" class="svc_card reveal"><svg class="svc_icon"><use href="#i-tube"/></svg><h3 class="heading-style-h4">Endoscopie digestive</h3><p class="text-size-small">Fibroscopie et coloscopie dans un environnement adapté.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
           <a href="biopsie.html" class="svc_card is-dark reveal"><svg class="svc_icon"><use href="#i-target"/></svg><h3 class="heading-style-h4">Biopsies guidées</h3><p class="text-size-small">Prélèvements guidés par l'imagerie, expliqués pas à pas.</p><span class="svc_link">En savoir plus <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
           <a href="imagerie.html#scanner" class="svc_card reveal"><svg class="svc_icon"><use href="#i-scan"/></svg><h3 class="heading-style-h4">Scanner</h3><p class="text-size-small">Prochainement disponible au Centre Atlas.</p><span class="svc_link">Bientôt <svg width="14" height="14"><use href="#i-clock"/></svg></span></a>
@@ -180,7 +181,7 @@
           <a href="specialites-cardiologie.html" class="chip2">Cardiologie</a>
           <a href="specialites-gynecologie.html" class="chip2">Gynécologie</a>
           <a href="specialites-gastro-enterologie.html" class="chip2">Gastro-entérologie</a>
-          <a href="specialites-neurologie.html" class="chip2">Neurologie</a>
+          <a href="specialites-diabetologie.html" class="chip2">Diabétologie</a>
           <a href="specialites-rhumatologie.html" class="chip2">Rhumatologie</a>
         </div>
         <div class="strip">
@@ -248,7 +249,7 @@
             <form data-form class="form_grid">
               <div class="form_field"><label for="h-nom">Nom et prénom</label><input class="form_input" id="h-nom" required autocomplete="name"></div>
               <div class="form_field"><label for="h-tel">Téléphone</label><input class="form_input" id="h-tel" type="tel" required autocomplete="tel"></div>
-              <div class="form_field"><label for="h-type">Type de rendez-vous</label><select class="form_input" id="h-type" required><option value="">Choisir…</option><option>Consultation</option><option>Échographie</option><option>Radiographie</option><option disabled>Scanner (bientôt disponible)</option><option>Endoscopie</option><option>Biopsie</option><option>Autre</option></select></div>
+              <div class="form_field"><label for="h-type">Type de rendez-vous</label><select class="form_input" id="h-type" required><option value="">Choisir…</option><option>Consultation</option><option>Échographie</option><option>Radiographie</option><option disabled>Scanner (bientôt disponible)</option><option>Endoscopie</option><option>Biopsie</option><option>Biologie (analyses)</option><option>Autre</option></select></div>
               <div class="form_field"><label for="h-date">Date souhaitée</label><input class="form_input" id="h-date" type="date"></div>
               <div class="form_field is-full"><label for="h-msg">Message <span>(facultatif)</span></label><textarea class="form_input" id="h-msg" style="min-height:90px"></textarea></div>
               <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-self:start">Envoyer ma demande</button></div>
@@ -341,7 +342,7 @@
             <ul class="footer2_list">
               <li><svg><use href="#i-pin"/></svg><span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span></li>
               <li><svg><use href="#i-mail"/></svg><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
-              <li><svg><use href="#i-clock"/></svg>Horaires à compléter</li>
+              <li><svg><use href="#i-clock"/></svg><span class="hours">Médecine générale : lundi au vendredi, 9h - 18h ; samedi, 9h - 14h<br>Gynécologie : lundi, 15h - 18h<br>Cardiologie : mercredi, 15h - 18h<br>Diabétologie : samedi, 9h - 14h</span></li>
               <li><svg><use href="#i-phone"/></svg><span><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></span></li>
             </ul>
           </div>
@@ -351,7 +352,8 @@
               <li><a href="index.html">Accueil</a></li>
               <li><a href="le-centre.html">Le Centre</a></li>
               <li><a href="specialites.html">Spécialités</a></li>
-              <li><a href="imagerie.html">Imagerie</a></li>
+              <li><a href="imagerie.html">Imagerie médicale</a></li>
+              <li><a href="biologie.html">Biologie</a></li>
               <li><a href="nos-medecins.html">Nos médecins</a></li>
               <li><a href="blog.html">Conseils santé</a></li>
               <li><a href="contact.html">Contact</a></li>
@@ -364,7 +366,7 @@
             <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Faire une demande</a>
           </div>
         </div>
-        <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span>Maquette de présentation</span></div>
+        <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span class="footer_credit">Créé avec <span class="footer_heart" aria-label="amour">♥</span> par <a href="https://digifab.agency/" target="_blank" rel="noopener">digifab agency</a></span></div>
       </div>
     </div>
   </footer>

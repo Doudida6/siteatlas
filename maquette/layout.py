@@ -8,7 +8,8 @@ _mobile = re.search(r"<!-- Barre d'accès rapide mobile -->.*?</nav>\n", _h, re.
 _head = _h.split('<body>')[0]
 
 def _fix(block, current=None):
-    block = re.sub(r'href="#(?!")([a-z-]+)"', r'href="index.html#\1"', block)
+    # seuls les liens <a> vers des ancres de l'accueil sont réécrits (pas les <use href="#i-..."> du sprite d'icônes)
+    block = re.sub(r'(<a\b[^>]*\bhref=")#([a-z-]+)"', r'\1index.html#\2"', block)
     block = block.replace('href="index.html#centre"', 'href="le-centre.html"')
     block = block.replace('href="index.html#specialites"', 'href="specialites.html"')
     block = block.replace('href="index.html#rendez-vous"', 'href="rendez-vous.html"')

@@ -1,5 +1,6 @@
 """Génère blog.html et un exemple d'article. Contenus d'exemple : à remplacer/valider par le centre."""
 from layout import page, banner, CTA
+from articles_data import NEW_ARTICLES
 
 ARTS = [
  dict(t="Échographie abdominale : comment s'y préparer ?", cat='Imagerie', d='12 octobre 2026', lect='4 min', ex="Jeûne, vessie pleine, ordonnance : les réponses aux questions les plus fréquentes avant votre examen."),
@@ -9,11 +10,13 @@ ARTS = [
  dict(t="Comprendre la coloscopie", cat='Endoscopie', d='12 septembre 2026', lect='5 min', ex="À quoi sert cet examen, comment se préparer et ce qui se passe le jour J."),
  dict(t="Le suivi gynécologique : pourquoi consulter régulièrement ?", cat='Gynécologie', d='3 septembre 2026', lect='3 min', ex="Un rendez-vous de prévention pour être accompagnée à chaque étape de la vie."),
 ]
-cats = ['Imagerie', 'Endoscopie', 'Cardiologie', 'Gastro-entérologie', 'Gynécologie', 'Rhumatologie']
+ARTS = ARTS + [dict(t=a['t'], cat=a['cat'], d=['5 novembre 2026', '12 novembre 2026', '19 novembre 2026'][i], lect='4 min', ex=a['ex'], slug=a['slug'], days=a['days']) for i, a in enumerate(NEW_ARTICLES)]
+cats = ['Imagerie', 'Endoscopie', 'Cardiologie', 'Gastro-entérologie', 'Gynécologie', 'Rhumatologie', 'Diabétologie']
 filters = '<button class="blog_filter is-active" data-filter="all">Tous</button>' + ''.join(f'<button class="blog_filter" data-filter="{c}">{c}</button>' for c in cats)
 feat = ARTS[0]
+_href = lambda a: 'article-' + a['slug'] + '.html' if a.get('slug') else 'article-exemple.html'
 def card(a):
-    return f'''        <a href="article-exemple.html" class="blog_card reveal" data-cat="{a['cat']}"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">{a['cat']}</span><span>{a['d']}</span></div><h3 class="heading-style-h4">{a['t']}</h3><p class="text-size-small text-style-muted">{a['ex']}</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+    return f'''        <a href="{_href(a)}" class="blog_card reveal" data-cat="{a['cat']}"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">{a['cat']}</span><span>{a['d']}</span></div><h3 class="heading-style-h4">{a['t']}</h3><p class="text-size-small text-style-muted">{a['ex']}</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
 '''
 body = banner('Conseils santé', [('Accueil', 'index.html')]) + f'''
   <!-- Articles d'exemple : à remplacer et à faire valider par les médecins du centre -->
@@ -73,3 +76,23 @@ body = banner('Échographie abdominale : comment s\'y préparer ?', [('Accueil',
 ''' + CTA
 open('article-exemple.html', 'w').write(page("Échographie abdominale : comment s'y préparer ? | Centre Médical Atlas", "Jeûne, vessie pleine, ordonnance : tout savoir pour bien préparer votre échographie abdominale à Dakar.", 'blog.html', body))
 print('ok')
+
+# --- Pages des nouveaux articles ---
+for a in NEW_ARTICLES:
+    body = banner(a['t'], [('Accueil', 'index.html'), ('Conseils santé', 'blog.html')]) + f'''
+  <!-- Article d'exemple : contenu à relire et valider par les médecins du centre -->
+  <section class="padding-section-large">
+    <div class="padding-global"><div class="container-large article_grid">
+      <article>
+        <div class="blog_meta" style="margin-bottom:1.25rem"><span class="chip">{a['cat']}</span><span>4 min de lecture</span></div>
+        <div class="article_cover photo-placeholder">Photo de couverture de l'article</div>
+        <div class="article_body">{a['body']}</div>
+      </article>
+      <aside class="fiche_aside">
+        <div class="aside_card"><h3 class="heading-style-h4">Un examen à prévoir ?</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a></div>
+        <div class="aside_links"><strong>À lire aussi</strong>{rel}</div>
+      </aside>
+    </div></div>
+  </section>
+''' + CTA
+    open('article-' + a['slug'] + '.html', 'w').write(page(a['t'] + ' | Centre Médical Atlas', a['ex'], 'blog.html', body))

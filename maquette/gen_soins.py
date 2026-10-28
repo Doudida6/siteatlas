@@ -118,3 +118,34 @@ build('biopsie.html', 'Biopsie à Dakar : mammaire, hépatique, échoguidée | C
   "Nous détaillons ici chaque type de biopsie : pourquoi elle est proposée, comment elle se déroule et ce qui se passe ensuite.",
   BIO, F_BIO, "Les informations présentées sont générales et ne remplacent pas l'avis de votre médecin. Les actes proposés dépendent de l'offre effective du centre.", extra=reassure)
 print('ok')
+
+# --- Biologie ---
+F_BIOLO = [("Indications", 'indications'), ("Préparation", 'preparation'), ("Déroulement", 'deroulement'), ("Résultats", 'resultats')]
+BIOLO = [
+ dict(id='prise-de-sang', nom='Prise de sang et bilan sanguin', photo="Photo : espace de prélèvement Atlas",
+  intro="Un prélèvement de sang permet de mesurer de nombreux paramètres utiles pour comprendre votre état de santé.",
+  indications="Bilan de santé, fatigue, suivi d'un traitement, surveillance d'une maladie chronique ou examens demandés avant une intervention ou une consultation spécialisée.",
+  preparation="Selon l'analyse demandée, il peut vous être demandé d'être à jeun. Apportez votre ordonnance. Buvez de l'eau normalement, sauf consigne contraire de l'équipe.",
+  deroulement="Un professionnel prélève une petite quantité de sang au pli du coude. Le prélèvement est rapide et peut provoquer une légère gêne.",
+  resultats="Le délai dépend des analyses demandées. Les résultats vous sont remis et expliqués par le médecin, ou transmis à votre médecin traitant.",
+  duree="5 à 10 minutes", cta="Prendre rendez-vous pour des analyses"),
+ dict(id='glycemie', nom='Glycémie et suivi du diabète', photo="Photo : analyses de laboratoire",
+  intro="La glycémie et l'HbA1c aident à dépister le diabète et à suivre son équilibre dans la durée.",
+  indications="Dépistage du diabète, surveillance d'un diabète connu, symptômes comme une soif intense, une fatigue inhabituelle ou un besoin fréquent d'uriner.",
+  preparation="Une glycémie à jeun demande de ne rien manger ni boire de sucré pendant plusieurs heures. L'équipe vous précise la consigne adaptée à votre analyse.",
+  deroulement="L'analyse se fait à partir d'une prise de sang. Pour un suivi régulier, elle est souvent associée à une consultation de diabétologie.",
+  resultats="Les valeurs sont commentées par le médecin, qui adapte si besoin votre suivi ou votre traitement.",
+  duree="5 à 10 minutes", cta="Prendre rendez-vous pour des analyses"),
+ dict(id='bilan-lipidique', nom='Bilan lipidique (cholestérol)', photo="Photo : analyses de laboratoire",
+  intro="Il mesure les graisses présentes dans le sang, un élément important de la santé du cœur et des vaisseaux.",
+  indications="Prévention cardiovasculaire, hypertension, antécédents familiaux, surpoids ou suivi d'un traitement.",
+  preparation="Un jeûne de quelques heures est souvent demandé. Les consignes précises vous sont données lors du rendez-vous.",
+  deroulement="Il se réalise à partir d'une simple prise de sang, souvent en même temps que d'autres analyses.",
+  resultats="Le médecin vous explique les résultats et les conseils adaptés (alimentation, activité, suivi).",
+  duree="5 à 10 minutes", cta="Prendre rendez-vous pour des analyses"),
+]
+build('biologie.html', 'Biologie médicale à Dakar : prise de sang et analyses | Centre Médical Atlas',
+  "Prise de sang, glycémie, bilan lipidique : analyses de biologie médicale à Dakar. Prenez rendez-vous au Centre Médical Atlas.",
+  'Biologie', 'Biologie médicale', 'Des analyses expliquées simplement',
+  "Les analyses de biologie complètent la consultation : elles aident votre médecin à poser un diagnostic et à suivre votre santé.",
+  BIOLO, F_BIOLO, "Les analyses proposées dépendent de l'offre du laboratoire. Les informations présentées sont générales : l'équipe vous donne les consignes adaptées à votre situation.")

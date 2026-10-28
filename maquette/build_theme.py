@@ -164,7 +164,7 @@ w('footer.php', conv(footer) + '</div>\n\n' + conv(mobile) + '\n<?php wp_footer(
 w('parts/cta.php', '<?php if (!defined(\'ABSPATH\')) exit; ?>\n' + conv(cta))
 
 # ---------- Pages générées ----------
-TITLES = {'accueil': 'Accueil', 'le-centre': 'Le Centre', 'specialites': 'Spécialités', 'imagerie': 'Imagerie',
+TITLES = {'accueil': 'Accueil', 'le-centre': 'Le Centre', 'specialites': 'Spécialités', 'imagerie': 'Imagerie médicale', 'biologie': 'Biologie',
           'endoscopie': 'Endoscopie', 'biopsie': 'Biopsie', 'nos-medecins': 'Nos médecins',
           'conseils-sante': 'Conseils santé', 'rendez-vous': 'Prendre rendez-vous', 'contact': 'Contact'}
 specs = runpy.run_path('gen_specialites.py')['SPECS']
@@ -178,7 +178,7 @@ def page_tpl(body):
 FORM_TYPES = {'rendez-vous': 'Demande de rendez-vous', 'contact': 'Message de contact'}
 for f in sorted(glob.glob('*.html')):
     slug = f[:-5]
-    if slug in ('index', 'blog', 'article-exemple'):
+    if slug in ('index', 'blog') or slug.startswith('article-'):
         continue
     body = middle(open(f, encoding='utf-8').read())
     body = CTA_RE.sub("<?php get_template_part('parts/cta'); ?>\n", body)
@@ -279,7 +279,7 @@ w('404.php', page_tpl(conv(banner('Page introuvable', '<a href="index.html">Accu
 pages_php = ',\n        '.join(f"{php_str(k)} => {php_str(v)}" for k, v in TITLES.items())
 posts_php = ',\n        '.join(
     "[" + ", ".join([f"'title' => {php_str(a['t'])}", f"'cat' => {php_str(a['cat'])}", f"'excerpt' => {php_str(a['ex'])}", f"'days' => {i * 9 + 3}"]) + "]"
-    for i, a in enumerate(ARTS))
+    for i, a in enumerate(ARTS[:6]))
 article_html = middle(open('article-exemple.html', encoding='utf-8').read())
 art_body = block(article_html, '<div class="article_body">')
 art_body = art_body[len('<div class="article_body">'):-len('</div>')].strip()
@@ -290,8 +290,21 @@ w('functions.php', FUNCTIONS)
 
 # ---------- Fichiers statiques du thème (inc/) + passe finale (textes, photos, coordonnées, médecins, menu) ----------
 os.makedirs(f'{OUT}/inc', exist_ok=True)
+import hours
+from articles_data import NEW_ARTICLES
 for f in glob.glob('theme-src/inc/*.php'):
-    shutil.copy(f, f'{OUT}/inc/')
+    code = open(f, encoding='utf-8').read()
+    code = code.replace('{{HOURS}}', '\\n'.join(hours.LINES))
+    open(f'{OUT}/inc/' + os.path.basename(f), 'w', encoding='utf-8').write(code)
+# inc/articles.php : contenu des articles d'exemple ajoutés après l'installation
+arts = ["<?php", "if (!defined('ABSPATH')) exit;", "", "function atlas_new_articles() {", "    return ["]
+for a in NEW_ARTICLES:
+    arts.append(f"        ['slug' => {php_str(a['slug'])}, 'title' => {php_str(a['t'])}, 'cat' => {php_str(a['cat'])}, 'excerpt' => {php_str(a['ex'])}, 'days' => {a['days']}],")
+arts += ["    ];", "}", "", "function atlas_article_body($slug) {", "    $bodies = ["]
+for a in NEW_ARTICLES:
+    arts.append(f"        {php_str(a['slug'])} => <<<'HTML'\n{a['body']}\nHTML,")
+arts += ["    ];", "    return isset($bodies[$slug]) ? $bodies[$slug] : '';", "}", ""]
+open(f'{OUT}/inc/articles.php', 'w', encoding='utf-8').write('\n'.join(arts))
 import theme_post
 theme_post.run(OUT, TITLES)
 print('Thème généré :', OUT, '-', len(os.listdir(OUT)), 'éléments')

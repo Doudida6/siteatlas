@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'medecins', 'menu', 'admin', 'setup2'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'medecins', 'menu', 'admin', 'setup2', 'setup3'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -152,7 +152,8 @@ function atlas_setup() {
         'accueil' => 'Accueil',
         'le-centre' => 'Le Centre',
         'specialites' => 'Spécialités',
-        'imagerie' => 'Imagerie',
+        'imagerie' => 'Imagerie médicale',
+        'biologie' => 'Biologie',
         'endoscopie' => 'Endoscopie',
         'biopsie' => 'Biopsie',
         'nos-medecins' => 'Nos médecins',
@@ -163,7 +164,7 @@ function atlas_setup() {
         'specialites-cardiologie' => 'Cardiologie',
         'specialites-gynecologie' => 'Gynécologie',
         'specialites-gastro-enterologie' => 'Gastro-entérologie',
-        'specialites-neurologie' => 'Neurologie',
+        'specialites-diabetologie' => 'Diabétologie',
         'specialites-rhumatologie' => 'Rhumatologie'
     ];
     $ids = [];
@@ -216,6 +217,8 @@ HTML;
             'post_category' => [$cat_id], 'post_date_gmt' => $when, 'post_date' => get_date_from_gmt($when),
         ]);
     }
+    atlas_add_new_articles();
+
     // Retire l'article et la page créés par défaut par WordPress (mis à la corbeille, récupérables)
     foreach (['hello-world' => 'post', 'sample-page' => 'page'] as $slug => $type) {
         $p = get_page_by_path($slug, OBJECT, $type);

@@ -1,6 +1,6 @@
 """Génère nos-medecins.html. Fiches à compléter avec les vrais médecins du centre."""
 from layout import page, banner, CTA
-DOCS = [("Cardiologie",), ("Gastro-entérologie",), ("Médecine générale",), ("Gynécologie",), ("Neurologie",), ("Rhumatologie",)]
+DOCS = [("Cardiologie",), ("Gastro-entérologie",), ("Médecine générale",), ("Gynécologie",), ("Diabétologie",), ("Rhumatologie",)]
 def card(spec):
     return f'''        <article class="doc_card reveal">
           <div class="doc_photo photo-placeholder">Portrait professionnel</div>

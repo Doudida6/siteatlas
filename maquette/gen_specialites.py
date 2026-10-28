@@ -3,19 +3,19 @@ Contenus indicatifs : à faire valider par les médecins du centre avant publica
 from layout import page, banner, CTA
 
 SPECS = [
- dict(slug='medecine-generale', nom='Médecine générale', icon='i-stetho',
+ dict(slug='medecine-generale', nom='Médecine générale', icon='i-stetho', horaires='Lundi au vendredi : 9h - 18h · Samedi : 9h - 14h',
   intro="Votre premier interlocuteur pour tout problème de santé, pour le suivi au long cours et l'orientation vers le bon spécialiste.",
   quand=["Fièvre, fatigue, toux, douleurs ou tout symptôme qui vous inquiète","Suivi d'une maladie chronique (tension, diabète…)","Bilan de santé, vaccination, certificat médical","Besoin d'un avis avant de consulter un spécialiste"],
   motifs=["Maladies courantes de l'adulte et de l'enfant","Suivi des maladies chroniques","Prévention et dépistage","Renouvellement et adaptation des traitements"],
   deroulement=["Échange sur vos symptômes et vos antécédents","Examen clinique complet","Explications, conseils et prescription si nécessaire","Orientation vers un spécialiste ou un examen si besoin"],
   examens=["Bilan biologique (sur prescription)","Échographie ou radiographie selon la situation","Avis spécialisé au sein du centre"]),
- dict(slug='cardiologie', nom='Cardiologie', icon='i-stetho',
+ dict(slug='cardiologie', nom='Cardiologie', icon='i-stetho', horaires='Mercredi : 15h - 18h',
   intro="Le dépistage, le suivi et la prise en charge des maladies du cœur et des vaisseaux.",
   quand=["Essoufflement, douleur thoracique ou palpitations","Hypertension artérielle ou antécédents familiaux","Bilan avant la reprise du sport","Suivi d'une maladie cardiaque connue"],
   motifs=["Hypertension artérielle","Troubles du rythme","Douleurs thoraciques et essoufflement","Suivi cardiovasculaire et prévention"],
   deroulement=["Recueil de vos symptômes et de vos antécédents","Mesure de la tension et examen clinique","Examens complémentaires si nécessaires","Explication des résultats et du plan de suivi"],
   examens=["Électrocardiogramme","Échographie cardiaque et Doppler, selon disponibilité","Bilan biologique sur prescription"]),
- dict(slug='gynecologie', nom='Gynécologie', icon='i-calendar',
+ dict(slug='gynecologie', nom='Gynécologie', icon='i-calendar', horaires='Lundi : 15h - 18h',
   intro="Un suivi attentif et confidentiel de la santé des femmes, à chaque étape de la vie.",
   quand=["Suivi gynécologique régulier","Douleurs pelviennes ou troubles du cycle","Souhait de contraception ou de grossesse","Suivi de grossesse et échographies"],
   motifs=["Consultation de suivi et prévention","Troubles du cycle et douleurs","Contraception","Suivi de grossesse"],
@@ -27,12 +27,12 @@ SPECS = [
   motifs=["Reflux et maux d'estomac","Troubles du transit","Maladies du foie","Dépistage et surveillance digestive"],
   deroulement=["Consultation pour comprendre vos symptômes","Examen clinique de l'abdomen","Décision d'examen éventuel (échographie, endoscopie)","Explication des résultats et du traitement"],
   examens=["Fibroscopie digestive","Coloscopie","Échographie abdominale","Biopsies si nécessaire"]),
- dict(slug='neurologie', nom='Neurologie', icon='i-target',
-  intro="L'évaluation et le suivi des maladies du système nerveux, du cerveau aux nerfs périphériques.",
-  quand=["Maux de tête fréquents ou inhabituels","Vertiges, troubles de l'équilibre","Fourmillements, faiblesse d'un membre","Troubles de la mémoire ou du sommeil"],
-  motifs=["Céphalées et migraines","Vertiges","Douleurs neurologiques","Suivi de maladies neurologiques"],
-  deroulement=["Recueil détaillé de vos symptômes","Examen neurologique (réflexes, force, équilibre)","Examens complémentaires si utiles","Traitement et suivi expliqués clairement"],
-  examens=["Imagerie cérébrale, selon disponibilité","Bilan biologique sur prescription","Avis complémentaire d'un autre spécialiste"]),
+ dict(slug='diabetologie', nom='Diabétologie', icon='i-target', horaires='Samedi : 9h - 14h',
+  intro="Le dépistage, le suivi et la prise en charge du diabète, pour garder une glycémie équilibrée au quotidien.",
+  quand=["Soif intense, besoin fréquent d'uriner, fatigue inhabituelle","Glycémie élevée lors d'une prise de sang","Diabète déjà connu : suivi régulier et adaptation du traitement","Antécédents familiaux de diabète ou surpoids"],
+  motifs=["Diabète de type 1 et de type 2","Suivi de la glycémie et de l'HbA1c","Prévention des complications","Conseils d'hygiène de vie et d'alimentation"],
+  deroulement=["Échange sur vos symptômes, vos traitements et vos habitudes de vie","Examen clinique et lecture de vos derniers résultats","Examens complémentaires si nécessaires","Plan de suivi et conseils personnalisés"],
+  examens=["Bilan biologique : glycémie, HbA1c (sur prescription)","Bilan lipidique (cholestérol)","Dépistage des complications, selon l'avis du médecin"]),
  dict(slug='rhumatologie', nom='Rhumatologie', icon='i-scan',
   intro="La prise en charge des douleurs et maladies des articulations, du dos, des os et des muscles.",
   quand=["Douleurs articulaires ou du dos persistantes","Raideur matinale, gonflement d'une articulation","Douleurs après un effort ou un traumatisme","Suivi d'arthrose ou d'ostéoporose"],
@@ -65,7 +65,7 @@ FAQ = '''  <section class="padding-section-large">
 def li(items): return ''.join(f'<li>{i}</li>' for i in items)
 
 # --- Page générale ---
-cards = ''.join(f'''        <a href="specialites-{s['slug']}.html" class="spec_card reveal"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#{s['icon']}"/></svg></span><h3 class="heading-style-h4">{s['nom']}</h3><p class="text-size-small text-style-muted">{s['intro']}</p><span class="quick_link text-color-accent">En savoir plus <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></a>\n''' for s in SPECS)
+cards = ''.join(f'''        <a href="specialites-{s['slug']}.html" class="spec_card reveal"><span class="value_icon"><svg viewBox="0 0 24 24"><use href="#{s['icon']}"/></svg></span><h3 class="heading-style-h4">{s['nom']}</h3><p class="text-size-small text-style-muted">{s['intro']}</p>{('<p class="text-size-small"><strong>Consultations :</strong> ' + s['horaires'] + '</p>') if s.get('horaires') else ''}<span class="quick_link text-color-accent">En savoir plus <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></a>\n''' for s in SPECS)
 body = banner('Spécialités', [('Accueil', 'index.html')]) + f'''
   <section class="padding-section-large background-color-tint">
     <div class="padding-global"><div class="container-large">
@@ -79,7 +79,7 @@ body = banner('Spécialités', [('Accueil', 'index.html')]) + f'''
     </div></div>
   </section>
 ''' + FAQ + CTA
-open('specialites.html', 'w').write(page('Spécialités médicales à Dakar | Centre Médical Atlas', 'Médecine générale, cardiologie, gynécologie, gastro-entérologie, neurologie et rhumatologie au Centre Médical Atlas, Dakar.', 'specialites.html', body))
+open('specialites.html', 'w').write(page('Spécialités médicales à Dakar | Centre Médical Atlas', 'Médecine générale, cardiologie, gynécologie, gastro-entérologie, diabétologie et rhumatologie au Centre Médical Atlas, Dakar.', 'specialites.html', body))
 
 # --- Fiches ---
 for s in SPECS:
@@ -99,7 +99,7 @@ for s in SPECS:
         <div class="fiche_block reveal"><h2>Examens éventuellement associés</h2><ul class="list-check">{li(s['examens'])}</ul></div>
       </div>
       <aside class="fiche_aside">
-        <div class="aside_card"><h3 class="heading-style-h4">Consulter en {s['nom'].lower()}</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p><a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
+        <div class="aside_card"><h3 class="heading-style-h4">Consulter en {s['nom'].lower()}</h3><p class="text-size-small">Faites votre demande, notre équipe vous rappelle pour confirmer un créneau.</p>{('<p class="text-size-small"><strong>Consultations :</strong><br>' + s['horaires'] + '</p>') if s.get('horaires') else ''}<a href="rendez-vous.html" class="button is-primary" style="justify-content:center">Prendre rendez-vous</a><a href="tel:+221338678646" class="text-size-small" style="color:#fff">Ou appelez le 33 867 86 46</a></div>
         <div class="aside_links"><strong>Autres spécialités</strong>{nav}</div>
       </aside>
     </div></div>

@@ -581,6 +581,12 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 }
 .nav_dropdown-toggle { line-height: inherit; padding: .3rem 0; }
 
+/* Horaires (plusieurs lignes) et crédit du pied de page */
+.hours { display: block; line-height: 1.7; }
+.footer_credit a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.footer_credit a:hover { color: var(--color-accent); }
+.footer_heart { color: #ff5a73; }
+
 </style>
   <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('js-late')},3000)</script>
 </head>
@@ -622,8 +628,8 @@ textarea.form_input { min-height: 130px; resize: vertical; }
             <span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span>
           </a>
           <div class="nav_contacts">
-            <a href="mailto:centreatlasmedical@gmail.com" class="nav_contact"><svg><use href="index.html#i-mail"/></svg><span><b>Écrivez-nous</b><small>centreatlasmedical@gmail.com</small></span></a>
-            <a href="tel:+221338678646" class="nav_contact"><svg><use href="index.html#i-phone"/></svg><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <a href="mailto:centreatlasmedical@gmail.com" class="nav_contact"><svg><use href="#i-mail"/></svg><span><b>Écrivez-nous</b><small>centreatlasmedical@gmail.com</small></span></a>
+            <a href="tel:+221338678646" class="nav_contact"><svg><use href="#i-phone"/></svg><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
             <a href="rendez-vous.html" class="button is-dark">Prendre rendez-vous</a>
           </div>
           <button type="button" class="nav_toggle" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false"><span class="nav_toggle-bars"><i></i><i></i><i></i></span><span class="nav_toggle-label" data-nav-label>Menu</span></button>
@@ -635,9 +641,10 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           <div class="nav_dropdown">
             <button type="button" class="nav_link nav_dropdown-toggle" aria-expanded="false" data-dropdown-toggle>Examens <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4l4 4 4-4"/></svg></button>
             <div class="nav_dropdown-list">
-              <a href="imagerie.html" class="nav_sub-link">Imagerie</a>
+              <a href="imagerie.html" class="nav_sub-link">Imagerie médicale</a>
               <a href="endoscopie.html" class="nav_sub-link">Endoscopie</a>
               <a href="biopsie.html" class="nav_sub-link">Biopsie</a>
+              <a href="biologie.html" class="nav_sub-link">Biologie</a>
             </div>
           </div>
           <a href="nos-medecins.html" class="nav_link">Nos médecins</a>
@@ -646,9 +653,9 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           <a href="rendez-vous.html" class="button is-primary">Prendre rendez-vous</a>
         </nav>
         <div class="nav_social">
-          <a href="#" aria-label="Facebook"><svg><use href="index.html#i-fb"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg><use href="index.html#i-ig"/></svg></a>
-          <a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="index.html#i-wa"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+          <a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
         </div>
         </div>
       </div>
@@ -670,7 +677,7 @@ textarea.form_input { min-height: 130px; resize: vertical; }
         <h2 class="heading-style-h2">Comprendre pour mieux se soigner</h2>
         <p class="text-style-muted text-size-medium" style="margin-top:1rem">Des articles simples, rédigés avec nos médecins, pour vous aider à comprendre vos examens et votre santé.</p>
       </div>
-      <div class="blog_filters"><button class="blog_filter is-active" data-filter="all">Tous</button><button class="blog_filter" data-filter="Imagerie">Imagerie</button><button class="blog_filter" data-filter="Endoscopie">Endoscopie</button><button class="blog_filter" data-filter="Cardiologie">Cardiologie</button><button class="blog_filter" data-filter="Gastro-entérologie">Gastro-entérologie</button><button class="blog_filter" data-filter="Gynécologie">Gynécologie</button><button class="blog_filter" data-filter="Rhumatologie">Rhumatologie</button></div>
+      <div class="blog_filters"><button class="blog_filter is-active" data-filter="all">Tous</button><button class="blog_filter" data-filter="Imagerie">Imagerie</button><button class="blog_filter" data-filter="Endoscopie">Endoscopie</button><button class="blog_filter" data-filter="Cardiologie">Cardiologie</button><button class="blog_filter" data-filter="Gastro-entérologie">Gastro-entérologie</button><button class="blog_filter" data-filter="Gynécologie">Gynécologie</button><button class="blog_filter" data-filter="Rhumatologie">Rhumatologie</button><button class="blog_filter" data-filter="Diabétologie">Diabétologie</button></div>
       <a href="article-exemple.html" class="blog_featured reveal" data-cat="Imagerie">
         <div class="photo-placeholder">Photo de l'article à la une</div>
         <div class="blog_featured-body"><div class="blog_meta"><span class="chip">Imagerie</span><span>12 octobre 2026</span><span>4 min de lecture</span></div><h2 class="heading-style-h2" style="font-size:1.9rem">Échographie abdominale : comment s'y préparer ?</h2><p class="text-style-muted">Jeûne, vessie pleine, ordonnance : les réponses aux questions les plus fréquentes avant votre examen.</p><span class="button is-primary" style="justify-self:start">Lire l'article</span></div>
@@ -681,6 +688,9 @@ textarea.form_input { min-height: 130px; resize: vertical; }
         <a href="article-exemple.html" class="blog_card reveal" data-cat="Rhumatologie"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Rhumatologie</span><span>20 septembre 2026</span></div><h3 class="heading-style-h4">Douleurs du dos : quand s'en préoccuper ?</h3><p class="text-size-small text-style-muted">Les situations où une consultation est utile, et les gestes simples du quotidien.</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
         <a href="article-exemple.html" class="blog_card reveal" data-cat="Endoscopie"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Endoscopie</span><span>12 septembre 2026</span></div><h3 class="heading-style-h4">Comprendre la coloscopie</h3><p class="text-size-small text-style-muted">À quoi sert cet examen, comment se préparer et ce qui se passe le jour J.</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
         <a href="article-exemple.html" class="blog_card reveal" data-cat="Gynécologie"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Gynécologie</span><span>3 septembre 2026</span></div><h3 class="heading-style-h4">Le suivi gynécologique : pourquoi consulter régulièrement ?</h3><p class="text-size-small text-style-muted">Un rendez-vous de prévention pour être accompagnée à chaque étape de la vie.</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+        <a href="article-fibroscopie.html" class="blog_card reveal" data-cat="Endoscopie"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Endoscopie</span><span>5 novembre 2026</span></div><h3 class="heading-style-h4">La fibroscopie digestive : à quoi sert-elle et comment se déroule-t-elle ?</h3><p class="text-size-small text-style-muted">Indications, préparation, déroulement et suites : tout ce qu'il faut savoir avant une fibroscopie.</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+        <a href="article-examens-imagerie.html" class="blog_card reveal" data-cat="Imagerie"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Imagerie</span><span>12 novembre 2026</span></div><h3 class="heading-style-h4">Examens d'imagerie : échographie, radiographie, scanner, lequel pour quoi ?</h3><p class="text-size-small text-style-muted">Comprendre les différences entre les examens d'imagerie et savoir comment s'y préparer.</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
+        <a href="article-scanner.html" class="blog_card reveal" data-cat="Imagerie"><div class="photo-placeholder">Photo de l'article</div><div class="blog_card-body"><div class="blog_meta"><span class="chip">Imagerie</span><span>19 novembre 2026</span></div><h3 class="heading-style-h4">Le scanner : comprendre l'examen avant de le passer</h3><p class="text-size-small text-style-muted">À quoi sert un scanner, comment s'y préparer et comment se déroule l'examen.</p><span class="quick_link text-color-accent">Lire l'article <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-arrow"/></svg></span></div></a>
       </div>
     </div></div>
   </section>
@@ -708,15 +718,15 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           <div>
             <a href="index.html" class="nav_logo" style="margin-bottom:1.2rem"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTAwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNjAgOGMtMTQgMC0yMiA4LTI4IDIwTDIwIDUyYy04IDE0IDAgMzYgMjAgMzYgMTAgMCAxOC02IDI0LTE0bC00LTRjLTYgNi0xMiAxMC0xOCAxMC0xMCAwLTE0LTEwLTEwLTE4bDEyLTIyYzQtOCA4LTEyIDE0LTEyczEwIDQgMTQgMTJsMTIgMjJjNCA4IDAgMTgtMTAgMTgtNiAwLTEyLTQtMTgtMTBsLTQgNGM2IDggMTQgMTQgMjQgMTQgMjAgMCAyOC0yMiAyMC0zNkw4OCAyOEM4MiAxNiA3NCA4IDYwIDh6IiBmaWxsPSIjMDBCMENDIi8+CiAgPHBhdGggZD0iTTggNjJoMzRsNi0xMiA4IDI4IDYtNDAgOCAzMiA2LThoMzYiIHN0cm9rZT0iIzAwQjBDQyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" class="nav_logo-icon"><span class="nav_logo-text"><small>Centre Médical</small><strong>ATLAS</strong></span></a>
             <p class="text-size-small">Votre santé. Notre engagement.<br>Médecine • Imagerie • Endoscopie • Biopsie</p>
-            <div class="footer2_social"><a href="#" aria-label="Facebook"><svg><use href="index.html#i-fb"/></svg></a><a href="#" aria-label="Instagram"><svg><use href="index.html#i-ig"/></svg></a><a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="index.html#i-wa"/></svg></a></div>
+            <div class="footer2_social"><a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a><a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a><a href="https://wa.me/221788316060" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a></div>
           </div>
           <div>
             <h4 class="footer_title">Coordonnées</h4>
             <ul class="footer2_list">
-              <li><svg><use href="index.html#i-pin"/></svg><span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span></li>
-              <li><svg><use href="index.html#i-mail"/></svg><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
-              <li><svg><use href="index.html#i-clock"/></svg>Horaires à compléter</li>
-              <li><svg><use href="index.html#i-phone"/></svg><span><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></span></li>
+              <li><svg><use href="#i-pin"/></svg><span>Dakar, Sénégal <span style="opacity:.6">(adresse à compléter)</span></span></li>
+              <li><svg><use href="#i-mail"/></svg><a href="mailto:centreatlasmedical@gmail.com">centreatlasmedical@gmail.com</a></li>
+              <li><svg><use href="#i-clock"/></svg><span class="hours">Médecine générale : lundi au vendredi, 9h - 18h ; samedi, 9h - 14h<br>Gynécologie : lundi, 15h - 18h<br>Cardiologie : mercredi, 15h - 18h<br>Diabétologie : samedi, 9h - 14h</span></li>
+              <li><svg><use href="#i-phone"/></svg><span><a href="tel:+221338678646">33 867 86 46</a> · <a href="tel:+221788316060">78 831 60 60</a></span></li>
             </ul>
           </div>
           <div>
@@ -725,7 +735,8 @@ textarea.form_input { min-height: 130px; resize: vertical; }
               <li><a href="index.html">Accueil</a></li>
               <li><a href="le-centre.html">Le Centre</a></li>
               <li><a href="specialites.html">Spécialités</a></li>
-              <li><a href="imagerie.html">Imagerie</a></li>
+              <li><a href="imagerie.html">Imagerie médicale</a></li>
+              <li><a href="biologie.html">Biologie</a></li>
               <li><a href="nos-medecins.html">Nos médecins</a></li>
               <li><a href="blog.html">Conseils santé</a></li>
               <li><a href="contact.html">Contact</a></li>
@@ -733,12 +744,12 @@ textarea.form_input { min-height: 130px; resize: vertical; }
           </div>
           <div>
             <h4 class="footer_title">Prendre rendez-vous</h4>
-            <a href="tel:+221338678646" class="footer2_call"><span class="footer2_call-icon"><svg><use href="index.html#i-phone"/></svg></span><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
+            <a href="tel:+221338678646" class="footer2_call"><span class="footer2_call-icon"><svg><use href="#i-phone"/></svg></span><span><b>Appelez-nous</b><small>33 867 86 46</small></span></a>
             <p class="text-size-small" style="margin-top:1rem">Ou envoyez-nous une demande en ligne : nous vous rappelons pour confirmer.</p>
             <a href="rendez-vous.html" class="button is-primary" style="margin-top:1rem">Faire une demande</a>
           </div>
         </div>
-        <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span>Maquette de présentation</span></div>
+        <div class="footer_bottom"><span>© 2026 Centre Médical Atlas. Tous droits réservés.</span><span class="footer_credit">Créé avec <span class="footer_heart" aria-label="amour">♥</span> par <a href="https://digifab.agency/" target="_blank" rel="noopener">digifab agency</a></span></div>
       </div>
     </div>
   </footer>
@@ -746,9 +757,9 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 
 <!-- Barre d'accès rapide mobile -->
 <nav class="mobile-bar" aria-label="Accès rapide">
-  <a href="tel:+221788316060"><svg><use href="index.html#i-phone"/></svg>Appeler</a>
-  <a href="https://wa.me/221788316060"><svg><use href="index.html#i-chat"/></svg>WhatsApp</a>
-  <a href="rendez-vous.html" class="is-main"><svg><use href="index.html#i-calendar"/></svg>Rendez-vous</a>
+  <a href="tel:+221788316060"><svg><use href="#i-phone"/></svg>Appeler</a>
+  <a href="https://wa.me/221788316060"><svg><use href="#i-chat"/></svg>WhatsApp</a>
+  <a href="rendez-vous.html" class="is-main"><svg><use href="#i-calendar"/></svg>Rendez-vous</a>
 </nav>
 
 <script>

@@ -57,7 +57,7 @@
         <ul class="list-check" style="margin-top:1rem">
           <li><?php atlas_t('tf7b5d48a'); ?></li><li><?php atlas_t('td45c5a60'); ?></li>
           <li><?php atlas_t('t948505fb'); ?> <span class="badge"><?php atlas_t('t63164a0b'); ?></span></li>
-          <li><?php atlas_t('te8e111ee'); ?></li><li><?php atlas_t('t91ba9363'); ?></li>
+          <li><?php atlas_t('te8e111ee'); ?></li><li><?php atlas_t('t91ba9363'); ?></li><li><?php atlas_t('tdbee2275'); ?></li>
         </ul>
       </div>
     </div></div>
