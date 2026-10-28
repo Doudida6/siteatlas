@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -182,12 +182,12 @@ function atlas_setup() {
 
     // Articles d'exemple (à remplacer par les vrais articles du centre)
     $samples = [
-        ['title' => 'Échographie abdominale : comment s\'y préparer ?', 'cat' => 'Imagerie', 'excerpt' => 'Jeûne, vessie pleine, ordonnance : les réponses aux questions les plus fréquentes avant votre examen.', 'days' => 3],
-        ['title' => 'Brûlures d\'estomac : quand faut-il consulter ?', 'cat' => 'Gastro-entérologie', 'excerpt' => 'Reconnaître les signes qui justifient un avis médical et ce qu\'on peut vous proposer.', 'days' => 12],
-        ['title' => 'Tension artérielle : les bons réflexes', 'cat' => 'Cardiologie', 'excerpt' => 'Pourquoi la surveiller, comment la mesurer correctement et quand en parler à votre médecin.', 'days' => 21],
-        ['title' => 'Douleurs du dos : quand s\'en préoccuper ?', 'cat' => 'Rhumatologie', 'excerpt' => 'Les situations où une consultation est utile, et les gestes simples du quotidien.', 'days' => 30],
-        ['title' => 'Comprendre la coloscopie', 'cat' => 'Endoscopie', 'excerpt' => 'À quoi sert cet examen, comment se préparer et ce qui se passe le jour J.', 'days' => 39],
-        ['title' => 'Le suivi gynécologique : pourquoi consulter régulièrement ?', 'cat' => 'Gynécologie', 'excerpt' => 'Un rendez-vous de prévention pour être accompagnée à chaque étape de la vie.', 'days' => 48]
+        ['title' => 'Échographie abdominale : comment s\'y préparer ?', 'cat' => 'Imagerie', 'excerpt' => 'Jeûne, vessie pleine, ordonnance : les réponses aux questions les plus fréquentes avant votre examen.', 'days' => 3, 'slug' => ''],
+        ['title' => 'Brûlures d\'estomac : quand faut-il consulter ?', 'cat' => 'Gastro-entérologie', 'excerpt' => 'Reconnaître les signes qui justifient un avis médical et ce qu\'on peut vous proposer.', 'days' => 12, 'slug' => 'brulures-estomac'],
+        ['title' => 'Tension artérielle : les bons réflexes', 'cat' => 'Cardiologie', 'excerpt' => 'Pourquoi la surveiller, comment la mesurer correctement et quand en parler à votre médecin.', 'days' => 21, 'slug' => 'tension-arterielle'],
+        ['title' => 'Douleurs du dos : quand s\'en préoccuper ?', 'cat' => 'Rhumatologie', 'excerpt' => 'Les situations où une consultation est utile, et les gestes simples du quotidien.', 'days' => 30, 'slug' => 'douleurs-dos'],
+        ['title' => 'Comprendre la coloscopie', 'cat' => 'Endoscopie', 'excerpt' => 'À quoi sert cet examen, comment se préparer et ce qui se passe le jour J.', 'days' => 39, 'slug' => 'coloscopie'],
+        ['title' => 'Le suivi gynécologique : pourquoi consulter régulièrement ?', 'cat' => 'Gynécologie', 'excerpt' => 'Un rendez-vous de prévention pour être accompagnée à chaque étape de la vie.', 'days' => 48, 'slug' => 'suivi-gynecologique']
     ];
     $first_body = <<<'HTML'
 <p><strong>L'échographie abdominale est un examen simple et indolore. Bien s'y préparer permet d'obtenir des images de qualité et un résultat fiable.</strong></p>
@@ -213,7 +213,7 @@ HTML;
         $when = gmdate('Y-m-d H:i:s', time() - $s['days'] * DAY_IN_SECONDS);
         wp_insert_post([
             'post_type' => 'post', 'post_status' => 'publish', 'post_title' => $s['title'], 'post_excerpt' => $s['excerpt'],
-            'post_content' => $i === 0 ? $first_body : '<p>' . esc_html($s['excerpt']) . '</p><p>Article d\'exemple : contenu à rédiger avec les médecins du centre.</p>',
+            'post_content' => $i === 0 ? $first_body : (atlas_article_body($s['slug']) ?: '<p>' . esc_html($s['excerpt']) . '</p><p>Article d\'exemple : contenu à rédiger avec les médecins du centre.</p>'),
             'post_category' => [$cat_id], 'post_date_gmt' => $when, 'post_date' => get_date_from_gmt($when),
         ]);
     }

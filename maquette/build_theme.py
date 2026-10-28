@@ -278,7 +278,7 @@ w('404.php', page_tpl(conv(banner('Page introuvable', '<a href="index.html">Accu
 # ---------- functions.php ----------
 pages_php = ',\n        '.join(f"{php_str(k)} => {php_str(v)}" for k, v in TITLES.items())
 posts_php = ',\n        '.join(
-    "[" + ", ".join([f"'title' => {php_str(a['t'])}", f"'cat' => {php_str(a['cat'])}", f"'excerpt' => {php_str(a['ex'])}", f"'days' => {i * 9 + 3}"]) + "]"
+    "[" + ", ".join([f"'title' => {php_str(a['t'])}", f"'cat' => {php_str(a['cat'])}", f"'excerpt' => {php_str(a['ex'])}", f"'days' => {i * 9 + 3}", f"'slug' => {php_str(a.get('slug', ''))}"]) + "]"
     for i, a in enumerate(ARTS[:6]))
 article_html = middle(open('article-exemple.html', encoding='utf-8').read())
 art_body = block(article_html, '<div class="article_body">')
@@ -291,7 +291,7 @@ w('functions.php', FUNCTIONS)
 # ---------- Fichiers statiques du thème (inc/) + passe finale (textes, photos, coordonnées, médecins, menu) ----------
 os.makedirs(f'{OUT}/inc', exist_ok=True)
 import hours
-from articles_data import NEW_ARTICLES
+from articles_data import NEW_ARTICLES, FILL_ARTICLES
 for f in glob.glob('theme-src/inc/*.php'):
     code = open(f, encoding='utf-8').read()
     code = code.replace('{{HOURS}}', '\\n'.join(hours.LINES))
@@ -300,9 +300,14 @@ for f in glob.glob('theme-src/inc/*.php'):
 arts = ["<?php", "if (!defined('ABSPATH')) exit;", "", "function atlas_new_articles() {", "    return ["]
 for a in NEW_ARTICLES:
     arts.append(f"        ['slug' => {php_str(a['slug'])}, 'title' => {php_str(a['t'])}, 'cat' => {php_str(a['cat'])}, 'excerpt' => {php_str(a['ex'])}, 'days' => {a['days']}],")
+arts += ["    ];", "}", "", "/** Articles d'exemple dont le texte était provisoire : titre => identifiant. */", "function atlas_fill_articles() {", "    return ["]
+for a in ARTS[1:6]:
+    arts.append(f"        {php_str(a['t'])} => {php_str(a['slug'])},")
 arts += ["    ];", "}", "", "function atlas_article_body($slug) {", "    $bodies = ["]
 for a in NEW_ARTICLES:
     arts.append(f"        {php_str(a['slug'])} => <<<'HTML'\n{a['body']}\nHTML,")
+for slug, body in FILL_ARTICLES.items():
+    arts.append(f"        {php_str(slug)} => <<<'HTML'\n{body}\nHTML,")
 arts += ["    ];", "    return isset($bodies[$slug]) ? $bodies[$slug] : '';", "}", ""]
 open(f'{OUT}/inc/articles.php', 'w', encoding='utf-8').write('\n'.join(arts))
 import theme_post

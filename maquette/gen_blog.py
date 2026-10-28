@@ -1,6 +1,6 @@
 """Génère blog.html et un exemple d'article. Contenus d'exemple : à remplacer/valider par le centre."""
 from layout import page, banner, CTA
-from articles_data import NEW_ARTICLES
+from articles_data import NEW_ARTICLES, FILL_ARTICLES, FILL_SLUGS
 
 ARTS = [
  dict(t="Échographie abdominale : comment s'y préparer ?", cat='Imagerie', d='12 octobre 2026', lect='4 min', ex="Jeûne, vessie pleine, ordonnance : les réponses aux questions les plus fréquentes avant votre examen."),
@@ -10,6 +10,8 @@ ARTS = [
  dict(t="Comprendre la coloscopie", cat='Endoscopie', d='12 septembre 2026', lect='5 min', ex="À quoi sert cet examen, comment se préparer et ce qui se passe le jour J."),
  dict(t="Le suivi gynécologique : pourquoi consulter régulièrement ?", cat='Gynécologie', d='3 septembre 2026', lect='3 min', ex="Un rendez-vous de prévention pour être accompagnée à chaque étape de la vie."),
 ]
+for _a, _slug in zip(ARTS[1:6], FILL_SLUGS):
+    _a['slug'] = _slug
 ARTS = ARTS + [dict(t=a['t'], cat=a['cat'], d=['5 novembre 2026', '12 novembre 2026', '19 novembre 2026'][i], lect='4 min', ex=a['ex'], slug=a['slug'], days=a['days']) for i, a in enumerate(NEW_ARTICLES)]
 cats = ['Imagerie', 'Endoscopie', 'Cardiologie', 'Gastro-entérologie', 'Gynécologie', 'Rhumatologie', 'Diabétologie']
 filters = '<button class="blog_filter is-active" data-filter="all">Tous</button>' + ''.join(f'<button class="blog_filter" data-filter="{c}">{c}</button>' for c in cats)
@@ -78,7 +80,8 @@ open('article-exemple.html', 'w').write(page("Échographie abdominale : comment 
 print('ok')
 
 # --- Pages des nouveaux articles ---
-for a in NEW_ARTICLES:
+_all = [dict(t=a['t'], cat=a['cat'], ex=a['ex'], slug=a['slug'], body=a['body']) for a in NEW_ARTICLES] + [dict(t=a['t'], cat=a['cat'], ex=a['ex'], slug=a['slug'], body=FILL_ARTICLES[a['slug']]) for a in ARTS[1:6]]
+for a in _all:
     body = banner(a['t'], [('Accueil', 'index.html'), ('Conseils santé', 'blog.html')]) + f'''
   <!-- Article d'exemple : contenu à relire et valider par les médecins du centre -->
   <section class="padding-section-large">

@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -177,7 +177,7 @@ HTML;
         $when = gmdate('Y-m-d H:i:s', time() - $s['days'] * DAY_IN_SECONDS);
         wp_insert_post([
             'post_type' => 'post', 'post_status' => 'publish', 'post_title' => $s['title'], 'post_excerpt' => $s['excerpt'],
-            'post_content' => $i === 0 ? $first_body : '<p>' . esc_html($s['excerpt']) . '</p><p>Article d\'exemple : contenu à rédiger avec les médecins du centre.</p>',
+            'post_content' => $i === 0 ? $first_body : (atlas_article_body($s['slug']) ?: '<p>' . esc_html($s['excerpt']) . '</p><p>Article d\'exemple : contenu à rédiger avec les médecins du centre.</p>'),
             'post_category' => [$cat_id], 'post_date_gmt' => $when, 'post_date' => get_date_from_gmt($when),
         ]);
     }
