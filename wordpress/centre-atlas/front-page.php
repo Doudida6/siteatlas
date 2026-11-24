@@ -5,7 +5,6 @@
   <section class="hero2">
     <div class="hero2_photo photo-placeholder is-dark<?php echo atlas_photo_class('accueil-photo-accueil-espace-architectural-du-ce'); ?>"<?php echo atlas_photo_attr('accueil-photo-accueil-espace-architectural-du-ce', 'Photo : accueil / espace architectural du Centre Atlas'); ?>><?php atlas_photo_label('accueil-photo-accueil-espace-architectural-du-ce', 'Photo : accueil / espace architectural du Centre Atlas'); ?></div>
     <div class="hero2_shape"></div>
-    <a href="<?php echo esc_url(home_url('/le-centre/')); ?>" class="hero2_play" aria-label="Découvrir le centre"><svg fill="currentColor" stroke="none"><use href="#i-play"/></svg></a>
     <div class="padding-global hero2_inner">
       <div class="container-large">
         <div class="hero2_card">
