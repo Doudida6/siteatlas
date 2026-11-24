@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6', 'security'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6', 'setup7', 'security'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -91,10 +91,10 @@ add_action('init', function () {
         'capability_type' => 'post', 'map_meta_cap' => true,
         'capabilities' => [
             'create_posts' => 'do_not_allow',
-            'edit_post' => 'manage_options', 'read_post' => 'manage_options', 'delete_post' => 'manage_options',
-            'edit_posts' => 'manage_options', 'edit_others_posts' => 'manage_options', 'edit_private_posts' => 'manage_options', 'edit_published_posts' => 'manage_options',
-            'publish_posts' => 'manage_options', 'read_private_posts' => 'manage_options',
-            'delete_posts' => 'manage_options', 'delete_others_posts' => 'manage_options', 'delete_private_posts' => 'manage_options', 'delete_published_posts' => 'manage_options',
+            'edit_post' => 'edit_theme_options', 'read_post' => 'edit_theme_options', 'delete_post' => 'edit_theme_options',
+            'edit_posts' => 'edit_theme_options', 'edit_others_posts' => 'edit_theme_options', 'edit_private_posts' => 'edit_theme_options', 'edit_published_posts' => 'edit_theme_options',
+            'publish_posts' => 'edit_theme_options', 'read_private_posts' => 'edit_theme_options',
+            'delete_posts' => 'edit_theme_options', 'delete_others_posts' => 'edit_theme_options', 'delete_private_posts' => 'edit_theme_options', 'delete_published_posts' => 'edit_theme_options',
         ],
     ]);
 });
