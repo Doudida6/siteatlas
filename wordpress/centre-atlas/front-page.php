@@ -180,13 +180,18 @@
 
   <section class="quote2">
     <div class="padding-global">
-      <div class="container-large quote2_inner reveal">
-        <svg class="quote2_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg>
-        <span class="eyebrow2"><?php atlas_t('t8cc8053a'); ?></span>
-        <h2 class="heading-style-h2"><?php atlas_t('t4be0e41c'); ?></h2>
-        <!-- Emplacement : remplacer par un vrai témoignage, publié avec l'accord du patient -->
-        <p class="quote2_text"><?php atlas_t('t9945f676'); ?></p>
-        <div class="quote2_author"><span class="quote2_avatar photo-placeholder<?php echo atlas_photo_class('accueil-quote2-avatar'); ?>"<?php echo atlas_photo_attr('accueil-quote2-avatar', ''); ?>></span><strong><?php atlas_t('tfb94663a'); ?></strong></div>
+      <div class="container-large">
+        <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
+          <span class="eyebrow2"><?php atlas_t('t8cc8053a'); ?></span>
+          <h2 class="heading-style-h2"><?php atlas_t('t4be0e41c'); ?></h2>
+        </div>
+        <div class="testi_grid">
+          <figure class="testi_card reveal"><svg class="testi_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg><blockquote class="testi_text"><?php atlas_t('t907a0377'); ?></blockquote><figcaption class="testi_author"><span class="testi_initials"><?php atlas_t('t7fc56270'); ?></span><span><strong><?php atlas_t('tc7812fe3'); ?></strong><small><?php atlas_t('tb6b4771f'); ?></small></span></figcaption></figure>
+          <figure class="testi_card reveal"><svg class="testi_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg><blockquote class="testi_text"><?php atlas_t('t5d64066c'); ?></blockquote><figcaption class="testi_author"><span class="testi_initials"><?php atlas_t('t69691c7b'); ?></span><span><strong><?php atlas_t('tefb5ef10'); ?></strong><small><?php atlas_t('t60dccb6c'); ?></small></span></figcaption></figure>
+          <figure class="testi_card reveal"><svg class="testi_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg><blockquote class="testi_text"><?php atlas_t('t4c2687d3'); ?></blockquote><figcaption class="testi_author"><span class="testi_initials"><?php atlas_t('t69691c7b'); ?></span><span><strong><?php atlas_t('t2cbd38e9'); ?></strong><small><?php atlas_t('tfa4c9926'); ?></small></span></figcaption></figure>
+          <figure class="testi_card reveal"><svg class="testi_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg><blockquote class="testi_text"><?php atlas_t('t0dbb0f6c'); ?></blockquote><figcaption class="testi_author"><span class="testi_initials"><?php atlas_t('tdd753679'); ?></span><span><strong><?php atlas_t('t57971b9f'); ?></strong><small><?php atlas_t('t9a89fd7b'); ?></small></span></figcaption></figure>
+          <figure class="testi_card reveal"><svg class="testi_mark" fill="currentColor" stroke="none"><use href="#i-quote"/></svg><blockquote class="testi_text"><?php atlas_t('td5e06115'); ?></blockquote><figcaption class="testi_author"><span class="testi_initials"><?php atlas_t('ta5f3c6a1'); ?></span><span><strong><?php atlas_t('ta90d9f39'); ?></strong><small><?php atlas_t('t51512580'); ?></small></span></figcaption></figure>
+        </div>
       </div>
     </div>
   </section>
