@@ -554,6 +554,11 @@ return [
         'endoscopie-photo-salle-d-endoscopie-atlas' => 'salle-soins.jpg',
         'biopsie-photo-espace-dedie-aux-biopsies' => 'cabinet-echo.jpg',
         'biopsie-photo-echographe-et-espace-de-biopsie' => 'salle-echographie.jpg',
+        'biologie-photo-espace-de-prelevement-atlas' => 'biologie-prelevement.jpg',
+        'biologie-photo-analyses-de-laboratoire' => 'biologie-analyses.jpg',
+        'endoscopie-photo-materiel-d-endoscopie' => 'endoscopie-materiel.jpg',
+        'imagerie-photo-salle-de-radiographie-atlas' => 'radiographie.jpg',
+        'le-centre-photo-details-architecturaux' => 'details-bureau.jpg',
     ],
     'seo' => [
         'accueil' => ['Accueil', 'Centre Médical Atlas | Cabinet médical à Dakar (Liberté 6)', 'Cabinet médical à Dakar, Liberté 6 : consultations, échographie, radiographie, endoscopie digestive, biopsies et analyses. Prenez rendez-vous.'],

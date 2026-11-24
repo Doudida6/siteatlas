@@ -34,6 +34,11 @@ DEFAULT_PHOTOS = {
     'endoscopie-photo-salle-d-endoscopie-atlas': 'salle-soins.jpg',
     'biopsie-photo-espace-dedie-aux-biopsies': 'cabinet-echo.jpg',
     'biopsie-photo-echographe-et-espace-de-biopsie': 'salle-echographie.jpg',
+    'biologie-photo-espace-de-prelevement-atlas': 'biologie-prelevement.jpg',
+    'biologie-photo-analyses-de-laboratoire': 'biologie-analyses.jpg',
+    'endoscopie-photo-materiel-d-endoscopie': 'endoscopie-materiel.jpg',
+    'imagerie-photo-salle-de-radiographie-atlas': 'radiographie.jpg',
+    'le-centre-photo-details-architecturaux': 'details-bureau.jpg',
 }
 GUARD = "<?php if (!defined('ABSPATH')) exit; ?>\n"
 PHP_RE = re.compile(r'<\?php.*?\?>', re.S)
