@@ -1,3 +1,4 @@
+<?php if (!defined('ABSPATH')) exit; ?>
 <?php get_header(); ?>
   <section class="banner_component">
     <div class="padding-global"><div class="container-large banner_container">

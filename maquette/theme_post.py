@@ -5,8 +5,17 @@
  - photos          -> emplacements gris choisis dans « Photos du site »
  - textes          -> chaque texte visible devient modifiable dans « Textes du site »
 Écrit aussi inc/registry.php (liste des textes par défaut et des emplacements photo)."""
-import hashlib, html, os, re, unicodedata
+import hashlib, html, os, re, shutil, unicodedata
 
+FONT_CSS = '''/* Police Outfit hébergée dans le thème (licence SIL OFL 1.1, voir assets/fonts/OFL.txt) : aucune requête vers Google */
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url('assets/fonts/outfit-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url('assets/fonts/outfit-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+'''
+GUARD = "<?php if (!defined('ABSPATH')) exit; ?>\n"
 PHP_RE = re.compile(r'<\?php.*?\?>', re.S)
 SKIP_TAGS = ('script', 'style', 'svg', 'title', 'textarea', 'option', 'symbol')
 LITERALS = [('33 867 86 46', '{tel_fixe}'), ('78 831 60 60', '{tel_mobile}'), ('centreatlasmedical@gmail.com', '{email}')]
@@ -218,6 +227,8 @@ def run(OUT, TITLES):
         s = dynamic_blocks(f, s)
         s = photos(s, page, reg_photos)
         s = texts(s, page, reg_texts)
+        if 'ABSPATH' not in s[:200]:
+            s = GUARD + s
         open(path, 'w', encoding='utf-8').write(s)
 
     from seo_data import SEO
@@ -230,7 +241,7 @@ def run(OUT, TITLES):
         k = page_of(f)
         if k not in pages:
             pages[k] = labels.get(k) or TITLES.get(k, k)
-    lines = ['<?php', '// Fichier généré par maquette/theme_post.py : ne pas modifier à la main.', 'return [', "    'pages' => ["]
+    lines = ['<?php', "if (!defined('ABSPATH')) exit;", '// Fichier généré par maquette/theme_post.py : ne pas modifier à la main.', 'return [', "    'pages' => ["]
     lines += [f"        {php_str(k)} => {php_str(v)}," for k, v in pages.items()]
     lines += ['    ],', "    'texts' => ["]
     lines += [f"        {php_str(k)} => [{php_str(p)}, {php_str(t)}]," for k, (p, t) in reg_texts.items()]
@@ -241,9 +252,25 @@ def run(OUT, TITLES):
     lines += ['    ],', '];', '']
     open(os.path.join(OUT, 'inc', 'registry.php'), 'w', encoding='utf-8').write('\n'.join(lines))
 
+    # index.php (modèle de secours) : même garde
+    ip = os.path.join(OUT, 'index.php')
+    if os.path.exists(ip):
+        c = open(ip, encoding='utf-8').read()
+        if 'ABSPATH' not in c[:200]:
+            open(ip, 'w', encoding='utf-8').write(GUARD + c)
+    # polices
+    os.makedirs(os.path.join(OUT, 'assets', 'fonts'), exist_ok=True)
+    for f in os.listdir('theme-src/fonts'):
+        shutil.copy(os.path.join('theme-src/fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
+    # fichiers « silence » : empêchent l'affichage de la liste des fichiers d'un dossier
+    for d in ('assets', 'inc', 'parts'):
+        open(os.path.join(OUT, d, 'index.php'), 'w', encoding='utf-8').write('<?php\n// Silence is golden.\n')
+
     # CSS : emplacement photo rempli
     css_path = os.path.join(OUT, 'style.css')
     css = open(css_path, encoding='utf-8').read()
+    i = css.index('*/') + 2  # l'en-tête du thème (Theme Name…) reste en tout début de fichier
+    css = css[:i] + '\n\n' + FONT_CSS + css[i:]
     css += '\n/* Emplacements photo remplis depuis l\'administration */\n.photo-placeholder.has-photo { background-size: cover; background-position: center; background-repeat: no-repeat; }\n'
     open(css_path, 'w', encoding='utf-8').write(css)
     print(f'Textes modifiables : {len(reg_texts)} | emplacements photo : {len(reg_photos)}')

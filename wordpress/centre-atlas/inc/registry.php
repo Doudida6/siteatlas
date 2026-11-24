@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 // Fichier généré par maquette/theme_post.py : ne pas modifier à la main.
 return [
     'pages' => [
@@ -398,7 +399,7 @@ return [
         't3fef8f39' => ['politique-de-confidentialite', 'Quels sont vos droits ?'],
         'tdd8612b0' => ['politique-de-confidentialite', 'Cookies et services tiers'],
         't017f3ef2' => ['politique-de-confidentialite', 'Ce site n\'utilise pas de cookies publicitaires ni d\'outil de suivi d\'audience. Des cookies strictement techniques peuvent être déposés pour le fonctionnement du site et de son administration.'],
-        't48f190df' => ['politique-de-confidentialite', 'Certains éléments sont fournis par des services tiers, qui reçoivent votre adresse IP lors de leur chargement : la police de caractères (Google Fonts) et, sur la page Contact, la carte Google Maps. Les liens vers WhatsApp et les réseaux sociaux vous redirigent vers leurs services, soumis à leurs propres règles.'],
+        't6b1d2c15' => ['politique-de-confidentialite', 'La police de caractères est hébergée sur le site lui-même : elle n\'entraîne aucun échange avec un service tiers. Sur la page Contact, la carte Google Maps est fournie par Google, qui reçoit votre adresse IP lors de son chargement. Les liens vers WhatsApp et les réseaux sociaux vous redirigent vers leurs services, soumis à leurs propres règles.'],
         'tf02018cc' => ['politique-de-confidentialite', 'Sécurité'],
         'tcf4fa404' => ['politique-de-confidentialite', 'Le site est servi en connexion sécurisée (HTTPS) et l\'accès aux demandes est réservé à l\'équipe du centre. Aucune transmission par internet n\'est totalement sans risque : c\'est une raison de plus de ne pas envoyer d\'informations médicales par les formulaires.'],
         't46e3b20b' => ['politique-de-confidentialite', 'Modification de cette politique'],

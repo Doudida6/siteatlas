@@ -1,3 +1,4 @@
+<?php if (!defined('ABSPATH')) exit; ?>
 <?php get_header(); ?>
 
   <section class="banner_component">
@@ -39,7 +40,7 @@
         <p>Vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données. Pour les exercer, écrivez-nous à <?php echo esc_html(atlas_data_email()); ?> en précisant votre demande ; nous pourrons vous demander de justifier de votre identité. Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez saisir la Commission de Protection des Données Personnelles (CDP) du Sénégal.</p>
         <h2><?php atlas_t('tdd8612b0'); ?></h2>
         <p><?php atlas_t('t017f3ef2'); ?></p>
-        <p><?php atlas_t('t48f190df'); ?></p>
+        <p><?php atlas_t('t6b1d2c15'); ?></p>
         <h2><?php atlas_t('tf02018cc'); ?></h2>
         <p><?php atlas_t('tcf4fa404'); ?></p>
         <h2><?php atlas_t('t46e3b20b'); ?></h2>

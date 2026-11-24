@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6', 'security'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -21,12 +21,12 @@ add_action('after_setup_theme', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('atlas-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap', [], null);
-    wp_enqueue_style('atlas-style', get_stylesheet_uri(), ['atlas-fonts'], ATLAS_VERSION);
+    wp_enqueue_style('atlas-style', get_stylesheet_uri(), [], ATLAS_VERSION);
     wp_enqueue_script('atlas-main', get_theme_file_uri('assets/main.js'), [], ATLAS_VERSION, ['in_footer' => true, 'strategy' => 'defer']);
 });
 
 add_action('wp_head', function () {
+    echo '<link rel="preload" href="' . esc_url(get_theme_file_uri('assets/fonts/outfit-latin.woff2')) . '" as="font" type="font/woff2" crossorigin>' . "\n";
     echo '<link rel="icon" href="' . esc_url(get_theme_file_uri('assets/logo-icon.svg')) . '" type="image/svg+xml">' . "\n";
 });
 
@@ -87,7 +87,15 @@ add_action('init', function () {
         'public' => false, 'show_ui' => true, 'show_in_menu' => true,
         'menu_icon' => 'dashicons-calendar-alt', 'menu_position' => 25,
         'supports' => ['title', 'editor'],
-        'capability_type' => 'post', 'capabilities' => ['create_posts' => 'do_not_allow'], 'map_meta_cap' => true,
+        // Données personnelles : visibles et supprimables par les administrateurs uniquement (pas par les éditeurs)
+        'capability_type' => 'post', 'map_meta_cap' => true,
+        'capabilities' => [
+            'create_posts' => 'do_not_allow',
+            'edit_post' => 'manage_options', 'read_post' => 'manage_options', 'delete_post' => 'manage_options',
+            'edit_posts' => 'manage_options', 'edit_others_posts' => 'manage_options', 'edit_private_posts' => 'manage_options', 'edit_published_posts' => 'manage_options',
+            'publish_posts' => 'manage_options', 'read_private_posts' => 'manage_options',
+            'delete_posts' => 'manage_options', 'delete_others_posts' => 'manage_options', 'delete_private_posts' => 'manage_options', 'delete_published_posts' => 'manage_options',
+        ],
     ]);
 });
 
@@ -122,9 +130,12 @@ function atlas_handle_form() {
                'medecin' => 'Médecin souhaité', 'date' => 'Date souhaitée', 'message' => 'Message', 'msg' => 'Message'];
     $skip = ['action', 'atlas_nonce', '_wp_http_referer', 'form_type', 'website', 'consent'];
     $lines = []; $name = ''; $reply = '';
+    $count = 0;
     foreach ($_POST as $field => $value) {
         if (in_array($field, $skip, true) || is_array($value)) continue;
-        $value = trim(sanitize_textarea_field(wp_unslash($value)));
+        if (++$count > 20) break;                      // pas plus de 20 champs par demande
+        $field = substr(sanitize_key($field), 0, 40);  // le nom du champ est écrit dans l'email : on le nettoie
+        $value = mb_substr(trim(sanitize_textarea_field(wp_unslash($value))), 0, 2000);
         if ($value === '') continue;
         $short = preg_replace('/^.*-/', '', $field);
         if ($short === 'nom') $name = $value;

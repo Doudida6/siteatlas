@@ -1,3 +1,4 @@
+<?php if (!defined('ABSPATH')) exit; ?>
 <?php get_header(); ?>
 
   <section class="banner_component">

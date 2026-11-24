@@ -1,3 +1,4 @@
+<?php if (!defined('ABSPATH')) exit; ?>
   <!-- ===== Footer ===== -->
   <footer class="footer_component">
     <div class="padding-global">
