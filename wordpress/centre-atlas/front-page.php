@@ -178,23 +178,6 @@
     </div>
   </section>
 
-  <!-- ===== Équipe ===== -->
-  <section class="padding-section-large">
-    <div class="padding-global">
-      <div class="container-large">
-        <div class="text-align-center max-width-medium margin-auto margin-bottom-large">
-          <span class="eyebrow2"><?php atlas_t('t75ccefd9'); ?></span>
-          <h2 class="heading-style-h2"><?php atlas_t('tddf1a701'); ?></h2>
-        </div>
-        <div class="team_grid">
-<?php atlas_team_cards(3); ?>
-</div>
-        <div class="text-align-center" style="margin-top:2.5rem"><a href="<?php echo esc_url(home_url('/nos-medecins/')); ?>" class="button is-dark"><?php atlas_t('t673f4a26'); ?></a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Témoignage (emplacement) ===== -->
   <section class="quote2">
     <div class="padding-global">
       <div class="container-large quote2_inner reveal">
