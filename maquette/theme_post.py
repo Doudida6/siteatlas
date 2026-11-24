@@ -15,6 +15,26 @@ FONT_CSS = '''/* Police Outfit hébergée dans le thème (licence SIL OFL 1.1, v
   src: url('assets/fonts/outfit-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 '''
+# Photos du centre fournies avec le thème : emplacement -> fichier (dossier theme-src/photos)
+DEFAULT_PHOTOS = {
+    'accueil-photo-accueil-espace-architectural-du-ce': 'facade-horizontal.jpg',   # photo principale de l'accueil
+    'cta-photo-accueil-du-centre-atlas': 'facade-carre.jpg',                        # bandeau « Besoin d'un rendez-vous ? »
+    'accueil-photo-reception-salle-d-attente-atlas': 'reception-attente.jpg',
+    'accueil-photo-cabinet-de-consultation': 'cabinet-consultation.jpg',
+    'accueil-photo-echographie': 'echographe-detail.jpg',
+    'le-centre-photo-facade-et-entree-du-centre-atlas': 'facade-carre.jpg',
+    'le-centre-photo-facade': 'facade-horizontal.jpg',
+    'le-centre-photo-reception': 'reception-logo.jpg',
+    'le-centre-photo-salle-d-attente': 'salle-attente.jpg',
+    'le-centre-photo-cabinet-de-consultation': 'cabinet-bureau.jpg',
+    'le-centre-photo-echographie': 'echographe-portable.jpg',
+    'specialites-photo-accueil': 'reception-detail.jpg',
+    'imagerie-photo-salle-d-echographie-atlas': 'salle-echographie.jpg',
+    'imagerie-photo-examen-doppler': 'echographe-detail.jpg',
+    'endoscopie-photo-salle-d-endoscopie-atlas': 'salle-soins.jpg',
+    'biopsie-photo-espace-dedie-aux-biopsies': 'cabinet-echo.jpg',
+    'biopsie-photo-echographe-et-espace-de-biopsie': 'salle-echographie.jpg',
+}
 GUARD = "<?php if (!defined('ABSPATH')) exit; ?>\n"
 PHP_RE = re.compile(r'<\?php.*?\?>', re.S)
 SKIP_TAGS = ('script', 'style', 'svg', 'title', 'textarea', 'option', 'symbol')
@@ -247,6 +267,11 @@ def run(OUT, TITLES):
     lines += [f"        {php_str(k)} => [{php_str(p)}, {php_str(t)}]," for k, (p, t) in reg_texts.items()]
     lines += ['    ],', "    'photos' => [", ]
     lines += [f"        {php_str(k)} => [{php_str(p)}, {php_str(l)}]," for k, (p, l) in reg_photos.items()]
+    lines += ['    ],', "    'defaults' => ["]
+    for k, fname in DEFAULT_PHOTOS.items():
+        assert k in reg_photos, 'emplacement photo introuvable : ' + k
+        assert os.path.exists(os.path.join('theme-src', 'photos', fname)), fname
+        lines.append(f"        {php_str(k)} => {php_str(fname)},")
     lines += ['    ],', "    'seo' => ["]
     lines += [f"        {php_str(k)} => [{php_str(pages.get(k) or TITLES.get(k, k))}, {php_str(v[0])}, {php_str(v[1])}]," for k, v in SEO.items()]
     lines += ['    ],', '];', '']
@@ -262,6 +287,9 @@ def run(OUT, TITLES):
     os.makedirs(os.path.join(OUT, 'assets', 'fonts'), exist_ok=True)
     for f in os.listdir('theme-src/fonts'):
         shutil.copy(os.path.join('theme-src/fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
+    os.makedirs(os.path.join(OUT, 'assets', 'photos'), exist_ok=True)
+    for f in sorted(set(DEFAULT_PHOTOS.values())):
+        shutil.copy(os.path.join('theme-src', 'photos', f), os.path.join(OUT, 'assets', 'photos', f))
     # fichiers « silence » : empêchent l'affichage de la liste des fichiers d'un dossier
     for d in ('assets', 'inc', 'parts'):
         open(os.path.join(OUT, d, 'index.php'), 'w', encoding='utf-8').write('<?php\n// Silence is golden.\n')

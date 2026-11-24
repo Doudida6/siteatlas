@@ -85,9 +85,16 @@ function atlas_photo_id($key) {
 }
 function atlas_photo_url($key, $size = 'large') {
     $id = atlas_photo_id($key);
-    if (!$id) return '';
-    $u = wp_get_attachment_image_url($id, $size);
-    return $u ? (string) $u : '';
+    if ($id) {
+        $u = wp_get_attachment_image_url($id, $size);
+        if ($u) return (string) $u;
+    }
+    return atlas_photo_default_url($key);
+}
+/** Photo du centre fournie avec le thème pour cet emplacement (utilisée tant qu'aucune photo n'est choisie). */
+function atlas_photo_default_url($key) {
+    $reg = atlas_registry();
+    return isset($reg['defaults'][$key]) ? (string) get_theme_file_uri('assets/photos/' . $reg['defaults'][$key]) : '';
 }
 /** Classe ajoutée à l'emplacement quand une photo est choisie. */
 function atlas_photo_class($key) { return atlas_photo_url($key) ? ' has-photo' : ''; }

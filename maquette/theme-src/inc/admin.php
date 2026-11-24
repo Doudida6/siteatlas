@@ -125,8 +125,11 @@ function atlas_admin_photos() {
         foreach ($groups[$slug] as $key => $label) {
             $id = isset($saved[$key]) ? (int) $saved[$key] : 0;
             $thumb = $id ? wp_get_attachment_image_url($id, 'medium') : '';
+            $is_default = false;
+            if (!$thumb) { $thumb = atlas_photo_default_url($key); $is_default = $thumb !== ''; }
             echo '<div class="atlas-photo"><div class="atlas-photo-preview"' . ($thumb ? ' style="background-image:url(\'' . esc_url($thumb) . '\')"' : '') . '></div>';
             echo '<strong>' . esc_html($label !== '' ? $label : $key) . '</strong>';
+            if ($is_default) echo '<p class="description" style="margin:0 0 8px">Photo du centre fournie avec le thème. Choisissez-en une autre pour la remplacer.</p>';
             echo '<input type="hidden" class="atlas-photo-id" name="atlas_photos[' . esc_attr($key) . ']" value="' . esc_attr($id) . '">';
             echo '<button type="button" class="button atlas-photo-pick">Choisir une photo</button> ';
             echo '<button type="button" class="button-link atlas-photo-remove">Retirer</button></div>';
