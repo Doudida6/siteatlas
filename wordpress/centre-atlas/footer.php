@@ -37,7 +37,7 @@
             <a href="<?php echo esc_url(home_url('/rendez-vous/')); ?>" class="button is-primary" style="margin-top:1rem"><?php atlas_t('t7c7fd123'); ?></a>
           </div>
         </div>
-        <div class="footer_bottom"><span><?php atlas_t('t18fc0a3e'); ?></span><?php atlas_credit(); ?></div>
+        <div class="footer_bottom"><span><?php atlas_t('t18fc0a3e'); ?></span><span class="footer_legal"><a href="<?php echo esc_url(home_url('/mentions-legales/')); ?>"><?php atlas_t('t6ba68484'); ?></a> · <a href="<?php echo esc_url(home_url('/politique-de-confidentialite/')); ?>"><?php atlas_t('t3db25c95'); ?></a></span><?php atlas_credit(); ?></div>
       </div>
     </div>
   </footer>

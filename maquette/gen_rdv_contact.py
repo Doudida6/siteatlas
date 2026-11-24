@@ -24,6 +24,7 @@ body = banner('Prendre rendez-vous', [('Accueil', 'index.html')]) + f'''
           <div class="form_field"><label for="medecin">Médecin souhaité</label><select class="form_input" id="medecin" name="medecin">{docs}</select></div>
           <div class="form_field is-full"><label for="date">Date souhaitée</label><input class="form_input" id="date" name="date" type="date"></div>
           <div class="form_field is-full"><label for="message">Message <span>(facultatif)</span></label><textarea class="form_input" id="message" name="message"></textarea></div>
+          <div class="form_field is-full"><label class="form_check"><input type="checkbox" name="consent" value="oui" required><span>J'accepte que mes données soient utilisées pour me recontacter, comme expliqué dans la <a href="politique-de-confidentialite.html">politique de confidentialité</a>. Je n'envoie pas d'informations médicales détaillées.</span></label></div>
           <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-content:center">Envoyer ma demande</button>
             <p class="form_disclaimer">Cette demande n'est pas une confirmation de créneau : notre équipe vous rappelle pour fixer l'horaire avec vous.</p></div>
         </form>
@@ -61,6 +62,7 @@ body = banner('Contact', [('Accueil', 'index.html')]) + f'''
           <div class="form_field"><label for="c-tel">Téléphone</label><input class="form_input" id="c-tel" type="tel" autocomplete="tel"></div>
           <div class="form_field"><label for="c-email">Email</label><input class="form_input" id="c-email" type="email" autocomplete="email"></div>
           <div class="form_field is-full"><label for="c-msg">Message</label><textarea class="form_input" id="c-msg" required></textarea></div>
+          <div class="form_field is-full"><label class="form_check"><input type="checkbox" name="consent" value="oui" required><span>J'accepte que mes données soient utilisées pour me répondre, comme expliqué dans la <a href="politique-de-confidentialite.html">politique de confidentialité</a>. Je n'envoie pas d'informations médicales détaillées.</span></label></div>
           <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-content:center">Envoyer le message</button></div>
         </form>
         {OK.format(titre='Message envoyé', msg='Merci, nous avons bien reçu votre message. Notre équipe vous répondra rapidement.')}

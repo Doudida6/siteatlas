@@ -32,6 +32,8 @@ SEO = {
                     "Demandez un rendez-vous au Centre Médical Atlas (Dakar) : consultation, échographie, radiographie, endoscopie, biopsie ou analyses."),
     'contact': ("Contact et accès : Liberté 6, Dakar | Centre Médical Atlas",
                 "Centre Médical Atlas, Liberté 6, Dakar : téléphone, WhatsApp, email, horaires d'ouverture et itinéraire."),
+    'mentions-legales': ("Mentions légales | Centre Médical Atlas", "Mentions légales du site du Centre Médical Atlas, Liberté 6, Dakar."),
+    'politique-de-confidentialite': ("Politique de confidentialité | Centre Médical Atlas", "Comment le Centre Médical Atlas protège vos données personnelles : données collectées, durée de conservation et vos droits."),
     'conseils-sante': ("Conseils santé : examens et suivi médical | Centre Médical Atlas",
                        "Articles pour comprendre vos examens (fibroscopie, échographie, scanner) et votre santé, rédigés avec l'équipe du Centre Médical Atlas à Dakar."),
 }

@@ -23,6 +23,7 @@
           <div class="form_field"><label for="medecin"><?php atlas_t('t0d82b5e0'); ?></label><select class="form_input" id="medecin" name="medecin"><?php atlas_medecin_options(); ?></select></div>
           <div class="form_field is-full"><label for="date"><?php atlas_t('t446ff7f0'); ?></label><input class="form_input" id="date" name="date" type="date"></div>
           <div class="form_field is-full"><label for="message"><?php atlas_t('t4c2a8fe7'); ?> <span><?php atlas_t('t092fbd67'); ?></span></label><textarea class="form_input" id="message" name="message"></textarea></div>
+          <div class="form_field is-full"><label class="form_check"><input type="checkbox" name="consent" value="oui" required><span><?php atlas_t('t544b8a7e'); ?> <a href="<?php echo esc_url(home_url('/politique-de-confidentialite/')); ?>"><?php atlas_t('t434aea19'); ?></a><?php atlas_t('t157150b6'); ?></span></label></div>
           <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-content:center"><?php atlas_t('ta5ed6ce0'); ?></button>
             <p class="form_disclaimer"><?php atlas_t('t5c2f1898'); ?></p></div>
         </form>

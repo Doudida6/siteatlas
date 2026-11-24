@@ -30,6 +30,7 @@
           <div class="form_field"><label for="c-tel"><?php atlas_t('t301dc874'); ?></label><input class="form_input" id="c-tel" name="c-tel" type="tel" autocomplete="tel"></div>
           <div class="form_field"><label for="c-email"><?php atlas_t('tce8ae9da'); ?></label><input class="form_input" id="c-email" name="c-email" type="email" autocomplete="email"></div>
           <div class="form_field is-full"><label for="c-msg"><?php atlas_t('t4c2a8fe7'); ?></label><textarea class="form_input" id="c-msg" name="c-msg" required></textarea></div>
+          <div class="form_field is-full"><label class="form_check"><input type="checkbox" name="consent" value="oui" required><span><?php atlas_t('t847cc2c8'); ?> <a href="<?php echo esc_url(home_url('/politique-de-confidentialite/')); ?>"><?php atlas_t('t434aea19'); ?></a><?php atlas_t('t157150b6'); ?></span></label></div>
           <div class="form_field is-full"><button type="submit" class="button is-primary" style="justify-content:center"><?php atlas_t('ta627d7c0'); ?></button></div>
         </form>
         <div class="form_success<?php echo atlas_sent_class(); ?>" role="status"><span class="value_icon"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3 class="heading-style-h4"><?php atlas_t('t2ac9db98'); ?></h3><p class="text-style-muted"><?php atlas_t('t5767f134'); ?></p></div>

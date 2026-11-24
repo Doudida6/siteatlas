@@ -32,6 +32,7 @@ function atlas_sanitize_contact($in) {
         if ($k === 'email' || $k === 'rdv_email') $out[$k] = sanitize_email($v);
         elseif ($k === 'facebook' || $k === 'instagram' || $k === 'google') $out[$k] = esc_url_raw($v);
         elseif ($k === 'lat' || $k === 'lng') $out[$k] = preg_match('/^-?\d{1,3}(\.\d+)?$/', trim($v)) ? trim($v) : '';
+        elseif ($k === 'retention_mois') $out[$k] = (string) max(0, min(60, (int) $v));
         elseif ($k === 'ouv_semaine' || $k === 'ouv_samedi') $out[$k] = preg_match('/^\d{2}:\d{2}-\d{2}:\d{2}$/', trim($v)) ? trim($v) : '';
         elseif ($k === 'horaires') $out[$k] = sanitize_textarea_field($v);
         else $out[$k] = sanitize_text_field($v);
@@ -78,6 +79,14 @@ function atlas_admin_contact() {
         'ouv_samedi' => ['Ouverture samedi (pour Google)', 'text', 'Format 09:00-14:00 (laissez vide si fermé)'],
         'lat'        => ['Latitude (facultatif)', 'text', 'ex. 14.7167 : améliore l\'affichage sur Google Maps'],
         'lng'        => ['Longitude (facultatif)', 'text', 'ex. -17.4677'],
+        'raison_sociale' => ['Raison sociale', 'text', 'Mentions légales : nom officiel de la société'],
+        'forme_juridique' => ['Forme juridique', 'text', 'ex. SARL'],
+        'ninea'      => ['NINEA', 'text', 'Mentions légales'],
+        'rccm'       => ['RCCM', 'text', 'Mentions légales'],
+        'directeur'  => ['Directeur de la publication', 'text', 'Mentions légales : nom et prénom'],
+        'autorisation' => ['Autorisation d\'exercer / Ordre des médecins', 'text', 'Mentions légales : référence de l\'autorisation du centre'],
+        'email_donnees' => ['Email pour les demandes sur les données personnelles', 'email', 'Politique de confidentialité. Laissez vide pour utiliser l\'email du site'],
+        'retention_mois' => ['Suppression automatique des demandes de rendez-vous (en mois)', 'number', '12 par défaut ; 0 = ne jamais supprimer automatiquement'],
     ];
     echo '<div class="wrap"><h1>Coordonnées du centre</h1>';
     echo '<p>Ces informations s\'affichent automatiquement partout sur le site : en-tête, pied de page, page Contact, boutons Appeler, WhatsApp et Itinéraire.</p>';

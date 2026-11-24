@@ -166,7 +166,8 @@ w('parts/cta.php', '<?php if (!defined(\'ABSPATH\')) exit; ?>\n' + conv(cta))
 # ---------- Pages générées ----------
 TITLES = {'accueil': 'Accueil', 'le-centre': 'Le Centre', 'specialites': 'Spécialités', 'imagerie': 'Imagerie médicale', 'biologie': 'Biologie',
           'endoscopie': 'Endoscopie', 'biopsie': 'Biopsie', 'nos-medecins': 'Nos médecins',
-          'conseils-sante': 'Conseils santé', 'rendez-vous': 'Prendre rendez-vous', 'contact': 'Contact'}
+          'conseils-sante': 'Conseils santé', 'rendez-vous': 'Prendre rendez-vous', 'contact': 'Contact',
+          'mentions-legales': 'Mentions légales', 'politique-de-confidentialite': 'Politique de confidentialité'}
 specs = runpy.run_path('gen_specialites.py')['SPECS']
 for s in specs:
     TITLES['specialites-' + s['slug']] = s['nom']

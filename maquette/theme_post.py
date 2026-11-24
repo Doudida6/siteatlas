@@ -44,6 +44,9 @@ def contact_vars(s):
     s = s.replace('mailto:centreatlasmedical@gmail.com', "mailto:<?php echo esc_attr(atlas_opt('email')); ?>")
     s = re.sub(r'<span class="addr">.*?</span>', '<span class="addr"><?php echo esc_html(atlas_addr()); ?></span>', s, flags=re.S)
     s = s.replace('>Itinéraire</a>', ">Itinéraire</a><?php if (atlas_opt('google')) : ?> <a href=\"<?php echo esc_url(atlas_opt('google')); ?>\" class=\"button is-secondary\" target=\"_blank\" rel=\"noopener\">Notre fiche Google</a><?php endif; ?>")
+    # valeurs des pages légales : <span class="lv" data-v="clé"> -> réglage correspondant
+    s = re.sub(r'<span class="lv" data-v="([a-z_]+)">.*?</span>',
+               lambda m: '<?php echo esc_html(' + ('atlas_data_email()' if m.group(1) == 'email_donnees' else f"atlas_opt('{m.group(1)}')") + '); ?>', s, flags=re.S)
     s = re.sub(r'<span class="hours">.*?</span>', '<span class="hours"><?php echo atlas_hours(); ?></span>', s, flags=re.S)
     s = re.sub(r'<span class="footer_credit">.*?</a></span>', '<?php atlas_credit(); ?>', s, flags=re.S)
     s = s.replace('src="https://www.google.com/maps?q=Libert%C3%A9+6,+Dakar,+Senegal&output=embed"',

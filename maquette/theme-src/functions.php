@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 
@@ -104,6 +104,10 @@ function atlas_handle_form() {
         wp_safe_redirect(add_query_arg('atlas_sent', '1', $back));
         exit;
     }
+    // Consentement obligatoire (case à cocher + lien vers la politique de confidentialité)
+    if (empty($_POST['consent'])) {
+        wp_die('Merci de cocher la case de consentement pour envoyer votre demande.', 'Consentement requis', ['response' => 400, 'back_link' => true]);
+    }
     // Limite : 5 envois par heure et par adresse IP.
     $ip = isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : 'x';
     $key = 'atlas_form_' . md5($ip);
@@ -116,7 +120,7 @@ function atlas_handle_form() {
     $type = sanitize_text_field(wp_unslash($_POST['form_type'] ?? 'Demande'));
     $labels = ['nom' => 'Nom et prénom', 'tel' => 'Téléphone', 'email' => 'Email', 'type' => 'Type de rendez-vous',
                'medecin' => 'Médecin souhaité', 'date' => 'Date souhaitée', 'message' => 'Message', 'msg' => 'Message'];
-    $skip = ['action', 'atlas_nonce', '_wp_http_referer', 'form_type', 'website'];
+    $skip = ['action', 'atlas_nonce', '_wp_http_referer', 'form_type', 'website', 'consent'];
     $lines = []; $name = ''; $reply = '';
     foreach ($_POST as $field => $value) {
         if (in_array($field, $skip, true) || is_array($value)) continue;
@@ -127,6 +131,7 @@ function atlas_handle_form() {
         if ($short === 'email' && is_email($value)) $reply = $value;
         $lines[] = ($labels[$short] ?? $field) . ' : ' . $value;
     }
+    $lines[] = 'Consentement : oui (politique de confidentialité acceptée)';
     if ($name === '' || !$lines) {
         wp_die('Merci de renseigner au moins votre nom.', 'Erreur', ['response' => 400, 'back_link' => true]);
     }

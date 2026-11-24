@@ -27,6 +27,14 @@ function atlas_contact_defaults() {
         'lng'        => '',
         'ouv_semaine' => '09:00-18:00',
         'ouv_samedi' => '09:00-14:00',
+        'raison_sociale' => 'Centre Médical Atlas',
+        'forme_juridique' => 'à compléter',
+        'ninea' => 'à compléter',
+        'rccm' => 'à compléter',
+        'directeur' => 'à compléter',
+        'autorisation' => 'à compléter',
+        'email_donnees' => '',
+        'retention_mois' => '12',
     ];
 }
 function atlas_opt($key) {
@@ -116,4 +124,10 @@ function atlas_post_by_title($title, $type = 'post') {
         'numberposts' => 1, 'orderby' => 'ID', 'order' => 'ASC',
     ]);
     return $found ? $found[0] : null;
+}
+
+/** Adresse qui reçoit les demandes d'exercice des droits sur les données (à défaut : l'email affiché sur le site). */
+function atlas_data_email() {
+    $e = atlas_opt('email_donnees');
+    return $e !== '' ? $e : atlas_opt('email');
 }

@@ -574,3 +574,12 @@ textarea.form_input { min-height: 130px; resize: vertical; }
 .footer_credit a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .footer_credit a:hover { color: var(--color-accent); }
 .footer_heart { color: #ff5a73; }
+
+/* Consentement et pages légales */
+.form_check { display: flex; gap: .7rem; align-items: flex-start; font-size: .88rem; line-height: 1.5; color: var(--color-grey); cursor: pointer; }
+.form_check input { flex: none; width: 18px; height: 18px; margin-top: .15rem; accent-color: var(--color-accent); }
+.form_check a, .legal_body a { color: var(--color-accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+.footer_legal { font-size: .875rem; }
+.footer_legal a:hover { color: var(--color-accent); }
+.legal_body h2 { font-size: 1.35rem; }
+.legal_body .lv { font-weight: 600; }
