@@ -41,7 +41,7 @@
       <div class="container-large">
         <div class="nav_top">
           <a href="<?php echo esc_url(home_url('/')); ?>" class="nav_logo" aria-label="Centre Médical Atlas, accueil">
-            <img src="<?php echo esc_url(get_theme_file_uri('assets/logo-icon.svg')); ?>" alt="" class="nav_logo-icon">
+            <img src="<?php echo esc_url(get_theme_file_uri('assets/logo-icon.png')); ?>" alt="" class="nav_logo-icon">
             <span class="nav_logo-text"><small><?php atlas_t('t9e6fc50a'); ?></small><strong><?php atlas_t('t96fd73b0'); ?></strong></span>
           </a>
           <div class="nav_contacts">

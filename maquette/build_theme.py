@@ -22,7 +22,7 @@ def url(h):
 
 def conv(html):
     html = re.sub(r'href="([^"]*)"', lambda m: 'href="' + url(m.group(1)) + '"', html)
-    html = html.replace('src="assets/logo-icon.svg"', "src=\"<?php echo esc_url(get_theme_file_uri('assets/logo-icon.svg')); ?>\"")
+    html = html.replace('src="assets/logo-icon.png"', "src=\"<?php echo esc_url(get_theme_file_uri('assets/logo-icon.png')); ?>\"")
     # page courante dans le menu
     for slug in ['le-centre', 'specialites', 'nos-medecins', 'conseils-sante', 'contact', 'imagerie', 'endoscopie', 'biopsie']:
         a = f"href=\"<?php echo esc_url(home_url('/{slug}/')); ?>\""
@@ -83,7 +83,7 @@ for d in ('', 'assets', 'parts'):
 w = lambda p, s: open(os.path.join(OUT, p), 'w', encoding='utf-8').write(s)
 
 # ---------- Assets ----------
-shutil.copy('assets/logo-icon.svg', f'{OUT}/assets/logo-icon.svg')
+[shutil.copy(f'assets/{n}', f'{OUT}/assets/{n}') for n in ('logo-icon.png', 'favicon.png', 'apple-touch-icon.png', 'logo-atlas.png')]
 shutil.copy('js/main.js', f'{OUT}/assets/main.js')
 shutil.copy('assets/screenshot.png', f'{OUT}/screenshot.png')
 

@@ -30,7 +30,8 @@ add_action('wp_enqueue_scripts', function () {
 
 add_action('wp_head', function () {
     echo '<link rel="preload" href="' . esc_url(get_theme_file_uri('assets/fonts/outfit-latin.woff2')) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-    echo '<link rel="icon" href="' . esc_url(get_theme_file_uri('assets/logo-icon.svg')) . '" type="image/svg+xml">' . "\n";
+    echo '<link rel="icon" href="' . esc_url(get_theme_file_uri('assets/favicon.png')) . '" type="image/png" sizes="192x192">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url(get_theme_file_uri('assets/apple-touch-icon.png')) . '">' . "\n";
 });
 
 /* ---------- Aides pour les modèles ---------- */
