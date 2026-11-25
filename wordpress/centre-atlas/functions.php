@@ -21,8 +21,11 @@ add_action('after_setup_theme', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('atlas-style', get_stylesheet_uri(), [], ATLAS_VERSION);
-    wp_enqueue_script('atlas-main', get_theme_file_uri('assets/main.js'), [], ATLAS_VERSION, ['in_footer' => true, 'strategy' => 'defer']);
+    // Version = date du fichier : chaque mise à jour du thème force le rechargement du CSS/JS (pas de cache périmé)
+    $css_ver = (string) @filemtime(get_stylesheet_directory() . '/style.css');
+    $js_ver  = (string) @filemtime(get_theme_file_path('assets/main.js'));
+    wp_enqueue_style('atlas-style', get_stylesheet_uri(), [], $css_ver ?: ATLAS_VERSION);
+    wp_enqueue_script('atlas-main', get_theme_file_uri('assets/main.js'), [], $js_ver ?: ATLAS_VERSION, ['in_footer' => true, 'strategy' => 'defer']);
 });
 
 add_action('wp_head', function () {
