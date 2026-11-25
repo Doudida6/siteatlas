@@ -91,10 +91,11 @@ add_action('init', function () {
         'capability_type' => 'post', 'map_meta_cap' => true,
         'capabilities' => [
             'create_posts' => 'do_not_allow',
-            'edit_post' => 'switch_themes', 'read_post' => 'switch_themes', 'delete_post' => 'switch_themes',
-            'edit_posts' => 'switch_themes', 'edit_others_posts' => 'switch_themes', 'edit_private_posts' => 'switch_themes', 'edit_published_posts' => 'switch_themes',
-            'publish_posts' => 'switch_themes', 'read_private_posts' => 'switch_themes',
-            'delete_posts' => 'switch_themes', 'delete_others_posts' => 'switch_themes', 'delete_private_posts' => 'switch_themes', 'delete_published_posts' => 'switch_themes',
+            // Ne jamais mapper edit_post / read_post / delete_post sur un droit existant :
+            // WordPress traiterait ce droit comme une vérification sur une publication et le refuserait partout.
+            'edit_posts' => 'manage_options', 'edit_others_posts' => 'manage_options', 'edit_private_posts' => 'manage_options', 'edit_published_posts' => 'manage_options',
+            'publish_posts' => 'manage_options', 'read_private_posts' => 'manage_options',
+            'delete_posts' => 'manage_options', 'delete_others_posts' => 'manage_options', 'delete_private_posts' => 'manage_options', 'delete_published_posts' => 'manage_options',
         ],
     ]);
 });
