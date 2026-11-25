@@ -51,7 +51,6 @@
       <div class="container-large about_grid">
         <div class="collage reveal">
           <div class="collage_main photo-placeholder<?php echo atlas_photo_class('accueil-photo-reception-salle-d-attente-atlas'); ?>"<?php echo atlas_photo_attr('accueil-photo-reception-salle-d-attente-atlas', 'Photo : réception / salle d\'attente Atlas'); ?>><?php atlas_photo_label('accueil-photo-reception-salle-d-attente-atlas', 'Photo : réception / salle d\'attente Atlas'); ?></div>
-          <div class="collage_small photo-placeholder<?php echo atlas_photo_class('accueil-photo-equipe'); ?>"<?php echo atlas_photo_attr('accueil-photo-equipe', 'Photo : équipe'); ?>><?php atlas_photo_label('accueil-photo-equipe', 'Photo : équipe'); ?></div>
         </div>
         <div class="about_content reveal">
           <span class="eyebrow2"><?php atlas_t('t28fe14a2'); ?></span>

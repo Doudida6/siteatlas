@@ -521,7 +521,6 @@ return [
         'cta-photo-accueil-du-centre-atlas' => ['cta', 'Photo : accueil du Centre Atlas'],
         'accueil-photo-accueil-espace-architectural-du-ce' => ['accueil', 'Photo : accueil / espace architectural du Centre Atlas'],
         'accueil-photo-reception-salle-d-attente-atlas' => ['accueil', 'Photo : réception / salle d\'attente Atlas'],
-        'accueil-photo-equipe' => ['accueil', 'Photo : équipe'],
         'accueil-photo-cabinet-de-consultation' => ['accueil', 'Photo : cabinet de consultation'],
         'accueil-photo-echographie' => ['accueil', 'Photo : échographie'],
         'accueil-apt-side' => ['accueil', 'Fond du bloc « Prenez rendez-vous »'],
