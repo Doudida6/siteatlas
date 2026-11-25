@@ -29,6 +29,8 @@
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".6"/></symbol>
+  <symbol id="i-tt" viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.2 2 3.6 4 4"/></symbol>
+  <symbol id="i-li" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 10.5V16M8 7.8v.01M11.5 16v-5.5M11.5 13a2.2 2.2 0 0 1 4.4 0v3"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-5A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
   <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7H5v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7zm10 0h-4v6h3c0 2-1 3-3 3v2c4 0 6-3 6-7V7z"/></symbol>
@@ -58,7 +60,7 @@
         </nav>
         <div class="nav_social">
           <?php if (atlas_opt('facebook')) : ?><a href="<?php echo esc_url(atlas_opt('facebook')); ?>" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a><?php endif; ?>
-          <?php if (atlas_opt('instagram')) : ?><a href="<?php echo esc_url(atlas_opt('instagram')); ?>" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><?php endif; ?>
+          <?php if (atlas_opt('instagram')) : ?><a href="<?php echo esc_url(atlas_opt('instagram')); ?>" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><?php endif; ?><?php if (atlas_opt('tiktok')) : ?><a href="<?php echo esc_url(atlas_opt('tiktok')); ?>" aria-label="TikTok" target="_blank" rel="noopener"><svg><use href="#i-tt"/></svg></a><?php endif; ?><?php if (atlas_opt('linkedin')) : ?><a href="<?php echo esc_url(atlas_opt('linkedin')); ?>" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-li"/></svg></a><?php endif; ?>
           <a href="https://wa.me/<?php echo esc_attr(atlas_wa()); ?>" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
         </div>
         </div>

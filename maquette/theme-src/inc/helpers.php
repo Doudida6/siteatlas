@@ -22,6 +22,8 @@ function atlas_contact_defaults() {
         'horaires'   => "{{HOURS}}",
         'facebook'   => '',
         'instagram'  => '',
+        'tiktok'     => '',
+        'linkedin'   => '',
         'google'     => '',
         'lat'        => '',
         'lng'        => '',

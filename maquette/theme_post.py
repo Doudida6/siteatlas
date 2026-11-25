@@ -87,9 +87,10 @@ def contact_vars(s):
                   "src=\"<?php echo esc_url('https://www.google.com/maps?q=' . rawurlencode(atlas_map_query()) . '&output=embed'); ?>\"")
     s = s.replace('href="https://www.google.com/maps/dir/?api=1&destination=Libert%C3%A9+6,+Dakar,+Senegal"',
                   "href=\"<?php echo esc_url('https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode(atlas_map_query())); ?>\"")
-    for name, icon in (('facebook', 'i-fb'), ('instagram', 'i-ig')):
-        label = name.capitalize()
-        old = f'<a href="#" aria-label="{label}"><svg><use href="#{icon}"/></svg></a>'
+    for name, icon in (('facebook', 'i-fb'), ('instagram', 'i-ig'), ('tiktok', 'i-tt'), ('linkedin', 'i-li')):
+        label = {'tiktok': 'TikTok', 'linkedin': 'LinkedIn'}.get(name, name.capitalize())
+        lab_src = name.capitalize()
+        old = f'<a href="#" aria-label="{lab_src}"><svg><use href="#{icon}"/></svg></a>'
         new = (f"<?php if (atlas_opt('{name}')) : ?><a href=\"<?php echo esc_url(atlas_opt('{name}')); ?>\" aria-label=\"{label}\" target=\"_blank\" rel=\"noopener\">"
                f'<svg><use href="#{icon}"/></svg></a><?php endif; ?>')
         s = s.replace(old, new)

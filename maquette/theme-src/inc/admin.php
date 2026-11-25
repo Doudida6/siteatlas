@@ -30,7 +30,7 @@ function atlas_sanitize_contact($in) {
     foreach (atlas_contact_defaults() as $k => $def) {
         $v = isset($in[$k]) ? (string) $in[$k] : '';
         if ($k === 'email' || $k === 'rdv_email') $out[$k] = sanitize_email($v);
-        elseif ($k === 'facebook' || $k === 'instagram' || $k === 'google') $out[$k] = esc_url_raw($v);
+        elseif (in_array($k, ['facebook', 'instagram', 'tiktok', 'linkedin', 'google'], true)) $out[$k] = esc_url_raw($v);
         elseif ($k === 'lat' || $k === 'lng') $out[$k] = preg_match('/^-?\d{1,3}(\.\d+)?$/', trim($v)) ? trim($v) : '';
         elseif ($k === 'retention_mois') $out[$k] = (string) max(0, min(60, (int) $v));
         elseif ($k === 'ouv_semaine' || $k === 'ouv_samedi') $out[$k] = preg_match('/^\d{2}:\d{2}-\d{2}:\d{2}$/', trim($v)) ? trim($v) : '';
@@ -74,6 +74,8 @@ function atlas_admin_contact() {
         'horaires'   => ['Horaires', 'textarea', "ex. Lundi au vendredi : 8h - 18h\nSamedi : 8h - 13h"],
         'facebook'   => ['Page Facebook (lien)', 'url', 'Laissez vide pour masquer l\'icône'],
         'instagram'  => ['Compte Instagram (lien)', 'url', 'Laissez vide pour masquer l\'icône'],
+        'tiktok'     => ['Compte TikTok (lien)', 'url', 'Laissez vide pour masquer l\'icône'],
+        'linkedin'   => ['Page LinkedIn (lien)', 'url', 'Laissez vide pour masquer l\'icône'],
         'google'     => ['Fiche Google (lien)', 'url', 'Lien de votre fiche Google Business Profile : un bouton « Notre fiche Google » apparaît sur la page Contact'],
         'ouv_semaine' => ['Ouverture lundi-vendredi (pour Google)', 'text', 'Format 09:00-18:00'],
         'ouv_samedi' => ['Ouverture samedi (pour Google)', 'text', 'Format 09:00-14:00 (laissez vide si fermé)'],

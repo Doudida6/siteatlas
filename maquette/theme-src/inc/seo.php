@@ -90,7 +90,7 @@ function atlas_schema_clinic() {
         }
     }
     if ($hours) $data['openingHoursSpecification'] = $hours;
-    $same = array_values(array_filter([atlas_opt('facebook'), atlas_opt('instagram'), atlas_opt('google')]));
+    $same = array_values(array_filter([atlas_opt('facebook'), atlas_opt('instagram'), atlas_opt('tiktok'), atlas_opt('linkedin'), atlas_opt('google')]));
     if ($same) $data['sameAs'] = $same;
     $img = atlas_og_image();
     if ($img) $data['image'] = $img;
