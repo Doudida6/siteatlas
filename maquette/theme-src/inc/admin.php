@@ -5,11 +5,11 @@
 if (!defined('ABSPATH')) exit;
 
 add_action('admin_menu', function () {
-    add_menu_page('Centre Atlas', 'Centre Atlas', 'edit_theme_options', 'centre-atlas', 'atlas_admin_contact', 'dashicons-heart', 24);
-    add_submenu_page('centre-atlas', 'Coordonnées', 'Coordonnées', 'edit_theme_options', 'centre-atlas', 'atlas_admin_contact');
-    add_submenu_page('centre-atlas', 'Photos du site', 'Photos du site', 'edit_theme_options', 'centre-atlas-photos', 'atlas_admin_photos');
-    add_submenu_page('centre-atlas', 'Textes du site', 'Textes du site', 'edit_theme_options', 'centre-atlas-textes', 'atlas_admin_textes');
-    add_submenu_page('centre-atlas', 'SEO (Google)', 'SEO (Google)', 'edit_theme_options', 'centre-atlas-seo', 'atlas_admin_seo');
+    add_menu_page('Centre Atlas', 'Centre Atlas', 'switch_themes', 'centre-atlas', 'atlas_admin_contact', 'dashicons-heart', 24);
+    add_submenu_page('centre-atlas', 'Coordonnées', 'Coordonnées', 'switch_themes', 'centre-atlas', 'atlas_admin_contact');
+    add_submenu_page('centre-atlas', 'Photos du site', 'Photos du site', 'switch_themes', 'centre-atlas-photos', 'atlas_admin_photos');
+    add_submenu_page('centre-atlas', 'Textes du site', 'Textes du site', 'switch_themes', 'centre-atlas-textes', 'atlas_admin_textes');
+    add_submenu_page('centre-atlas', 'SEO (Google)', 'SEO (Google)', 'switch_themes', 'centre-atlas-seo', 'atlas_admin_seo');
 });
 
 add_action('admin_enqueue_scripts', function ($hook) {

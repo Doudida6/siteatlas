@@ -91,10 +91,10 @@ add_action('init', function () {
         'capability_type' => 'post', 'map_meta_cap' => true,
         'capabilities' => [
             'create_posts' => 'do_not_allow',
-            'edit_post' => 'edit_theme_options', 'read_post' => 'edit_theme_options', 'delete_post' => 'edit_theme_options',
-            'edit_posts' => 'edit_theme_options', 'edit_others_posts' => 'edit_theme_options', 'edit_private_posts' => 'edit_theme_options', 'edit_published_posts' => 'edit_theme_options',
-            'publish_posts' => 'edit_theme_options', 'read_private_posts' => 'edit_theme_options',
-            'delete_posts' => 'edit_theme_options', 'delete_others_posts' => 'edit_theme_options', 'delete_private_posts' => 'edit_theme_options', 'delete_published_posts' => 'edit_theme_options',
+            'edit_post' => 'switch_themes', 'read_post' => 'switch_themes', 'delete_post' => 'switch_themes',
+            'edit_posts' => 'switch_themes', 'edit_others_posts' => 'switch_themes', 'edit_private_posts' => 'switch_themes', 'edit_published_posts' => 'switch_themes',
+            'publish_posts' => 'switch_themes', 'read_private_posts' => 'switch_themes',
+            'delete_posts' => 'switch_themes', 'delete_others_posts' => 'switch_themes', 'delete_private_posts' => 'switch_themes', 'delete_published_posts' => 'switch_themes',
         ],
     ]);
 });
