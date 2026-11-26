@@ -48,11 +48,8 @@ add_filter('pre_get_document_title', function ($title) {
 /** Image de partage : photo mise en avant de l'article, sinon photo principale de l'accueil si elle est choisie. */
 function atlas_og_image() {
     if (is_singular('post') && has_post_thumbnail()) return (string) get_the_post_thumbnail_url(null, 'large');
-    $reg = atlas_registry();
-    foreach (array_keys($reg['photos']) as $key) {
-        if (strpos($key, 'accueil-photo-accueil') === 0) { $u = atlas_photo_url($key); if ($u) return $u; }
-    }
-    return '';
+    // Partout ailleurs : le logo du centre (format 1200 × 630 adapté à WhatsApp, Facebook, LinkedIn…)
+    return (string) get_theme_file_uri('assets/og-image.jpg');
 }
 
 /** Adresse découpée pour les données structurées : « Liberté 6, Dakar » -> rue « Liberté 6 », ville « Dakar ». */
@@ -92,8 +89,8 @@ function atlas_schema_clinic() {
     if ($hours) $data['openingHoursSpecification'] = $hours;
     $same = array_values(array_filter([atlas_opt('facebook'), atlas_opt('instagram'), atlas_opt('tiktok'), atlas_opt('linkedin'), atlas_opt('google')]));
     if ($same) $data['sameAs'] = $same;
-    $img = atlas_og_image();
-    if ($img) $data['image'] = $img;
+    $data['logo'] = get_theme_file_uri('assets/logo-atlas.png');
+    $data['image'] = get_theme_file_uri('assets/og-image.jpg');
     return $data;
 }
 
@@ -103,7 +100,8 @@ function atlas_schema_article($post) {
         'datePublished' => get_the_date('c', $post), 'dateModified' => get_the_modified_date('c', $post),
         'mainEntityOfPage' => get_permalink($post),
         'author' => ['@type' => 'Organization', 'name' => 'Centre Médical Atlas'],
-        'publisher' => ['@type' => 'Organization', 'name' => 'Centre Médical Atlas', 'url' => home_url('/')],
+        'publisher' => ['@type' => 'Organization', 'name' => 'Centre Médical Atlas', 'url' => home_url('/'),
+            'logo' => ['@type' => 'ImageObject', 'url' => get_theme_file_uri('assets/logo-atlas.png')]],
         'inLanguage' => 'fr-FR',
     ];
     $img = atlas_og_image();
@@ -129,7 +127,14 @@ add_action('wp_head', function () {
         $url = is_singular() ? get_permalink() : (is_front_page() ? home_url('/') : '');
         if ($url) echo '<meta property="og:url" content="' . esc_url($url) . '">' . "\n";
         $img = atlas_og_image();
-        if ($img) echo '<meta property="og:image" content="' . esc_url($img) . '">' . "\n";
+        if ($img) {
+            echo '<meta property="og:image" content="' . esc_url($img) . '">' . "\n";
+            if (strpos($img, 'og-image.jpg') !== false) {
+                echo '<meta property="og:image:width" content="1200">' . "\n" . '<meta property="og:image:height" content="630">' . "\n";
+                echo '<meta property="og:image:type" content="image/jpeg">' . "\n";
+            }
+            echo '<meta property="og:image:alt" content="Centre Médical Atlas">' . "\n";
+        }
         echo '<meta name="twitter:card" content="' . ($img ? 'summary_large_image' : 'summary') . '">' . "\n";
     }
     echo '<meta name="geo.region" content="SN-DK">' . "\n" . '<meta name="geo.placename" content="Dakar">' . "\n";

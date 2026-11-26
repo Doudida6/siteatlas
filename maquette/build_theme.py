@@ -83,7 +83,7 @@ for d in ('', 'assets', 'parts'):
 w = lambda p, s: open(os.path.join(OUT, p), 'w', encoding='utf-8').write(s)
 
 # ---------- Assets ----------
-[shutil.copy(f'assets/{n}', f'{OUT}/assets/{n}') for n in ('logo-icon.png', 'favicon.png', 'apple-touch-icon.png', 'logo-atlas.png')]
+[shutil.copy(f'assets/{n}', f'{OUT}/assets/{n}') for n in ('logo-icon.png', 'favicon.png', 'apple-touch-icon.png', 'logo-atlas.png', 'og-image.jpg')]
 shutil.copy('js/main.js', f'{OUT}/assets/main.js')
 shutil.copy('assets/screenshot.png', f'{OUT}/screenshot.png')
 
