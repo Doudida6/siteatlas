@@ -223,6 +223,84 @@ def texts(s, page, reg_texts):
     return re.sub(r'\x00(\d+)\x00', lambda m: store[int(m.group(1))], s)
 
 
+
+# ---------- 4. Structure des pages (sections + champs) pour l'administration « Contenu du site » ----------
+TAG_LABELS = {'h1': 'Titre principal', 'h2': 'Titre', 'h3': 'Sous-titre', 'h4': 'Sous-titre', 'p': 'Texte', 'li': 'Élément de liste',
+              'button': 'Bouton', 'strong': 'Texte en gras', 'small': 'Petit texte', 'label': 'Libellé du formulaire',
+              'th': 'Tableau', 'td': 'Tableau', 'figcaption': 'Légende', 'blockquote': 'Citation', 'em': 'Texte'}
+EV_RE = re.compile(r"<\?php atlas_t\('(t[0-9a-f]{8})'\); \?>|atlas_photo_class\('([^']+)'\)|<section\b|</section>"
+                   r"|<(/?)(h1|h2|h3|h4|p|li|a|button|span|strong|small|label|th|td|figcaption|blockquote|em|div|footer|header|nav)\b([^>]*?)>")
+
+
+def field_label(tag, attrs):
+    if tag == 'a':
+        return 'Bouton' if 'button' in attrs else 'Bouton ou lien'
+    if tag == 'span':
+        if 'eyebrow' in attrs:
+            return 'Sur-titre'
+        return 'Texte'
+    return TAG_LABELS.get(tag, 'Texte')
+
+
+def scan_layout(s, default_title, reg_texts):
+    """Découpe un modèle en sections ; renvoie [(titre, [(type, clé, libellé), ...]), ...]."""
+    sections = [[default_title, [], False]]
+    last_open, closed_after = None, False
+    seen = set()
+    events = [(m.start(), m) for m in EV_RE.finditer(s)]
+    # les appels photo sont dans les attributs : on les repère à part puis on fusionne par position
+    events += [(m.start(), m) for m in re.finditer(r"()atlas_photo_class\('([^']+)'\)", s)]
+    events.sort(key=lambda e: e[0])
+    for _, m in events:
+        g = m.group(0)
+        if g.startswith('atlas_photo_class') and m.re.pattern.startswith('()'):
+            key = m.group(2)
+            if key not in seen:
+                seen.add(key)
+                sections[-1][1].append(('p', key, 'Image'))
+            continue
+        if g.startswith('<section'):
+            sections.append([None, [], False])
+            continue
+        if g == '</section>':
+            sections.append([default_title + ' (suite)', [], True])
+            continue
+        if m.group(1):
+            key = m.group(1)
+            label = 'Texte' if (last_open is None or closed_after) else field_label(*last_open)
+            cur = sections[-1]
+            if cur[0] is None and last_open and last_open[0] in ('h1', 'h2') and not closed_after:
+                cur[0] = ('Bandeau du haut : ' if last_open[0] == 'h1' else '') + reg_texts[key][1]
+            if len(cur) < 4:
+                cur.append(reg_texts[key][1])   # premier texte, sert de titre de secours
+            if key not in seen:
+                seen.add(key)
+                cur[1].append(('t', key, label))
+            continue
+        if m.group(2):
+            key = m.group(2)
+            if key not in seen:
+                seen.add(key)
+                sections[-1][1].append(('p', key, 'Image'))
+            continue
+        closing, tag, attrs = m.group(3), m.group(4), m.group(5) or ''
+        if closing:
+            closed_after = True
+        elif tag not in ('div', 'footer', 'header', 'nav'):
+            last_open, closed_after = (tag, attrs), False
+    out = []
+    for sec in sections:
+        title, fields = sec[0], sec[1]
+        if not fields:
+            continue
+        if title is None:
+            first = sec[3] if len(sec) > 3 else ''
+            title = (first[:45] + '…') if len(first) > 46 else (first or 'Section %d' % (len(out) + 1))
+        out.append((title, fields))
+    if out and default_title and out[0][0] != default_title and len(out) > 1:
+        pass
+    return out
+
 # ---------- Orchestration ----------
 def run(OUT, TITLES):
     order = ['header.php', 'footer.php', 'parts/cta.php', 'front-page.php', 'home.php', 'single.php']
@@ -246,6 +324,8 @@ def run(OUT, TITLES):
         return 'autres'
 
     reg_texts, reg_photos = {}, {}
+    layouts = {}
+    FILE_TITLES = {'header.php': 'En-tête (haut de toutes les pages)', 'footer.php': 'Pied de page', 'parts/cta.php': 'Bandeau « Besoin d\'un rendez-vous ? »', 'home.php': 'Liste des articles', 'single.php': 'Page article'}
     for f in files:
         path = os.path.join(OUT, f)
         if not os.path.exists(path):
@@ -258,6 +338,7 @@ def run(OUT, TITLES):
         s = dynamic_blocks(f, s)
         s = photos(s, page, reg_photos)
         s = texts(s, page, reg_texts)
+        layouts.setdefault(page, []).extend(scan_layout(s, FILE_TITLES.get(f, 'Haut de page'), reg_texts))
         if 'ABSPATH' not in s[:200]:
             s = GUARD + s
         open(path, 'w', encoding='utf-8').write(s)
@@ -283,6 +364,15 @@ def run(OUT, TITLES):
         assert k in reg_photos, 'emplacement photo introuvable : ' + k
         assert os.path.exists(os.path.join('theme-src', 'photos', fname)), fname
         lines.append(f"        {php_str(k)} => {php_str(fname)},")
+    lines += ['    ],', "    'layout' => ["]
+    for pg, secs in layouts.items():
+        if not secs:
+            continue
+        lines.append(f"        {php_str(pg)} => [")
+        for title, fields in secs:
+            fl = ', '.join(f"[{php_str(t)}, {php_str(k)}, {php_str(l)}]" for t, k, l in fields)
+            lines.append(f"            [{php_str(title)}, [{fl}]],")
+        lines.append('        ],')
     lines += ['    ],', "    'seo' => ["]
     lines += [f"        {php_str(k)} => [{php_str(pages.get(k) or TITLES.get(k, k))}, {php_str(v[0])}, {php_str(v[1])}]," for k, v in SEO.items()]
     lines += ['    ],', '];', '']
@@ -296,6 +386,9 @@ def run(OUT, TITLES):
             open(ip, 'w', encoding='utf-8').write(GUARD + c)
     # polices
     os.makedirs(os.path.join(OUT, 'assets', 'fonts'), exist_ok=True)
+    os.makedirs(os.path.join(OUT, 'assets', 'editor'), exist_ok=True)
+    for f in os.listdir('theme-src/editor'):
+        shutil.copy(os.path.join('theme-src/editor', f), os.path.join(OUT, 'assets', 'editor', f))
     for f in os.listdir('theme-src/fonts'):
         shutil.copy(os.path.join('theme-src/fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
     os.makedirs(os.path.join(OUT, 'assets', 'photos'), exist_ok=True)

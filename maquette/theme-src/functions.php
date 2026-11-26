@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 define('ATLAS_VERSION', '1.0.0');
 define('ATLAS_SECRETARIAT_EMAIL', 'centreatlasmedical@gmail.com');
 
-foreach (['helpers', 'articles', 'seo', 'medecins', 'temoignages', 'menu', 'admin', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6', 'setup7', 'security'] as $atlas_inc) {
+foreach (['helpers', 'articles', 'seo', 'medecins', 'temoignages', 'menu', 'admin', 'contenu', 'setup2', 'setup3', 'setup4', 'setup5', 'privacy', 'setup6', 'setup7', 'editor', 'security'] as $atlas_inc) {
     require_once get_theme_file_path('inc/' . $atlas_inc . '.php');
 }
 

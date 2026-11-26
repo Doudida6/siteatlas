@@ -7,8 +7,9 @@ if (!defined('ABSPATH')) exit;
 add_action('admin_menu', function () {
     add_menu_page('Centre Atlas', 'Centre Atlas', 'manage_options', 'centre-atlas', 'atlas_admin_contact', 'dashicons-heart', 24);
     add_submenu_page('centre-atlas', 'Coordonnées', 'Coordonnées', 'manage_options', 'centre-atlas', 'atlas_admin_contact');
-    add_submenu_page('centre-atlas', 'Photos du site', 'Photos du site', 'manage_options', 'centre-atlas-photos', 'atlas_admin_photos');
-    add_submenu_page('centre-atlas', 'Textes du site', 'Textes du site', 'manage_options', 'centre-atlas-textes', 'atlas_admin_textes');
+    // Anciennes pages (remplacées par « Contenu du site ») : accessibles par lien direct seulement
+    add_submenu_page('', 'Photos du site', 'Photos du site', 'manage_options', 'centre-atlas-photos', 'atlas_admin_photos');
+    add_submenu_page('', 'Textes du site', 'Textes du site', 'manage_options', 'centre-atlas-textes', 'atlas_admin_textes');
     add_submenu_page('centre-atlas', 'SEO (Google)', 'SEO (Google)', 'manage_options', 'centre-atlas-seo', 'atlas_admin_seo');
 });
 
@@ -24,6 +25,14 @@ add_action('admin_init', function () {
 });
 
 /* ---------- Nettoyage des valeurs enregistrées ---------- */
+/** Enregistre une valeur déjà nettoyée (sans repasser par le filtre, qui annulerait les retours au texte d'origine). */
+function atlas_store_option($name, $value) {
+    $filters = $GLOBALS['wp_filter']['sanitize_option_' . $name] ?? null;
+    remove_all_filters('sanitize_option_' . $name);
+    update_option($name, $value);
+    if ($filters) $GLOBALS['wp_filter']['sanitize_option_' . $name] = $filters;
+}
+
 function atlas_sanitize_contact($in) {
     $in = is_array($in) ? $in : [];
     $out = [];

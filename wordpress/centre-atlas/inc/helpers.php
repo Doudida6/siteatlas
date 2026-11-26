@@ -102,9 +102,10 @@ function atlas_photo_default_url($key) {
 function atlas_photo_class($key) { return atlas_photo_url($key) ? ' has-photo' : ''; }
 /** Attributs (image de fond) ajoutés à l'emplacement quand une photo est choisie. */
 function atlas_photo_attr($key, $label = '') {
+    $edit = (function_exists('atlas_edit_mode') && atlas_edit_mode()) ? ' data-atlas-photo="' . esc_attr($key) . '"' : '';
     $u = atlas_photo_url($key);
-    if (!$u) return '';
-    return ' style="background-image:url(\'' . esc_url($u) . '\')" role="img" aria-label="' . esc_attr($label) . '"';
+    if (!$u) return $edit;
+    return $edit . ' style="background-image:url(\'' . esc_url($u) . '\')" role="img" aria-label="' . esc_attr($label) . '"';
 }
 /** Texte indicatif de l'emplacement : n'apparaît que tant qu'aucune photo n'est choisie. */
 function atlas_photo_label($key, $label) {
@@ -119,7 +120,13 @@ function atlas_text($key) {
     $v = (isset($o[$key]) && $o[$key] !== '') ? $o[$key] : (isset($reg['texts'][$key]) ? $reg['texts'][$key][1] : '');
     return atlas_expand($v);
 }
-function atlas_t($key) { echo esc_html(atlas_text($key)); }
+function atlas_t($key) {
+    if (function_exists('atlas_edit_mode') && atlas_edit_mode()) {
+        echo '<span class="atlas-e" data-atlas-t="' . esc_attr($key) . '" data-raw="' . esc_attr(atlas_text_raw($key)) . '">' . esc_html(atlas_text($key)) . '</span>';
+        return;
+    }
+    echo esc_html(atlas_text($key));
+}
 
 /** Crédit du pied de page (non modifiable depuis « Textes du site »). */
 function atlas_credit() {
