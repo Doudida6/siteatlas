@@ -5,8 +5,7 @@
 if (!defined('ABSPATH')) exit;
 
 add_action('admin_menu', function () {
-    add_menu_page('Centre Atlas', 'Centre Atlas', 'manage_options', 'centre-atlas', 'atlas_admin_contact', 'dashicons-heart', 24);
-    add_submenu_page('centre-atlas', 'Coordonnées', 'Coordonnées', 'manage_options', 'centre-atlas', 'atlas_admin_contact');
+    add_menu_page('Coordonnées du centre', 'Centre Atlas', 'manage_options', 'centre-atlas', 'atlas_admin_contact', 'dashicons-heart', 4.5);
     // Anciennes pages (remplacées par « Contenu du site ») : accessibles par lien direct seulement
     add_submenu_page('', 'Photos du site', 'Photos du site', 'manage_options', 'centre-atlas-photos', 'atlas_admin_photos');
     add_submenu_page('', 'Textes du site', 'Textes du site', 'manage_options', 'centre-atlas-textes', 'atlas_admin_textes');
