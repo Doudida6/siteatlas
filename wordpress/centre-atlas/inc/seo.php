@@ -48,7 +48,14 @@ add_filter('pre_get_document_title', function ($title) {
 /** Image de partage : photo mise en avant de l'article, sinon photo principale de l'accueil si elle est choisie. */
 function atlas_og_image() {
     if (is_singular('post') && has_post_thumbnail()) return (string) get_the_post_thumbnail_url(null, 'large');
-    // Partout ailleurs : le logo du centre (format 1200 × 630 adapté à WhatsApp, Facebook, LinkedIn…)
+    $saved = get_option('atlas_seo', []);
+    $saved = is_array($saved) ? $saved : [];
+    // 1. image choisie pour cette page dans « SEO et partage »  2. image par défaut  3. logo du centre (1200 × 630)
+    $slug = function_exists('atlas_seo_slug') ? atlas_seo_slug() : '';
+    foreach ([$slug !== '' ? ($saved[$slug]['img'] ?? 0) : 0, $saved['_default']['img'] ?? 0] as $id) {
+        $id = (int) $id;
+        if ($id) { $u = wp_get_attachment_image_url($id, 'large'); if ($u) return (string) $u; }
+    }
     return (string) get_theme_file_uri('assets/og-image.jpg');
 }
 

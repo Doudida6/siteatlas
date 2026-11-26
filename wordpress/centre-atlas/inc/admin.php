@@ -10,11 +10,15 @@ add_action('admin_menu', function () {
     // Anciennes pages (remplacées par « Contenu du site ») : accessibles par lien direct seulement
     add_submenu_page('', 'Photos du site', 'Photos du site', 'manage_options', 'centre-atlas-photos', 'atlas_admin_photos');
     add_submenu_page('', 'Textes du site', 'Textes du site', 'manage_options', 'centre-atlas-textes', 'atlas_admin_textes');
-    add_submenu_page('centre-atlas', 'SEO (Google)', 'SEO (Google)', 'manage_options', 'centre-atlas-seo', 'atlas_admin_seo');
+    // SEO : menu à part (voir plus bas)
+});
+
+add_action('admin_menu', function () {
+    add_menu_page('SEO et partage', 'SEO et partage', 'manage_options', 'centre-atlas-seo', 'atlas_admin_seo', 'dashicons-search', 4);
 });
 
 add_action('admin_enqueue_scripts', function ($hook) {
-    if (strpos((string) $hook, 'centre-atlas-photos') !== false) wp_enqueue_media();
+    if (strpos((string) $hook, 'centre-atlas-photos') !== false || strpos((string) $hook, 'centre-atlas-seo') !== false) wp_enqueue_media();
 });
 
 add_action('admin_init', function () {
@@ -226,48 +230,132 @@ function atlas_admin_textes() {
 function atlas_sanitize_seo($in) {
     $reg = atlas_registry();
     $out = [];
+    $img = function ($v) { $id = (int) $v; return ($id > 0 && wp_attachment_is_image($id)) ? $id : 0; };
     foreach ((array) $in as $slug => $f) {
-        if (!isset($reg['seo'][$slug]) || !is_array($f)) continue;
+        if (!is_array($f)) continue;
+        if ($slug === '_default') {
+            $i = $img($f['img'] ?? 0);
+            if ($i) $out['_default'] = ['img' => $i];
+            continue;
+        }
+        if (!isset($reg['seo'][$slug])) continue;
         $t = trim(sanitize_text_field(isset($f['title']) ? $f['title'] : ''));
         $d = trim(sanitize_text_field(isset($f['desc']) ? $f['desc'] : ''));
         if ($t === $reg['seo'][$slug][1]) $t = '';
         if ($d === $reg['seo'][$slug][2]) $d = '';
-        if ($t !== '' || $d !== '') $out[$slug] = ['title' => $t, 'desc' => $d];
+        $i = $img($f['img'] ?? 0);
+        if ($t !== '' || $d !== '' || $i) $out[$slug] = ['title' => $t, 'desc' => $d, 'img' => $i];
     }
     return $out;
 }
 
 function atlas_admin_seo() {
     $reg = atlas_registry();
-    echo '<div class="wrap"><h1>SEO : apparaître sur Google à Dakar</h1>';
+    $saved = (array) get_option('atlas_seo', []);
+    $logo = get_theme_file_uri('assets/og-image.jpg');
+    $def_id = (int) ($saved['_default']['img'] ?? 0);
+    $def_url = $def_id ? (string) wp_get_attachment_image_url($def_id, 'medium_large') : $logo;
+    $host = wp_parse_url(home_url('/'), PHP_URL_HOST);
+    echo '<div class="wrap atlas-seo"><h1>SEO et partage</h1>';
     if (atlas_seo_plugin_active()) {
-        echo '<div class="notice notice-warning"><p>Un plugin SEO est actif : il gère les titres et descriptions. Les réglages ci-dessous sont ignorés tant qu\'il reste activé.</p></div>';
+        echo '<div class="notice notice-warning"><p>Un plugin SEO est actif : il gère les titres, descriptions et images de partage. Les réglages ci-dessous sont ignorés tant qu\'il reste activé.</p></div>';
     }
-    echo '<p>Pour chaque page, voici le <strong>titre</strong> et la <strong>description</strong> proposés à Google. Ils contiennent déjà les mots que vos patients recherchent (« à Dakar », « échographie », « endoscopie »…). Modifiez-les si besoin ; videz un champ pour revenir à la valeur proposée.</p>';
-    echo '<p>Conseil : titre de 60 caractères maximum, description de 155 caractères maximum. Les articles utilisent leur titre et leur « extrait ».</p>';
-    echo '<style>.atlas-seo-row{background:#fff;border:1px solid #dcdcde;border-radius:6px;padding:12px 16px;margin:0 0 12px}.atlas-seo-row h3{margin:0 0 8px}.atlas-seo-row input,.atlas-seo-row textarea{width:100%}.atlas-count{font-size:12px;color:#646970}.atlas-count.over{color:#b32d2e;font-weight:600}</style>';
+    if (!empty($_GET['settings-updated'])) echo '<div class="notice notice-success is-dismissible"><p><strong>Enregistré.</strong> Pensez à rafraîchir l\'aperçu sur Facebook / LinkedIn (voir en bas).</p></div>';
+    echo '<p class="atlas-intro">Pour chaque page : le <strong>titre</strong> et la <strong>description</strong> affichés par Google, puis l\'<strong>image</strong> affichée quand on partage le lien (WhatsApp, Facebook, LinkedIn…). Videz un champ pour revenir à la valeur proposée. Conseils : titre ≤ 60 caractères, description ≤ 155, image horizontale (idéalement 1200 × 630).</p>';
+    echo '<style>
+    .atlas-seo{max-width:1100px}.atlas-intro{color:#50575e;max-width:820px}
+    .atlas-seo-toc{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0;position:sticky;top:32px;z-index:5;background:#f0f0f1;padding:8px 0}
+    .atlas-seo-toc a{background:#fff;border:1px solid #c3c4c7;border-radius:999px;padding:4px 12px;text-decoration:none;font-size:12px}
+    .atlas-seo-row{background:#fff;border:1px solid #dcdcde;border-radius:10px;padding:16px 18px;margin:0 0 16px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;scroll-margin-top:90px}
+    .atlas-seo-row h2{margin:0 0 10px;font-size:16px;grid-column:1/-1;display:flex;justify-content:space-between;gap:10px}
+    .atlas-seo-row h2 a{font-size:12px;font-weight:400}
+    .atlas-seo-row label{display:block;font-weight:600;margin:10px 0 4px}
+    .atlas-seo-row input[type=text],.atlas-seo-row textarea{width:100%}
+    .atlas-count{font-size:12px;color:#646970}.atlas-count.over{color:#b32d2e;font-weight:600}
+    .atlas-g{border:1px solid #eee;border-radius:8px;padding:10px 12px;margin-top:12px;font-family:arial,sans-serif;background:#fcfcfc}
+    .atlas-g small{color:#4d5156;font-size:12px}.atlas-g b{display:block;color:#1a0dab;font-size:17px;font-weight:400;margin:2px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.atlas-g p{margin:0;color:#4d5156;font-size:13px;line-height:1.4}
+    .atlas-share{border:1px solid #dcdcde;border-radius:8px;overflow:hidden;background:#f0f2f5}
+    .atlas-share-img{aspect-ratio:1200/630;background:#fff center/cover no-repeat}
+    .atlas-share-txt{padding:8px 10px;font-size:12px;color:#606770}.atlas-share-txt b{display:block;color:#1d2129;font-size:13px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .atlas-share-actions{display:flex;gap:10px;align-items:center;margin-top:8px;flex-wrap:wrap}
+    .atlas-savebar{position:sticky;bottom:0;background:#fff;border-top:1px solid #dcdcde;padding:12px 18px;margin:0 -20px;z-index:9}
+    @media (max-width:900px){.atlas-seo-row{grid-template-columns:1fr}}
+    </style>';
     echo '<form method="post" action="options.php">';
     settings_fields('atlas_seo_group');
-    $saved = (array) get_option('atlas_seo', []);
+
+    // Image par défaut
+    echo '<div class="atlas-seo-row" id="seo-default"><h2>Image de partage par défaut <span class="atlas-count">utilisée pour toutes les pages sans image propre</span></h2>';
+    echo '<div><p>Par défaut, le logo du Centre Médical Atlas s\'affiche. Vous pouvez le remplacer par une autre image (par exemple une photo de la façade avec le logo).</p></div>';
+    echo atlas_seo_image_field('_default', $def_id, $def_url, $logo, 'Centre Médical Atlas', $host, 'Remettre le logo');
+    echo '</div>';
+
+    echo '<nav class="atlas-seo-toc">';
+    foreach ($reg['seo'] as $slug => $info) echo '<a href="#seo-' . esc_attr($slug) . '">' . esc_html($info[0]) . '</a>';
+    echo '</nav>';
+
     foreach ($reg['seo'] as $slug => $info) {
         $t = !empty($saved[$slug]['title']) ? $saved[$slug]['title'] : $info[1];
         $d = !empty($saved[$slug]['desc']) ? $saved[$slug]['desc'] : $info[2];
-        echo '<div class="atlas-seo-row"><h3>' . esc_html($info[0]) . '</h3>';
-        echo '<p><input type="text" class="atlas-seo-t" name="atlas_seo[' . esc_attr($slug) . '][title]" value="' . esc_attr($t) . '"><span class="atlas-count" data-max="60"></span></p>';
-        echo '<p><textarea rows="2" class="atlas-seo-d" name="atlas_seo[' . esc_attr($slug) . '][desc]">' . esc_textarea($d) . '</textarea><span class="atlas-count" data-max="155"></span></p></div>';
+        $iid = (int) ($saved[$slug]['img'] ?? 0);
+        $iurl = $iid ? (string) wp_get_attachment_image_url($iid, 'medium_large') : $def_url;
+        $url = function_exists('atlas_contenu_url') ? atlas_contenu_url($slug) : '';
+        if ($slug === 'blog' || $slug === 'accueil') $url = $url ?: home_url('/');
+        echo '<div class="atlas-seo-row" id="seo-' . esc_attr($slug) . '"><h2>' . esc_html($info[0]) . ($url ? '<a href="' . esc_url($url) . '" target="_blank" rel="noopener">Voir la page ↗</a>' : '') . '</h2><div>';
+        echo '<label>Titre sur Google</label><input type="text" class="atlas-seo-t" name="atlas_seo[' . esc_attr($slug) . '][title]" value="' . esc_attr($t) . '"><span class="atlas-count" data-max="60"></span>';
+        echo '<label>Description sur Google</label><textarea rows="3" class="atlas-seo-d" name="atlas_seo[' . esc_attr($slug) . '][desc]">' . esc_textarea($d) . '</textarea><span class="atlas-count" data-max="155"></span>';
+        echo '<div class="atlas-g"><small>' . esc_html($host . ($url ? wp_parse_url($url, PHP_URL_PATH) : '')) . '</small><b class="g-t">' . esc_html($t) . '</b><p class="g-d">' . esc_html($d) . '</p></div>';
+        echo '</div>';
+        echo atlas_seo_image_field($slug, $iid, $iurl, $def_url, $t, $host, 'Utiliser l\'image par défaut');
+        echo '</div>';
     }
-    submit_button('Enregistrer');
+    echo '<div class="atlas-savebar">'; submit_button('Enregistrer', 'primary large', 'submit', false); echo '</div>';
+    echo '<h2 style="margin-top:28px">Après un changement d\'image</h2><p>Les réseaux gardent l\'ancien aperçu en mémoire. Pour le rafraîchir : <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook / WhatsApp</a> (« Scrape Again ») et <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">LinkedIn</a>.</p>';
     echo '</form></div>';
     ?>
     <script>
-    document.querySelectorAll('.atlas-seo-row').forEach(function (row) {
-        row.querySelectorAll('input,textarea').forEach(function (el) {
-            var out = el.parentNode.querySelector('.atlas-count');
-            var max = parseInt(out.getAttribute('data-max'), 10);
-            function upd() { var n = el.value.length; out.textContent = n + ' / ' + max + ' caractères'; out.className = 'atlas-count' + (n > max ? ' over' : ''); }
-            el.addEventListener('input', upd); upd();
+    jQuery(function ($) {
+        $('.atlas-seo-row').each(function () {
+            var row = $(this);
+            row.find('input[type=text],textarea').each(function () {
+                var el = this, out = $(el).next('.atlas-count'), max = parseInt(out.data('max'), 10);
+                function upd() {
+                    var n = el.value.length; out.text(n + ' / ' + max + ' caractères').toggleClass('over', n > max);
+                    if ($(el).hasClass('atlas-seo-t')) { row.find('.g-t').text(el.value); row.find('.atlas-share-txt b').text(el.value); }
+                    if ($(el).hasClass('atlas-seo-d')) row.find('.g-d').text(el.value);
+                }
+                $(el).on('input', upd); upd();
+            });
+        });
+        $('.atlas-seo').on('click', '.atlas-share-pick', function (e) {
+            e.preventDefault();
+            var box = $(this).closest('.atlas-share-col');
+            var frame = wp.media({ title: 'Image de partage', button: { text: 'Utiliser cette image' }, multiple: false, library: { type: 'image' } });
+            frame.on('select', function () {
+                var a = frame.state().get('selection').first().toJSON();
+                var url = (a.sizes && a.sizes.medium_large) ? a.sizes.medium_large.url : a.url;
+                box.find('.atlas-share-id').val(a.id);
+                box.find('.atlas-share-img').css('background-image', 'url("' + url + '")');
+            });
+            frame.open();
+        });
+        $('.atlas-seo').on('click', '.atlas-share-reset', function (e) {
+            e.preventDefault();
+            var box = $(this).closest('.atlas-share-col');
+            box.find('.atlas-share-id').val('');
+            box.find('.atlas-share-img').css('background-image', 'url("' + box.data('fallback') + '")');
         });
     });
     </script>
     <?php
+}
+
+/** Colonne « image de partage » : aperçu façon WhatsApp/Facebook + boutons. */
+function atlas_seo_image_field($slug, $id, $url, $fallback, $title, $host, $reset_label) {
+    return '<div class="atlas-share-col" data-fallback="' . esc_url($fallback) . '"><label style="margin-top:0">Image au partage du lien</label>'
+        . '<div class="atlas-share"><div class="atlas-share-img" style="background-image:url(\'' . esc_url($url) . '\')"></div>'
+        . '<div class="atlas-share-txt">' . esc_html(strtoupper((string) $host)) . '<b>' . esc_html($title) . '</b></div></div>'
+        . '<input type="hidden" class="atlas-share-id" name="atlas_seo[' . esc_attr($slug) . '][img]" value="' . ($id ?: '') . '">'
+        . '<div class="atlas-share-actions"><button type="button" class="button atlas-share-pick">Choisir une image</button>'
+        . '<a href="#" class="atlas-share-reset">' . esc_html($reset_label) . '</a></div></div>';
 }
