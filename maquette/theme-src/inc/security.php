@@ -37,3 +37,8 @@ add_action('template_redirect', function () {
 
 /** Pas d'éditeur de code dans l'administration (limite les dégâts si un compte est piraté). */
 if (!defined('DISALLOW_FILE_EDIT')) define('DISALLOW_FILE_EDIT', true);
+
+/** Le plan de site XML ne liste pas les comptes (il exposerait les identifiants de connexion). */
+add_filter('wp_sitemaps_add_provider', function ($provider, $name) {
+    return $name === 'users' ? false : $provider;
+}, 10, 2);
