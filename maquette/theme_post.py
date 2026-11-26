@@ -386,6 +386,7 @@ def run(OUT, TITLES):
             open(ip, 'w', encoding='utf-8').write(GUARD + c)
     # polices
     os.makedirs(os.path.join(OUT, 'assets', 'fonts'), exist_ok=True)
+    shutil.copy('theme-src/modele.php', os.path.join(OUT, 'modele.php'))
     os.makedirs(os.path.join(OUT, 'assets', 'editor'), exist_ok=True)
     for f in os.listdir('theme-src/editor'):
         shutil.copy(os.path.join('theme-src/editor', f), os.path.join(OUT, 'assets', 'editor', f))

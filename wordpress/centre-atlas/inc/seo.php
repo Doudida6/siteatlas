@@ -35,6 +35,10 @@ function atlas_seo_current() {
         $desc = has_excerpt($post) ? get_the_excerpt($post) : wp_trim_words(wp_strip_all_tags($post->post_content), 28, '…');
         return ['title' => get_the_title($post) . ' | Centre Médical Atlas', 'desc' => trim(wp_strip_all_tags($desc))];
     }
+    if (is_page() && function_exists('atlas_model_of') && atlas_model_of(get_queried_object_id())) {
+        $m = atlas_model_seo(get_queried_object_id());
+        return ['title' => $m['title'], 'desc' => $m['desc']];
+    }
     $slug = atlas_seo_slug();
     return $slug !== '' ? atlas_seo_get($slug) : null;
 }
@@ -55,6 +59,10 @@ function atlas_og_image() {
     foreach ([$slug !== '' ? ($saved[$slug]['img'] ?? 0) : 0, $saved['_default']['img'] ?? 0] as $id) {
         $id = (int) $id;
         if ($id) { $u = wp_get_attachment_image_url($id, 'large'); if ($u) return (string) $u; }
+    }
+    if (is_page() && function_exists('atlas_model_of') && atlas_model_of(get_queried_object_id())) {
+        $m = atlas_model_seo(get_queried_object_id());
+        if ($m['img']) { $u = wp_get_attachment_image_url($m['img'], 'large'); if ($u) return (string) $u; }
     }
     return (string) get_theme_file_uri('assets/og-image.jpg');
 }

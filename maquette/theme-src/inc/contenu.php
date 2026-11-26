@@ -108,6 +108,7 @@ function atlas_contenu_css() {
     .atlas-card-body h3{margin:0;font-size:15px}
     .atlas-card-meta{color:#646970;font-size:12px}
     .atlas-card-actions{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+    .atlas-card .dashicons-plus-alt2{display:block}
     .atlas-toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px;position:sticky;top:32px;z-index:5;background:#f0f0f1;padding:8px 0}
     .atlas-toc a{background:#fff;border:1px solid #c3c4c7;border-radius:999px;padding:4px 12px;text-decoration:none;font-size:12px}
     .atlas-sec{background:#fff;border:1px solid #dcdcde;border-radius:10px;margin:0 0 18px;scroll-margin-top:90px}
@@ -132,8 +133,10 @@ function atlas_contenu_css() {
 function atlas_contenu_overview() {
     $reg = atlas_registry();
     atlas_contenu_css();
-    echo '<div class="wrap atlas-wrap"><div class="atlas-head"><h1>Contenu du site</h1></div>';
+    echo '<div class="wrap atlas-wrap"><div class="atlas-head"><h1>Contenu du site</h1></div><hr class="wp-header-end">';
     echo '<p class="atlas-intro">Choisissez la page à modifier. Vous y trouverez ses textes et ses photos, regroupés par section dans l\'ordre où ils apparaissent sur le site. Astuce : sur le site, le bouton <strong>« ✎ Modifier cette page »</strong> de la barre noire permet aussi de modifier directement en cliquant sur un texte ou une photo.</p>';
+    if (!empty($_GET['deleted'])) echo '<div class="notice notice-success is-dismissible"><p>Page placée dans la corbeille.</p></div>';
+    if (function_exists('atlas_my_pages_block')) atlas_my_pages_block();
     foreach (atlas_contenu_groups() as $group => $slugs) {
         echo '<h2 class="atlas-group">' . esc_html($group) . '</h2><div class="atlas-cards">';
         foreach ($slugs as $slug) {
@@ -169,7 +172,7 @@ function atlas_contenu_edit($slug) {
         echo '<a class="button" href="' . esc_url($url) . '" target="_blank" rel="noopener">Voir la page ↗</a> ';
         echo '<a class="button" href="' . esc_url(add_query_arg('atlas_edit', '1', $url)) . '" target="_blank" rel="noopener">✎ Modifier directement sur le site</a>';
     }
-    echo '<a class="button-link" style="margin-left:auto" href="' . esc_url(admin_url('admin.php?page=atlas-contenu')) . '">← Toutes les pages</a></div>';
+    echo '<a class="button-link" style="margin-left:auto" href="' . esc_url(admin_url('admin.php?page=atlas-contenu')) . '">← Toutes les pages</a></div><hr class="wp-header-end">';
     if (!empty($_GET['updated'])) {
         echo '<div class="notice notice-success is-dismissible"><p><strong>Modifications enregistrées.</strong>' . ($url ? ' <a href="' . esc_url($url) . '" target="_blank" rel="noopener">Voir la page ↗</a>' : '') . '</p></div>';
     }
