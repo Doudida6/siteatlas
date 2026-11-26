@@ -113,6 +113,11 @@ def header_menu(s):
 def dynamic_blocks(name, s):
     if name == 'front-page.php' and '<div class="team_grid">' in s:
         s = s.replace(block(s, '<div class="team_grid">'), '<div class="team_grid">\n<?php atlas_team_cards(3); ?>\n</div>')
+    if name == 'front-page.php' and '<div class="testi_grid">' in s:
+        s = s.replace(block(s, '<div class="testi_grid">'), '<div class="testi_grid">\n<?php atlas_testimonials(); ?>\n</div>')
+        # section masquée s'il n'y a aucun témoignage publié
+        i = s.index('<section class="quote2">'); j = s.index('</section>', i) + len('</section>')
+        s = s[:i] + '<?php if (atlas_get_testimonials()) : ?>\n' + s[i:j] + '\n<?php endif; ?>' + s[j:]
     if name == 'page-nos-medecins.php' and '<div class="doc_grid">' in s:
         s = s.replace(block(s, '<div class="doc_grid">'), '<div class="doc_grid">\n<?php atlas_doc_cards(); ?>\n</div>')
     if name == 'page-rendez-vous.php':
